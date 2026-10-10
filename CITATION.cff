@@ -4,7 +4,7 @@ title: "EASA: Edge-centric Adaptive Security API — simulator, cloud service an
 version: 1.0.0
 date-released: 2026-10-10
 license: MIT
-repository-code: "https://github.com/<OWNER>/<REPO>"
+repository-code: "https://github.com/Deukhun-kor/EASA"
 authors:
   - family-names: Kim
     given-names: Deuk-Hun

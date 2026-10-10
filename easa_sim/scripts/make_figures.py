@@ -343,7 +343,8 @@ def lowbattery_table(df_lb, out_tex):
             cells.append(f"${fmt.format(v.mean())}$" if v.std() == 0 else f"${fmt.format(v.mean())} \\pm {fmt.format(v.std())}$")
         lines.append(LABEL[c] + " & " + " & ".join(cells) + r" \\"); md.append(f"| {LABEL[c]} | " + " | ".join(x.replace("\\pm", "±").replace("$", "") for x in cells) + " |")
     tex = ("\\begin{table}[!t]\n\\caption{Low-battery scenario ($e_d\\sim U(0.10,0.35)$ at $t=0$), 30 seeds, mean $\\pm$ sample std. "
-           "``EASA, no energy-aware action'' is full EASA with the deferral branch of Algorithm~\\ref{alg:easa} disabled, on the same "
+           "``EASA, no energy-aware action'' (\\texttt{EASA\\_no\\_energy} in the released configurations; ``EASA without the selector'' in the text) "
+           "is full EASA with the deferral branch of Algorithm~\\ref{alg:easa} disabled, on the same "
            "seeds and battery draws, so the difference between the last two rows is the effect of the selector alone. No battery "
            "recharges in this scenario, so no deferred step-up is executed; a deferral is either cancelled (the device relaxed to "
            "$L_1$ first) or still pending at the end of the run. Residual energy averages over all devices, including mains-powered ones at 1.0.}\n"
@@ -459,7 +460,7 @@ def fig_trust_trace(traces_dir, out, config="EASA_full"):
     stuck_dev = stuck.idxmax() if len(stuck) else None
     clean = [d for d in ben[ben["gateway"] == gw]["device"].unique() if d != stuck_dev]
     clean_dev = clean[0] if clean else None
-    panels = [(dev, "compromised device: $L_3$ is absorbing after the campaign")]
+    panels = [(dev, "compromised device: $L_3$ is absorbing after the first campaign")]
     if clean_dev is not None: panels.append((clean_dev, "benign device, same gateway"))
     if stuck_dev is not None: panels.append((stuck_dev, "benign device held at $L_2$ to the end of the run (history term at zero)"))
     fig, axes = plt.subplots(len(panels), 1, figsize=(7.2, 2.2 * len(panels)), sharex=True, squeeze=False)
@@ -470,10 +471,18 @@ def fig_trust_trace(traces_dir, out, config="EASA_full"):
         ax.plot(g["t"], g["S_pos"], color="#eda100", lw=0.9, label="$S^{\\mathrm{pos}}$")
         if "S_hist" in g.columns: ax.plot(g["t"], g["S_hist"], color="#7f3fbf", lw=0.9, ls="--", label="$S^{\\mathrm{hist}}$")
         ax.fill_between(g["t"], 0, g["level"] / 3.0, step="post", color="#e34948", alpha=0.12, label="security level (0--3, scaled)")
-        att_t = g[g["attacking"]]["t"]
-        if len(att_t): ax.axvspan(att_t.min(), att_t.max(), color="#e34948", alpha=0.06, lw=0)
-        fam_ = g[g["attacking"]]["family"].iloc[0] if len(att_t) else "none"
-        ax.set_ylabel("score"); ax.set_title(f"{title} ({d}, family {fam_})", fontsize=8)
+        att = g["attacking"].to_numpy(); tt = g["t"].to_numpy(); fams = []
+        i = 0
+        while i < len(att):                      # shade every campaign (contiguous attacking run) separately
+            if att[i]:
+                j = i
+                while j + 1 < len(att) and att[j + 1]: j += 1
+                ax.axvspan(tt[i], tt[j], color="#e34948", alpha=0.06, lw=0)
+                fams.append(str(g["family"].iloc[i])); i = j + 1
+            else:
+                i += 1
+        fam_ = ", ".join(dict.fromkeys(fams)) if fams else "none"
+        ax.set_ylabel("score"); ax.set_title(f"{title} ({d}; campaign families: {fam_})", fontsize=8)
         ax.set_ylim(0, 1.05); ax.grid(axis="x", visible=False)
     axes[0, 0].legend(loc="lower left", ncol=5, frameon=False, fontsize=6.5); axes[-1, 0].set_xlabel("simulated time (s)")
     fig.tight_layout(); fig.savefig(out); plt.close(fig)
@@ -593,6 +602,13 @@ def main():
     if a.reset and os.path.exists(a.reset):
         md += ["", "## Supplementary: history reset"] + reset_table(df, pd.read_csv(a.reset), os.path.join(a.out, "tab_reset.tex"))
     open(os.path.join(a.out, "summary.md"), "w").write("\n".join(md) + "\n")
+    try:   # one-line captions (paper style); definitions live in the text
+        from shorten_captions import shorten
+        for f in glob.glob(os.path.join(a.out, "tab_*.tex")):
+            t, n = shorten(open(f).read())
+            if n: open(f, "w").write(t)
+    except ImportError:
+        pass
     print("\n".join(md)); print("\nwrote", sorted(os.listdir(a.out)))
 
 
