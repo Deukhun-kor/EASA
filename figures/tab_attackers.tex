@@ -1,0 +1,28 @@
+\begin{table}[!b]
+\caption{Designated attacker addresses per attack type (CIC IoT-DIAD 2024, flow-based release). Addresses are given by their last octet in 192.168.137.0/24. \emph{Measure} is the share used for ranking (flows; for ICMP and Mirai floods the set is the union of the packet-share and flow-share rankings and the packet share is shown); \emph{coverage} is the cumulative share of the attacker set and \emph{top-1} the share of the largest attacker. A type is excluded when coverage $<0.40$ and top-1 $<0.25$. The five DoS TCP-flood files are single-row corrupt files and are not listed.}
+\label{tab:attackers}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\widebox{%
+\begin{tabular}{@{}llp{1.1cm}p{4.2cm}rrrl@{}}
+\toprule
+Attack type & Family & Measure & Attackers (last octet) & Coverage & Top-1 & Flows & Status \\
+\midrule
+DDoS ACK fragmentation & DDoS & flows & .17, .65, .204, .123, .42, .12, .20, .196 & 0.90 & 0.19 & 2,450,086 & retained \\
+DDoS ICMP flood & DDoS & packets & .114, .117, .190, .125, .30, .170, .43, .94 & 0.68 & 0.12 & 202,251 & retained \\
+DDoS HTTP flood & DDoS & flows & .150, .44, .178, .89, .133, .225, .114, .64 & 0.71 & 0.11 & 505,720 & retained \\
+DDoS ICMP fragmentation & DDoS & packets & .248, .221, .246, .165, .203, .240, .128, .41 & 0.69 & 0.13 & 320,757 & retained \\
+DoS SYN flood & DoS & flows & .182, .66, .240, .144 & 0.86 & 0.57 & 16,290,644 & retained \\
+DoS HTTP flood & DoS & flows & .66 & 0.87 & 0.87 & 1,642,744 & retained \\
+DoS UDP flood & DoS & flows & .195, .66 & 0.87 & 0.72 & 5,210,536 & retained \\
+Mirai (GRE/UDP) & Mirai & packets & .238, .207, .128, .150, .162, .106, .147, .120, .248, .129, .242 & 0.95 & 0.24 & 174,588 & retained \\
+Vulnerability scan & Recon & flows & .41, .178, .133 & 0.48 & 0.29 & 442,158 & retained \\
+DNS spoofing & Spoofing & flows & .42, .199, .49, .163, .121 & 0.47 & 0.16 & 74,856 & retained \\
+SQL injection & Web & flows & .41, .178, .133 & 0.51 & 0.40 & 6,603 & retained \\
+ARP spoofing & Spoofing & flows & .23, .173, .150 & 0.23 & 0.10 & 82,382 & excluded (weak) \\
+Brute-force & Brute-Force & flows & .173, .163 & 0.28 & 0.17 & 3,619 & excluded (weak) \\
+Upload attack & Web & flows & .91, .206, .163 & 0.24 & 0.10 & 1,348 & excluded (weak) \\
+XSS & Web & flows & .91, .206, .163, .179 & 0.34 & 0.12 & 3,377 & excluded (weak) \\
+\bottomrule
+\end{tabular}}
+\end{table}

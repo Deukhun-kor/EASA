@@ -1,0 +1,27 @@
+\begin{table}[!t]
+\caption{Label-rule sensitivity on the working data (script \texttt{scripts/label\_sensitivity\_working.py}): for each retained attack type, the number of working rows (train, validation and test) and of records in its replayed designated-attacker traces, and for four alternative settings of (minimum share, attacker cap) the share of working rows whose label changes (``rows'') and the share of replayed attacker-trace records that would lose the attack label (``traces''). The default is (5\%, 8); the weakness threshold does not change attacker sets. The benign device traces come from the benign capture chain only and are unaffected by every setting.}
+\label{tab:labelsens-working}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\widebox{\begin{tabular}{lrrrrrrrrrr}
+\toprule
+ & & & \multicolumn{2}{c}{3\%, 8} & \multicolumn{2}{c}{5\%, 6} & \multicolumn{2}{c}{5\%, 12} & \multicolumn{2}{c}{10\%, 8} \\
+\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}
+Attack type & Rows & Trace rec. & rows \% & traces \% & rows \% & traces \% & rows \% & traces \% & rows \% & traces \% \\
+\midrule
+DDoS ACK fragmentation & 352,116 & 92,959 & 0.0 & 0.0 & 9.6 & 10.1 & 0.0 & 0.0 & 32.5 & 35.9 \\
+DDoS ICMP flood & 31,708 & 975 & 10.3 & 0.0 & 0.3 & 0.0 & 0.0 & 0.0 & 13.0 & 100.0 \\
+DDoS HTTP flood & 72,684 & 21,289 & 0.0 & 0.0 & 16.3 & 0.0 & 8.6 & 0.0 & 76.3 & 94.8 \\
+DDoS ICMP fragmentation & 46,060 & 5,064 & 16.3 & 0.0 & 0.6 & 1.1 & 0.0 & 0.0 & 0.8 & 1.1 \\
+DoS SYN flood & 351,924 & 104,426 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 10.5 & 11.1 \\
+DoS HTTP flood & 35,484 & 8,653 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+DoS UDP flood & 112,784 & 30,351 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Mirai & 174,588 & 24,470 & 11.4 & 0.0 & 0.2 & 0.4 & 0.0 & 0.0 & 23.2 & 50.2 \\
+Vulnerability scan & 442,158 & 79,719 & 4.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 6.7 & 13.2 \\
+DNS spoofing & 74,856 & 9,401 & 4.8 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 21.7 & 50.9 \\
+SQL injection & 6,603 & 1,304 & 8.7 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 14.9 & 21.4 \\
+\midrule
+\textbf{All retained types} & 1,700,965 & 378,611 & 3.1 & 0.0 & 2.7 & 2.5 & 0.4 & 0.0 & 17.6 & 24.8 \\
+\bottomrule
+\end{tabular}}
+\end{table}

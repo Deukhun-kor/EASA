@@ -1,0 +1,16 @@
+# data (14.7 GB, download with scripts/download_iotdiad.py)
+data/
+# secrets: the API key lives in the environment / outside the repository
+*api_key*
+.env
+# python / tooling
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# scratch
+results/_sweep_tmp/
+*.log
+.DS_Store
+Thumbs.db

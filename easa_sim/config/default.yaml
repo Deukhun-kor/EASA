@@ -1,0 +1,201 @@
+# =====================================================================
+# EASA simulator -- default experimental configuration (6-week protocol)
+# All values here are the ones to report in the paper's "Experimental
+# setup" table. Override per run with --set key=value.
+# =====================================================================
+
+experiment:
+  name: easa_main
+  seeds: 30                 # 30 independent runs; report mean +- std, 95% bootstrap CI
+  out_dir: results
+  log_level: INFO
+
+# ----------------------------------------------------------------------
+# Data
+# ----------------------------------------------------------------------
+data:
+  source: iotdiad           # iotdiad (primary) | ciciot2023 | toniot | synthetic
+  iotdiad_dir: data/IoT-DIAD-2024/flow # CIC IoT-DIAD 2024, Flow Based features (84 cols, Src/Dst IP + Timestamp)
+  iotdiad_subnet: 192.168.137.0/24     # testbed LAN; devices = in-subnet Src IPs observed in Benign captures
+  iotdiad_exclude_ips: [192.168.137.1] # router / infrastructure
+  iotdiad_label_mode: dominant_src     # dominant_src (row-level, see iotdiad.py) | capture (folder = label; weak)
+  iotdiad_min_share: 0.05              # in-subnet Src IP with >= 5% of an attack type's flows is an attacker
+  iotdiad_max_attackers: 8
+  iotdiad_weak_threshold: 0.40         # if attackers cover < 40% (and top1 < 25%) the type is 'weak' -> capture-level labels
+  iotdiad_packet_share_types: [ICMP, Mirai]   # rank by packets for these (flows collapse under CICFlowMeter); flows otherwise
+  iotdiad_windows_per_file: 4          # contiguous windows per file when subsampling (timing preserved)
+  iotdiad_min_rows: 100                # drop corrupt files (DoS-TCP_Flood: 1 row each)
+  iotdiad_weak_policy: drop            # drop weak-labelled types from the main experiment | capture (keep, capture labels)
+  ciciot_dir: data/CICIoT2023/csv      # the 169 "part-*.csv" feature files (46 features + label)
+  toniot_network_csv: data/TON_IoT/Train_Test_Network.csv
+  toniot_telemetry_dir: data/TON_IoT/Train_Test_IoT_*.csv
+  max_rows: 4_000_000       # stratified subsample of CIC-IoT-2023 (fits 32 GB RAM with float32)
+  dedup: true               # drop exact-duplicate feature rows BEFORE splitting (Purkaystha 2026)
+  test_fraction: 0.30
+  val_fraction: 0.10
+  scale: log_standard       # sign(x)*log1p(|x|) then z-score, fitted on train only (CICFlowMeter features are heavy-tailed)
+  # Attack families used as scenario "campaigns" (CIC-IoT-2023 class groups)
+  families: [DDoS, DoS, Mirai, Recon, Spoofing, Web, BruteForce]
+
+# ----------------------------------------------------------------------
+# Topology / emulation
+# ----------------------------------------------------------------------
+topology:
+  n_gateways: 3
+  devices_per_gateway: auto # auto = all real device IPs with a benign trace (68 in IoT-DIAD -> 23/23/22); int = cap
+  epoch_s: 10.0             # decision epoch (IoT-DIAD flows are sessions: benign devices emit ~0.02 flows/s)
+  window_s: 120.0           # flow aggregation window feeding f_theta (= CICFlowMeter activity timeout)
+  sim_duration_s: 3600      # one simulated hour per run
+  benign_flow_rate_hz: 0.8  # Poisson fallback only (synthetic / CIC-IoT-2023 pools)
+  attack_flow_rate_hz: 12.0 # Poisson fallback only
+
+replay:                     # trace replay (used automatically when the pool carries identity + timestamps)
+  enabled: true
+  gap_cap_s: 60.0           # clip idle gaps longer than this when replaying a device's timeline
+  availability: end         # protocol v3: a flow record is emitted at Timestamp + Flow Duration (when an online extractor
+                            #   has its completed statistics); "start" = protocol v2 (completed statistics at flow start)
+  calibration_fraction: 0.3333   # protocol v3: first third of each device's test timeline -> benign calibration pass only;
+                            #   the remaining two thirds -> evaluation replay. 0 = protocol v2 (same pool, different phase)
+
+scenario:
+  # Attack campaigns: each run samples campaigns from this template.
+  n_campaigns: 10                # 3 forced holdout + 1 forced replay + ~6 sampled (traffic / tamper / replay)
+  onset_range_s: [300, 2700]
+  duration_range_s: [120, 600]
+  compromised_fraction: 0.15     # fraction of a gateway's devices compromised per campaign
+  credential_replay_prob: 0.10   # share of campaigns that are credential replay (no traffic anomaly)
+  force_replay_campaign: true    # always include >=1 credential-replay campaign per run (measures the revocation path)
+  replay_donor_families: [DoS, DDoS]   # donor campaign must reach L3 for a revocation to exist; floods do so reliably
+  firmware_tamper_prob: 0.10     # share of campaigns that flip the integrity flag
+  # Cross-site generalisation: which families are *absent* from each gateway's local training split
+  cross_site:
+    enabled: true
+    force_holdout_campaigns: true   # guarantee >=1 campaign per gateway whose family it never trained on
+    # one held-out family per gateway, chosen so that it IS detectable when trained on (val recall >= 0.68 in IoT-DIAD):
+    # DDoS 0.19 -> 0.84, Recon 0.00 -> 0.75, Spoofing 0.41 -> 0.68 (local-only -> after FedAvg). Mirai and Web remain
+    # in-distribution everywhere; their detectability is limited by the attacker-Pi labelling (reported per family).
+    holdout: {g0: [DDoS], g1: [Recon], g2: [Spoofing]}
+
+# ----------------------------------------------------------------------
+# Detector f_theta
+# ----------------------------------------------------------------------
+detector:
+  kind: mlp                 # mlp (federatable, GPU) | xgb (centralised upper bound) | rules (B2)
+  mlp:
+    hidden: [128, 64]
+    dropout: 0.1
+    lr: 1.0e-3
+    batch_size: 4096
+    epochs: 15
+    device: cuda            # RTX 5080; falls back to cpu automatically
+  xgb:
+    n_estimators: 400
+    max_depth: 8
+    learning_rate: 0.1
+    device: cuda
+  local_finetune_epochs: 0  # online fine-tuning between syncs (0 = detector frozen after warm-up; keeps calibrated thresholds valid)
+  fed_rounds: 15            # warm-up FedAvg rounds (cloud present): common init, E local epochs, average
+  fed_local_epochs: 1       # 15 x 1 = 15 epochs = the same budget as local-only training (mlp.epochs); 1 epoch/round limits non-IID drift
+
+# ----------------------------------------------------------------------
+# Posture model (synthetic device resource dynamics; TON_IoT telemetry used to calibrate rates)
+# ----------------------------------------------------------------------
+posture:
+  classes:                  # fraction of devices, battery capacity (Wh), idle drain (W), per-flow cost (mWh)
+    camera:     {share: 0.25, capacity_wh: 20.0, idle_w: 1.20, flow_mwh: 0.60}
+    hub:        {share: 0.15, capacity_wh: 40.0, idle_w: 2.00, flow_mwh: 0.30}
+    sensor:     {share: 0.40, capacity_wh:  5.0, idle_w: 0.05, flow_mwh: 0.15}
+    appliance:  {share: 0.20, capacity_wh: 999.0, idle_w: 0.00, flow_mwh: 0.00}   # mains-powered
+  cpu_per_flow: 0.02        # CPU headroom lost per flow in window (recovers to 1.0 with tau below)
+  cpu_recovery_tau_s: 5.0
+  link_quality_mean: 0.85
+  link_quality_sigma: 0.08
+  reauth_cost_mwh: 8.0      # energy cost of an mTLS re-handshake (used by overhead metric & S_pos)
+  energy_floor: 0.20        # below this e_d, PDP avoids crypto step-up at L2
+  init_energy_range: [0.6, 1.0]   # initial battery state e_d ~ U(lo, hi); E7 low-battery scenario uses [0.10, 0.35]
+
+# ----------------------------------------------------------------------
+# Trust engine (Section 3.3)
+# ----------------------------------------------------------------------
+trust:
+  window_agg: topk          # per-flow scores -> window score: topk (mean of the k most suspicious flows) | mean | max
+  window_topk: 3            # k; window score = (sum of the k highest per-flow scores)/k, zero-padded -> needs >= k confident alerts per window
+  w_net: 0.60
+  w_pos: 0.25
+  w_hist: 0.15
+  beta: 0.70                # EWMA on T
+  lambda_hist: 0.90
+  alpha_e: 0.40
+  alpha_u: 0.30
+  alpha_q: 0.30
+
+# ----------------------------------------------------------------------
+# Policy (Section 3.4)
+# ----------------------------------------------------------------------
+policy:
+  tau_enter: {L1: 0.80, L2: 0.60, L3: 0.35}   # T below -> promote to stricter level immediately (used when calibrate.enabled=false)
+  calibrate:                                    # operating point: a benign-only pass per run sets tau as quantiles of benign T
+    enabled: true                               #   -> every configuration is compared at the same epoch-level FPR
+    target_fpr: 0.02                            # tau_L2 = 2nd percentile of benign T
+    l1_quantile: 0.10                           # tau_L1 = 10th percentile
+    l3_quantile: 0.005                          # tau_L3 = 0.5th percentile
+    duration_s: 1800                            # benign-only pass length (sim-s)
+    max_passes: 6                               # bisection passes on tau_L2 so the realised benign FPR (with hysteresis) hits target
+  hysteresis_delta: 0.05                        # exit threshold = enter + delta (overridden by calibration: delta = tau_L1 - tau_L2)
+  h_epochs: 5                                   # consecutive epochs above exit threshold to relax (= 50 s)
+  l1_token_ttl_factor: 0.5
+  l1_telemetry_factor: 2.0
+  l2_rate_limit_hz: 2.0
+  l3_release_after_s: 600                       # policy-timed release (if not revoked)
+  energy_aware: true                            # defer the L2 re-handshake while e_d < posture.energy_floor (EASA); B3 sets false
+  history_reset_epochs: 0                       # recovery rule (R7): reset S_hist to 1 after this many consecutive restricted epochs whose
+                                                #   network score alone is at the L0 level (S_net >= tau_L1); 0 = off (protocol v3 main grid)
+
+# ----------------------------------------------------------------------
+# Cloud (Section 3.6) -- real deployment in Seoul region
+# ----------------------------------------------------------------------
+cloud:
+  mode: http                # which cloud functions exist: http (all) | model_only | revocation_only | none (EASA-C) | local (all, mock)
+  transport: http           # where they run: http = deployed service (base_url) | local = in-process mock. mode=local forces mock.
+  base_url: https://REPLACE-ME-asia-northeast3.run.app
+  api_key_env: EASA_API_KEY
+  timeout_s: 15.0                   # per call; a 130 ms path occasionally stalls for seconds
+  retries: 3                        # transient failures (timeout, 5xx, reset) are retried with 1/2/4 s back-off,
+  retry_backoff_s: 1.0              #   then skipped (n_cloud_errors) -- the gateway keeps its last synced state
+  model_sync_interval_s: 300        # sim-time; paper reports the compression factor (300 s sim == 1 h wall)
+  revocation_poll_interval_s: 30
+  stats_upload_interval_s: 300
+  fedavg_weighting: samples         # samples | uniform
+  min_gateways: 3                   # aggregate when this many gateways have pushed (= n_gateways); deploy.sh sets EASA_MIN_GATEWAYS
+  outage:                           # cloud-outage experiment
+    enabled: false
+    start_s: 1800
+    duration_s: 900
+  measure_rtt: true                 # record wall-clock RTT of every real call
+
+# ----------------------------------------------------------------------
+# Configurations to run (Table 3 of the paper). Each entry overrides keys above.
+# ----------------------------------------------------------------------
+configs:
+  B0_static:      {trust: {w_net: 0, w_pos: 0, w_hist: 0}, policy: {disabled: true}, cloud: {mode: none}}
+  B1_vnsf:        {detector: {kind: xgb}, policy: {binary: true}, cloud: {mode: none}}
+  B2_rules:       {detector: {kind: rules}, policy: {binary: true}, cloud: {mode: revocation_only}}
+  B3_net_only:    {trust: {w_net: 1.0, w_pos: 0, w_hist: 0}, policy: {energy_aware: false}, cloud: {mode: model_only}}
+  EASA_minus_C:   {cloud: {mode: none}}
+  EASA_full:      {}
+
+# ----------------------------------------------------------------------
+# Follow-up ablations (review round, 2026-10-08). NOT part of the default grid; EASA_net_score (= EASA-PH in the paper)
+# was run with cloud.transport=local and is reported, the other three are released but not reported;
+# run explicitly, e.g.  python scripts/run_experiments.py --configs EASA_net_score EASA_no_energy --out results/ablation.csv
+# Each differs from EASA_full in exactly one component, so that the pairs below isolate it:
+#   EASA_full vs EASA_net_score : composite score (posture + history) with the full cloud path and energy-aware action
+#   EASA_full vs EASA_no_energy : energy-aware action selection alone (use with the E7 low-battery override)
+#   EASA_full vs EASA_model_only / EASA_rev_only / EASA_minus_C : the 2x2 of model sharing x revocation registry
+# ----------------------------------------------------------------------
+extra_configs:
+  EASA_net_score:  {trust: {w_net: 1.0, w_pos: 0, w_hist: 0}}
+  EASA_no_energy:  {policy: {energy_aware: false}}
+  EASA_model_only: {cloud: {mode: model_only}}
+  EASA_rev_only:   {cloud: {mode: revocation_only}}
+  EASA_reset:      {policy: {history_reset_epochs: 5}}     # EASA_full + recovery rule (reset after h=5 clean restricted epochs)

@@ -1,0 +1,20 @@
+\begin{table}[!t]
+\caption{Main results over 30 seeds (mean $\pm$ sample std; 95\% bootstrap CIs in the released \texttt{summary.md}). All configurations except B0 are calibrated to a 2\% target false-positive rate on the calibration segment; FPR is measured on never-compromised devices in the evaluation segment. Configurations with a cloud path (B2, B3, EASA$-$PH, EASA) ran against the deployed Cloud Run service; B0, B1 and EASA$-$C issue no cloud calls. Replay catch is the unconditional share of credential-replay device-epochs at $L_3$ over all 30 runs (Table~\ref{tab:replay} gives the denominators).}
+\label{tab:results}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\widebox{%
+\begin{tabular}{lccccccccc}
+\toprule
+Configuration & F1 ($L_2$) & FPR & Recall (in-dist.) & Recall (cross-site) & Containment & TTC p50 (s) & False quarantine & Re-auth / dev-h & Replay catch (all runs) \\
+\midrule
+B0 static & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & -- & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 \\
+B1 VNSF & 0.497 $\pm$ 0.106 & 0.053 $\pm$ 0.023 & 0.821 $\pm$ 0.110 & 0.346 $\pm$ 0.178 & 0.681 $\pm$ 0.148 & 42 $\pm$ 19 & 0.077 $\pm$ 0.032 & 0.000 $\pm$ 0.000 & 0.182 $\pm$ 0.229 \\
+B2 rules & 0.216 $\pm$ 0.123 & 0.047 $\pm$ 0.029 & 0.144 $\pm$ 0.138 & 0.138 $\pm$ 0.138 & 0.265 $\pm$ 0.164 & 61 $\pm$ 79 & 0.077 $\pm$ 0.042 & 0.000 $\pm$ 0.000 & 0.165 $\pm$ 0.256 \\
+B3 net-only & 0.564 $\pm$ 0.108 & 0.050 $\pm$ 0.024 & 0.772 $\pm$ 0.114 & 0.627 $\pm$ 0.217 & 0.763 $\pm$ 0.095 & 35 $\pm$ 17 & 0.026 $\pm$ 0.017 & 0.247 $\pm$ 0.057 & 0.138 $\pm$ 0.170 \\
+EASA$-$C & 0.439 $\pm$ 0.089 & 0.048 $\pm$ 0.027 & 0.675 $\pm$ 0.142 & 0.237 $\pm$ 0.165 & 0.555 $\pm$ 0.134 & 58 $\pm$ 34 & 0.024 $\pm$ 0.019 & 0.195 $\pm$ 0.065 & 0.122 $\pm$ 0.168 \\
+EASA$-$PH & 0.615 $\pm$ 0.102 & 0.050 $\pm$ 0.024 & 0.772 $\pm$ 0.114 & 0.630 $\pm$ 0.214 & 0.849 $\pm$ 0.099 & 33 $\pm$ 20 & 0.026 $\pm$ 0.017 & 0.246 $\pm$ 0.057 & 0.757 $\pm$ 0.295 \\
+EASA & 0.601 $\pm$ 0.098 & 0.054 $\pm$ 0.023 & 0.756 $\pm$ 0.117 & 0.599 $\pm$ 0.172 & 0.849 $\pm$ 0.127 & 38 $\pm$ 24 & 0.042 $\pm$ 0.029 & 0.228 $\pm$ 0.047 & 0.806 $\pm$ 0.283 \\
+\bottomrule
+\end{tabular}}
+\end{table}

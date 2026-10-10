@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper (preferred) or this repository."
+title: "EASA: Edge-centric Adaptive Security API — simulator, cloud service and results"
+version: 1.0.0
+date-released: 2026-10-10
+license: MIT
+repository-code: "https://github.com/<OWNER>/<REPO>"
+authors:
+  - family-names: Kim
+    given-names: Deuk-Hun
+    affiliation: "Department of Cyber Security, Ajou University"
+    orcid: "https://orcid.org/0000-0002-3740-5568"
+  - family-names: Kwak
+    given-names: Jin
+    affiliation: "Department of Cyber Security, Ajou University"
+    orcid: "https://orcid.org/0000-0001-6931-2705"
+preferred-citation:
+  type: article
+  title: "EASA: An Edge-Centric Adaptive Security API for AIoT Devices"
+  authors:
+    - family-names: Kim
+      given-names: Deuk-Hun
+    - family-names: Kwak
+      given-names: Jin
+  journal: "Sensors"
+  year: 2026
+  notes: "submitted"

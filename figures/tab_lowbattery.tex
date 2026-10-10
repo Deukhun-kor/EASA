@@ -1,0 +1,15 @@
+\begin{table}[!t]
+\caption{Low-battery scenario ($e_d\sim U(0.10,0.35)$ at $t=0$), 30 seeds, mean $\pm$ sample std. ``EASA, no energy-aware action'' is full EASA with the deferral branch of Algorithm~\ref{alg:easa} disabled, on the same seeds and battery draws, so the difference between the last two rows is the effect of the selector alone. No battery recharges in this scenario, so no deferred step-up is executed; a deferral is either cancelled (the device relaxed to $L_1$ first) or still pending at the end of the run. Residual energy averages over all devices, including mains-powered ones at 1.0.}
+\label{tab:lowbattery}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\widebox{\begin{tabular}{lcccccccc}
+\toprule
+Configuration & Deferred, cancelled & Deferred, pending at end & Re-auth / dev-h & Residual energy & F1 & FPR (clean) & Containment & Dwell (s) \\
+\midrule
+B3 net-only & $0.00$ & $0.00$ & $0.247 \pm 0.057$ & $0.362 \pm 0.046$ & $0.564 \pm 0.108$ & $0.050 \pm 0.024$ & $0.763 \pm 0.095$ & $950 \pm 184$ \\
+EASA, no energy-aware action & $0.00$ & $0.00$ & $0.217 \pm 0.056$ & $0.365 \pm 0.044$ & $0.605 \pm 0.090$ & $0.050 \pm 0.025$ & $0.833 \pm 0.117$ & $1162 \pm 204$ \\
+EASA & $0.47 \pm 0.68$ & $4.80 \pm 1.88$ & $0.136 \pm 0.044$ & $0.365 \pm 0.044$ & $0.602 \pm 0.093$ & $0.051 \pm 0.025$ & $0.833 \pm 0.117$ & $1158 \pm 200$ \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,44 @@
+skip data/IoT-DIAD-2024/flow\DoS\DoS-TCP_Flood\DoS-TCP_Flood.pcap_Flow.csv (1 rows < 100)
+skip data/IoT-DIAD-2024/flow\DoS\DoS-TCP_Flood\DoS-TCP_Flood1.pcap_Flow.csv (1 rows < 100)
+skip data/IoT-DIAD-2024/flow\DoS\DoS-TCP_Flood\DoS-TCP_Flood10.pcap_Flow.csv (1 rows < 100)
+skip data/IoT-DIAD-2024/flow\DoS\DoS-TCP_Flood\DoS-TCP_Flood2.pcap_Flow.csv (1 rows < 100)
+skip data/IoT-DIAD-2024/flow\DoS\DoS-TCP_Flood\DoS-TCP_Flood3.pcap_Flow.csv (1 rows < 100)
+== 1. Flow Duration (seconds after /1e6; raw column is microseconds in CICFlowMeter; clipped to [0,120] in the pool)
+   raw duration: min=0.000 s, max=120.000 s, NaN/negative mapped to 0 at load; rows == 120 s: 40; rows > 120 s: 0 (max 120.0 s); rows == 0 s: 1,881
+   pool stores dur_s clipped: min=0.000 max=120.000 mean=35.479 median=2.288
+   train: n=1,148,306 raw==120: 22 raw>120: 0 raw==0: 159
+   val: n=209,885 raw==120: 3 raw>120: 0 raw==0: 251
+   test: n=629,875 raw==120: 15 raw>120: 0 raw==0: 675
+   rows with raw > 120 s that occur in replay traces: calibration 0, evaluation 0, attacker 0
+   rows with raw == 120 s that occur in replay traces: calibration 3, evaluation 6, attacker 1
+      by family: {np.str_('Benign'): np.int64(35), np.str_('DDoS'): np.int64(3), np.str_('Mirai'): np.int64(2)}; by attack-label: attack 5, benign 35
+
+== 2. Availability ordering (availability=end)
+   all traces sorted by availability time: OK; records whose position differs from start order: 362,285 of 497,014 (72.89%)
+
+== 3. Calibration / evaluation boundary (calibration_fraction=0.3333; segments split by record count in availability order)
+   devices with both segments: 65; calibration rows 39,425, evaluation rows 78,978, shared rows 0
+   devices whose evaluation segment becomes available before the calibration segment ends: 0
+   evaluation records that started before the end of the calibration segment (straddling flows, assigned by availability): 95
+
+== 4. Wrap (run length 3600 s)
+   evaluation trace duration (s): median 16027, min 188, max 31322; traces shorter than one run: 7 of 65 (mean wraps per run 0.61)
+   calibration trace duration (s): median 7512, min 60; shorter than the 1,800 s pass: 8 of 65
+   attack DDoS: 13 traces, duration median 2880 s (min 600); traces shorter than the longest campaign (600 s): 0
+   attack DoS: 5 traces, duration median 1223 s (min 123); traces shorter than the longest campaign (600 s): 2
+   attack Mirai: 11 traces, duration median 5239 s (min 4903); traces shorter than the longest campaign (600 s): 0
+   attack Recon: 3 traces, duration median 20603 s (min 16948); traces shorter than the longest campaign (600 s): 0
+   attack Spoofing: 5 traces, duration median 5329 s (min 3073); traces shorter than the longest campaign (600 s): 0
+   attack Web: 3 traces, duration median 248 s (min 243); traces shorter than the longest campaign (600 s): 3
+   virtual clock monotone within every trace: True
+
+== 5. Evaluation sample
+   test split: 629,875 rows, time range 2022-08-02 12:00:44 .. 2023-01-18 11:52:01
+   DDoS: 13 designated-attacker traces, records [6768, 11910, 58, 1105, 21183, 3322, 6103, 13641, 5006, 9352, 20184, 20680, 975]
+   DoS: 5 designated-attacker traces, records [11461, 73719, 30350, 81, 27819]
+   Mirai: 11 designated-attacker traces, records [92, 11058, 95, 3888, 96, 94, 617, 90, 94, 4727, 3619]
+   Recon: 3 designated-attacker traces, records [10493, 835, 68391]
+   Spoofing: 5 designated-attacker traces, records [2322, 1566, 2829, 1790, 894]
+   Web: 3 designated-attacker traces, records [131, 148, 1025]
+   benign device traces: 65 devices; calibration records 39,425; evaluation records 78,978
+   records are CICFlowMeter flow records as released (no further flow-ID aggregation)

@@ -1,0 +1,21 @@
+\begin{table}[!t]
+\caption{Supplementary design revision, not part of the pre-specified comparison: EASA with the history term reset to 1 after five consecutive restricted epochs whose network score is above $\tau_{L1}$ (\texttt{policy.history\_reset\_epochs}=5; 98 resets per run on average), against EASA on the same 30 seeds and the same Cloud Run service. $\Delta$ is reset $-$ EASA with a 95\% bootstrap CI and an unadjusted paired Wilcoxon $p$.}
+\label{tab:reset}
+\centering\scriptsize
+\setlength{\tabcolsep}{4pt}
+\widebox{\begin{tabular}{lccccc}
+\toprule
+Metric & EASA & EASA, history reset & $\Delta$ & 95\% CI & $p$ \\
+\midrule
+F1 & 0.601 $\pm$ 0.098 & 0.600 $\pm$ 0.092 & $-$0.001 & $[-0.015, 0.012]$ & 0.913 \\
+FPR (clean) & 0.054 $\pm$ 0.023 & 0.053 $\pm$ 0.021 & $-$0.000 & $[-0.004, 0.004]$ & 0.173 \\
+Restricted share & 0.175 $\pm$ 0.037 & 0.166 $\pm$ 0.038 & $-$0.009 & $[-0.014, -0.004]$ & $<0.001$ \\
+Dwell (s) & 1236 $\pm$ 308 & 1162 $\pm$ 316 & $-$73 & $[-121, -36]$ & $<0.001$ \\
+False quarantine & 0.042 $\pm$ 0.029 & 0.045 $\pm$ 0.029 & +0.002 & $[0.000, 0.006]$ & 0.102 \\
+Containment & 0.849 $\pm$ 0.127 & 0.850 $\pm$ 0.132 & +0.001 & $[-0.019, 0.020]$ & 0.646 \\
+Cross-site recall & 0.599 $\pm$ 0.172 & 0.618 $\pm$ 0.158 & +0.019 & $[-0.008, 0.047]$ & 0.241 \\
+Replay catch & 0.806 $\pm$ 0.283 & 0.801 $\pm$ 0.245 & $-$0.005 & $[-0.054, 0.040]$ & 0.917 \\
+Re-auth / dev-h & 0.228 $\pm$ 0.047 & 0.235 $\pm$ 0.051 & +0.007 & $[-0.001, 0.016]$ & 0.075 \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,18 @@
+\begin{table}[!t]
+\caption{Credential-replay path: denominators. ``Runs with a revocation'': runs in which at least one replay campaign's donor credential had been revoked (at $L_3$) anywhere by the end of the run; ``campaigns with revoked donor'': share of replay campaigns (1.4 per run on average) whose donor was revoked; catch rates are the share of replay device-epochs at $L_3$, over all runs and over the runs with a revocation only (mean $\pm$ std, $n$ runs). The conditional subsets differ between configurations because revocation depends on the detector.}
+\label{tab:replay}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\widebox{\begin{tabular}{lcccc}
+\toprule
+Configuration & Runs with revocation & Campaigns, donor revoked & Catch (all runs) & Catch (runs with revocation) \\
+\midrule
+B1 VNSF & 30/30 & 93\% & 0.182 $\pm$ 0.229 & 0.182 $\pm$ 0.229 ($n=30$) \\
+B2 rules & 5/30 & 14\% & 0.165 $\pm$ 0.256 & 0.661 $\pm$ 0.104 ($n=5$) \\
+B3 net-only & 26/30 & 78\% & 0.138 $\pm$ 0.170 & 0.111 $\pm$ 0.143 ($n=26$) \\
+EASA$-$C & 21/30 & 66\% & 0.122 $\pm$ 0.168 & 0.099 $\pm$ 0.137 ($n=21$) \\
+EASA$-$PH & 26/30 & 78\% & 0.757 $\pm$ 0.295 & 0.825 $\pm$ 0.240 ($n=26$) \\
+EASA & 28/30 & 89\% & 0.806 $\pm$ 0.283 & 0.852 $\pm$ 0.227 ($n=28$) \\
+\bottomrule
+\end{tabular}}
+\end{table}

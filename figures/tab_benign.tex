@@ -1,0 +1,19 @@
+\begin{table}[!t]
+\caption{Benign-side cost over 30 seeds (mean $\pm$ std). FPR counts only epochs of devices that are never compromised in the run; the restricted share counts every benign device-epoch (level $\ge L_2$ while the device is not under a campaign), including the pre-attack and post-attack epochs of devices that are compromised at some point; post-attack dwell is the restricted time per compromised device after its campaigns end ($L_3$ is absorbing within a run).}
+\label{tab:benign}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\widebox{\begin{tabular}{lcccc}
+\toprule
+Configuration & FPR (clean devices) & Restricted share (all benign epochs) & Post-attack dwell (s / compromised device) & False quarantine \\
+\midrule
+B0 static & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0 $\pm$ 0 & 0.000 $\pm$ 0.000 \\
+B1 VNSF & 0.053 $\pm$ 0.023 & 0.145 $\pm$ 0.035 & 975 $\pm$ 255 & 0.077 $\pm$ 0.032 \\
+B2 rules & 0.047 $\pm$ 0.029 & 0.070 $\pm$ 0.027 & 355 $\pm$ 234 & 0.077 $\pm$ 0.042 \\
+B3 net-only & 0.050 $\pm$ 0.024 & 0.140 $\pm$ 0.023 & 950 $\pm$ 184 & 0.026 $\pm$ 0.017 \\
+EASA$-$C & 0.048 $\pm$ 0.027 & 0.119 $\pm$ 0.037 & 782 $\pm$ 245 & 0.024 $\pm$ 0.019 \\
+EASA$-$PH & 0.050 $\pm$ 0.024 & 0.141 $\pm$ 0.024 & 962 $\pm$ 183 & 0.026 $\pm$ 0.017 \\
+EASA & 0.054 $\pm$ 0.023 & 0.175 $\pm$ 0.037 & 1236 $\pm$ 308 & 0.042 $\pm$ 0.029 \\
+\bottomrule
+\end{tabular}}
+\end{table}
