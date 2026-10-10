@@ -426,18 +426,18 @@ def fig_family(piv, out):
 
 def fig_cross_site(df, out):
     cfgs = [c for c in _cfgs(df) if c != "B0_static"]
-    fig, ax = plt.subplots(figsize=(4.2, 2.8))
+    fig, ax = plt.subplots(figsize=(4.6, 3.0))
     for i, c in enumerate(cfgs):
         g = df[df["config"] == c]
         a, b = g["in_dist_recall_L2"].mean(), g["cross_site_recall_L2"].mean()
         ax.plot([i - 0.18, i + 0.18], [a, b], color=PALETTE[c], lw=1.6)
         ax.scatter([i - 0.18], [a], color=PALETTE[c], s=28, marker="o", zorder=3, edgecolor="#333", linewidth=0.5)
         ax.scatter([i + 0.18], [b], color=PALETTE[c], s=28, marker="s", zorder=3, edgecolor="#333", linewidth=0.5)
-        ax.text(i + 0.26, b, f"{b:.2f}", va="center", fontsize=6.5)
-    ax.set_xticks(range(len(cfgs))); ax.set_xticklabels([LABEL[c] for c in cfgs], rotation=35, ha="right", fontsize=7)
-    ax.set_ylabel("recall at $L_2$"); ax.set_ylim(0, 1.0); ax.grid(axis="x", visible=False)
+        ax.text(i + 0.26, b, f"{b:.2f}", va="center", fontsize=8)
+    ax.set_xticks(range(len(cfgs))); ax.set_xticklabels([LABEL[c] for c in cfgs], rotation=35, ha="right", fontsize=8)
+    ax.tick_params(axis="y", labelsize=8); ax.set_ylabel("recall at $L_2$", fontsize=9); ax.set_ylim(0, 1.0); ax.grid(axis="x", visible=False)
     ax.scatter([], [], marker="o", color="#333", s=20, label="in-distribution family"); ax.scatter([], [], marker="s", color="#333", s=20, label="held-out family (cross-site)")
-    ax.legend(loc="upper left", frameon=False)
+    ax.legend(loc="upper left", frameon=False, fontsize=8)
     fig.tight_layout(); fig.savefig(out); plt.close(fig)
 
 

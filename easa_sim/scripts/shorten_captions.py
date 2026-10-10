@@ -10,7 +10,7 @@ import sys
 CAPTIONS = {
     # related / proposed / setup
     "tab:related": "Closest designs on the four axes measured in this paper, summarised from the cited papers.",
-    "tab:levels": "Security levels enforced by the PEP (actions are cumulative from $L_3$ down to $L_0$).",
+    "tab:levels": "Security levels enforced by the PEP (each level applies its actions in addition to those of the levels below it).",
     "tab:transitions": "Transition rules of the PDP, one row per case.",
     "tab:api": "EASA API primitives and their implementation status.",
     "tab:ablation": "Baselines and ablations expressed as EASA configurations.",
@@ -37,13 +37,36 @@ CAPTIONS = {
     "tab:protocol": "Implementation audit of the replay protocol on the working pool.",
     # figures
     "fig:easa-arch": "EASA architecture: the gateway closes the sense--score--decide--enforce loop locally and the cloud holds only cross-gateway state.",
-    "fig:metrics": "Six headline metrics over 30 seeds (dashed line: target false-positive rate; EASA hatched).",
+    "fig:metrics": "Six headline metrics over 30 seeds (box: interquartile range; line: median; whiskers: 1.5\\,IQR; dots: outliers; dashed line: 2\\% calibration target; EASA hatched).",
     "fig:trace": "Trust trajectories (EASA, seed 0): a compromised device quarantined at $L_3$ (top), a benign device never restricted (middle) and a benign device locked at $L_2$ by its decayed history term (bottom).",
-    "fig:family": "Recall at the $L_2$ boundary per attack family (B0 and FirmwareTamper omitted).",
-    "fig:cross-site": "In-distribution versus cross-site recall: only the configurations with a cloud model path retain recall on families a gateway never trained on.",
-    "fig:outage": "EASA with the cloud reachable versus a 900\\,s outage (30 seeds each): only the revocation-dependent metrics move.",
+    "fig:family": "Mean recall at the $L_2$ boundary over the runs in which each family occurs (run counts in Table~\\ref{tab:family}; B0 and FirmwareTamper omitted).",
+    "fig:cross-site": "Mean in-distribution and locally held-out-family (cross-site) recall at $L_2$ by configuration (30 seeds).",
+    "fig:outage": "EASA with the cloud reachable and during a 900\\,s outage after warm-up (30 paired seeds; box: interquartile range; line: median; whiskers: 1.5\\,IQR): replay rejection decreases, with no change detected in the evaluated local metrics.",
     "fig:sensitivity": "EASA under one-at-a-time parameter variation (mean $\\pm$ std over 10 seeds, in-process cloud mock).",
 }
+
+# Table notes (aggregation / denominator definitions needed to read the numbers; inserted before \end{table})
+NOTES = {
+    "tab:labelsens": r"For each minimum-share value the entries report the minimum Jaccard overlap and the maximum relabelled-row share over the other two thresholds (attacker cap $\{6,8,12\}$, weakness threshold $\{30,40,50\}\%$). The reference set uses (minimum share, attacker cap) $=(5\%, 8)$, so the 5\% column also contains the non-default caps. $|\mathcal{A}|$ is the default number of designated attackers.",
+    "tab:labelsens-working": r"Column groups give (minimum share, attacker cap), relative to the default (5\%, 8). Per attack type, ``rows \%'' is the share of working rows (train, validation and test) whose label changes and ``traces \%'' the share of replayed designated-attacker records that lose the attack label; the benign device traces are unaffected by every setting.",
+    "tab:rtt": r"RTT columns are the mean over runs of the corresponding per-run statistic; ``max'' is the mean of the per-run maxima, not the pooled maximum (585\,ms excluding the 15 stalls of Section~\ref{subsec:res-latency}). Calls include warm-up.",
+}
+NOTE_MARK = "% table-note"
+
+
+def add_notes(text: str) -> tuple[str, int]:
+    n = 0
+    for key, note in NOTES.items():
+        i = text.find("\\label{" + key + "}")
+        if i < 0:
+            continue
+        j = text.find("\\end{table}", i)
+        if j < 0 or NOTE_MARK in text[i:j]:
+            continue
+        text = text[:j] + NOTE_MARK + "\n\\par\\vspace{2pt}\\begin{minipage}{\\linewidth}\\scriptsize\\raggedright " + note + "\\end{minipage}\n" + text[j:]
+        n += 1
+    return text, n
+
 
 PAT = re.compile(r"\\caption\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}(\s*)\\label\{([^}]+)\}", re.S)
 
@@ -64,7 +87,7 @@ def shorten(text: str) -> tuple[str, int]:
 def main():
     total = 0
     for p in sys.argv[1:]:
-        s = open(p).read(); t, n = shorten(s)
+        s = open(p).read(); t, n = shorten(s); t, k = add_notes(t); n += k
         if n:
             open(p, "w").write(t); total += n; print(f"{p}: {n} caption(s)")
     print("captions shortened:", total)
