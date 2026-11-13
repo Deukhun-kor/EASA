@@ -121,20 +121,20 @@ def results_table(df, out_tex):
         rows.append(" & ".join(cells) + r" \\"); rows_full.append(" & ".join(cells_full) + r" \\"); rows_full_cells.append(cells_full[1:])
         md.append("| " + " | ".join(mcells) + " |")
     head = " & ".join(["Configuration"] + [HDR2.get(lab, lab) for _, lab, _, _ in MAIN]) + r" \\"
-    tex = ("\\begin{table}[!t]\n\\caption{Main results over 30 seeds}\n"
+    tex = ("\\begin{table}[!t]\n\\caption{Primary results over 30 paired seeds}\n"
            "\\label{tab:results}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{4pt}\n\\widebox{%\n"
            "\\begin{tabular}{l" + "c" * len(MAIN) + "}\n\\toprule\n" + head + "\n\\midrule\n" + "\n".join(rows)
            + "\n\\bottomrule\n\\end{tabular}}\n"
-           "\\tabnote{Means over 30 seeds. Full mean $\\pm$ SD results are given in Table~S25, seed distributions in Figure~S2 and paired differences with CIs in Section~S4. All configurations except B0 are calibrated to a 2\\% target false-positive rate, and FPR is measured on never-compromised devices. Replay catch is the unconditional share of credential-replay device-epochs at $L_3$ over all 30 runs (Table~\\ref{tab:replay} gives the denominators).}\n\\end{table}\n")
+           "\\tabnote{Means over 30 seeds (mean $\\pm$ SD in Table~S25). FPR and false quarantine refer to clean devices, activation to attack episodes and replay catch to replay device-epochs across all runs. Seed distributions are given in Figure~S2 and paired differences with CIs in Section~S4. All configurations except B0 are calibrated to a 2\\% target false-positive rate, and FPR is measured on never-compromised devices. Replay catch is the unconditional share of credential-replay device-epochs at $L_3$ over all 30 runs (Table~\\ref{tab:replay} gives the denominators).}\n\\end{table}\n")
     def _panel(idx):
         labs = [lab for _, lab, _, _ in MAIN]
         h = " & ".join(["Configuration"] + [labs[i] for i in idx]) + r" \\"
         body = "\n".join(" & ".join([LABEL[cfg]] + [rows_full_cells[j][i] for i in idx]) + r" \\" for j, cfg in enumerate(_cfgs(df)))
         return "\\begin{tabular}{l" + "c" * len(idx) + "}\n\\toprule\n" + h + "\n\\midrule\n" + body + "\n\\bottomrule\n\\end{tabular}"
-    tex_full = ("\\begin{table}[!t]\n\\caption{Main results over 30 seeds with sample standard deviations (main text, Table~8)}\n"
+    tex_full = ("\\begin{table}[!htb]\n\\caption{Main results over 30 seeds with sample standard deviations (main text, Table~8)}\n"
            "\\label{tab:results-full}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{4pt}\n"
            + _panel([0, 1, 2, 3, 4]) + "\n\\par\\vspace{6pt}\n" + _panel([5, 6, 7, 8])
-           + "\n\\tabnote{Mean $\\pm$ sample std over 30 seeds, split into two panels.}\n\\end{table}\n")
+           + "\n\\tabnote{Mean $\\pm$ sample standard deviation over 30 seeds, in two panels. TTA p50 is the median time to activation}\n\\end{table}\n")
     _write_tex(out_tex.replace("tab_results.tex", "tab_results_full.tex"), tex_full)
     _write_tex(out_tex, tex)
     return ["| Configuration | " + " | ".join(lab for _, lab, _, _ in MAIN) + " |",
