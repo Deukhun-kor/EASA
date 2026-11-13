@@ -1,0 +1,21 @@
+\begin{table}[!t]
+\caption{Main results over 30 seeds}
+\label{tab:results}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\widebox{%
+\begin{tabular}{lccccccccc}
+\toprule
+Configuration & F1 ($L_2$) & FPR & \begin{tabular}[b]{@{}c@{}}Recall\\(in-dist.)\end{tabular} & \begin{tabular}[b]{@{}c@{}}Recall\\(cross-site)\end{tabular} & Activation & \begin{tabular}[b]{@{}c@{}}TTA\\p50 (s)\end{tabular} & \begin{tabular}[b]{@{}c@{}}False\\quarantine\end{tabular} & \begin{tabular}[b]{@{}c@{}}Re-auth\\/ dev-h\end{tabular} & \begin{tabular}[b]{@{}c@{}}Replay catch\\(all runs)\end{tabular} \\
+\midrule
+B0 static & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & -- & 0.000 & 0.000 & 0.000 \\
+B1 VNSF & 0.640 & 0.050 & 0.872 & 0.673 & 0.807 & 33 & 0.071 & 0.000 & 0.201 \\
+B2 rules & 0.257 & 0.032 & 0.163 & 0.119 & 0.282 & 94 & 0.054 & 0.000 & 0.272 \\
+B3 net-only & 0.759 & 0.017 & 0.811 & 0.763 & 0.833 & 42 & 0.017 & 0.200 & 0.213 \\
+EASA$-$C & 0.674 & 0.024 & 0.803 & 0.560 & 0.744 & 42 & 0.020 & 0.241 & 0.178 \\
+EASA$-$PH & 0.815 & 0.017 & 0.810 & 0.765 & 0.926 & 40 & 0.017 & 0.199 & 0.811 \\
+EASA & 0.764 & 0.020 & 0.762 & 0.687 & 0.887 & 47 & 0.016 & 0.240 & 0.729 \\
+\bottomrule
+\end{tabular}}
+\tabnote{Means over 30 seeds. Full mean $\pm$ SD results are given in Table~S25, seed distributions in Figure~S2 and paired differences with CIs in Section~S4. All configurations except B0 are calibrated to a 2\% target false-positive rate, and FPR is measured on never-compromised devices. Replay catch is the unconditional share of credential-replay device-epochs at $L_3$ over all 30 runs (Table~\ref{tab:replay} gives the denominators)}
+\end{table}

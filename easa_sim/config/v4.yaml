@@ -1,0 +1,27 @@
+# =====================================================================
+# Protocol v4 (revision round 1, Sensors, Nov 2026) -- the protocol of the revised manuscript.
+# Everything not listed here is inherited from default.yaml (protocol v3, the submitted version).
+#   1. Label hygiene: the Benign-chain rows (and the device entries) of every address that the dominant-source rule
+#      designates as an attacker of some attack type are dropped (7 of 65 replayed devices, 8.5 % of benign rows).
+#      Their "benign" traffic was scored as attack-like by the detector in every seed (Section 5.7 of the revision).
+#   2. Calibration: tau_L3 is the 0.5 % quantile of benign T alone.
+#   3. Replayed devices need a minimum evaluation / calibration trace (replay.min_*). The v3 rule coupled tau_L3 to the L1-L2 spread,
+#      which differs between configurations and made L3 (hence revocation) harder to reach for net-only scores.
+# Use:  python scripts/run_experiments.py --config config/v4.yaml ...
+# =====================================================================
+extends: default.yaml
+
+experiment:
+  name: v4_main
+
+data:
+  iotdiad_attacker_hosts: drop
+
+replay:
+  min_eval_records: 20       # 3. a device is replayed only if its evaluation segment has >= 20 records over >= 60 s and its
+  min_eval_duration_s: 60    #    calibration segment >= 5 records (two devices fail this after label hygiene: 17 records / 8.5 s
+  min_cal_records: 5         #    and 6 records / 300 s, which would be replayed 426 and 12 times per hour)
+
+policy:
+  calibrate:
+    l3_rule: quantile

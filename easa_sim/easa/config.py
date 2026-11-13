@@ -9,8 +9,15 @@ import yaml
 
 
 def load_config(path: str | Path) -> dict[str, Any]:
+    """Load a YAML config. A file may name a base file under `extends` (relative to its own directory); the base is
+    loaded first and the file's own keys are deep-merged over it (revision r1: config/v4.yaml extends default.yaml)."""
+    path = Path(path)
     with open(path, "r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+        cfg = yaml.safe_load(f) or {}
+    base = cfg.pop("extends", None)
+    if base:
+        return deep_merge(load_config(path.parent / base), cfg)
+    return cfg
 
 
 def deep_merge(base: dict, override: dict) -> dict:

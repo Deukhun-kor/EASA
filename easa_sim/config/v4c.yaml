@@ -1,0 +1,23 @@
+# =====================================================================
+# Protocol v4c (revision round 1, internal draft review 2): protocol v4 with IDENTITY-CORRECTED attacker sets.
+# The dataset's packet-based feature release identifies, per capture, the source MAC / catalogued device name of every
+# source address (results/v4/iotdiad_packet_identity.json). Designated addresses that are catalogued consumer devices in
+# the same capture (or, for the ICMP-fragmentation flow files, in the benign-chain lease they share) are removed from the
+# type's attacker set; Raspberry Pi hosts are kept; unresolved addresses (no matching capture, or not seen as a source in
+# the bytes read) are kept. Everything else is protocol v4. The hygiene step still removes the benign-chain rows of every
+# address designated for ANY raw attack type (including the excluded ones), as in v4.
+# Use:  python scripts/run_experiments.py --config config/v4c.yaml ...
+# =====================================================================
+extends: v4.yaml
+
+experiment:
+  name: v4c_corrected
+
+data:
+  iotdiad_attacker_overrides:
+    DDoS ACK Fragmentation: [192.168.137.123]          # Eufy HomeBase 2
+    DDoS-HTTP Flood: [192.168.137.150]                 # Amazon Echo Dot 2
+    DDoS-ICMP_Fragmentation: [192.168.137.41]          # Fibar Group home controller (benign-chain lease)
+    VulnerabilityScan: [192.168.137.41, 192.168.137.133]   # Fibar Group controller, Home Eye camera
+    sqlinjection: [192.168.137.41, 192.168.137.133]        # Fibar Group controller, Home Eye camera
+    DNS Spoofing: [192.168.137.199, 192.168.137.49, 192.168.137.163, 192.168.137.121]   # Home Eye, Wyze, Borun cameras, harman kardon

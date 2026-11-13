@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Recovery audit on saved traces (review round, 2026-10-08).
 
-  python scripts/audit_recovery.py results/traces/easa_main [--config EASA_full]
+  python scripts/audit_recovery.py results/traces/easa_main [--config EASA_full] [--out results/audit_all_seeds.csv]
 
-For every trace file (one per configuration, seed 0 of a grid) it reports, per configuration:
+For every trace file (one per configuration and seed when the grid was run with --save-all-traces; seed 0 only
+otherwise) it reports, per trace, and -- revision round 1 (editor point 4) -- aggregated over seeds per configuration
+(mean, median, min, max of every column and the share of runs with at least one benign device still restricted at the
+end):
   * benign (never-attacked) devices: number of L2+ episodes, median / max dwell, and how many were still restricted
     at the end of the run (possible L2 lock-in, Section 3.4 of the paper);
   * compromised devices: post-attack time spent at L2 vs. L3 (L3 is absorbing within a run);
@@ -72,6 +75,7 @@ def audit(df: pd.DataFrame, epoch_s: float) -> dict:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("traces_dir"); ap.add_argument("--config", default=None); ap.add_argument("--epoch", type=float, default=10.0)
+    ap.add_argument("--out", default=None, help="write per-trace rows (and <out>_agg.csv aggregated over seeds)")
     a = ap.parse_args()
     rows = []
     files = sorted(glob.glob(os.path.join(a.traces_dir, "*.parquet")) + glob.glob(os.path.join(a.traces_dir, "*.csv.gz")))
@@ -82,9 +86,23 @@ def main():
         if a.config and not name.startswith(a.config): continue
         df = pd.read_parquet(f) if f.endswith(".parquet") else pd.read_csv(f)
         r = audit(df, a.epoch); r["trace"] = name; rows.append(r)
-    out = pd.DataFrame(rows).set_index("trace")
-    pd.set_option("display.width", 200)
+    ap2 = None
+    out = pd.DataFrame(rows)
+    out["config"] = out["trace"].str.replace(r"_seed\d+$", "", regex=True)
+    out["seed"] = out["trace"].str.extract(r"_seed(\d+)$")[0].astype(int)
+    out = out.set_index("trace")
+    pd.set_option("display.width", 250)
     print(out.round(1).to_string())
+    num = [c for c in out.columns if c not in ("config", "seed")]
+    agg = out.groupby("config")[num].agg(["mean", "median", "min", "max"])
+    agg[("runs", "n")] = out.groupby("config")["seed"].count()
+    agg[("runs_with_benign_stuck_L2", "share")] = out.groupby("config")["benign_stuck_L2_at_end"].apply(lambda s_: float((s_ > 0).mean()))
+    agg[("runs_with_benign_stuck_L3", "share")] = out.groupby("config")["benign_stuck_L3_at_end"].apply(lambda s_: float((s_ > 0).mean()))
+    print("\n=== aggregated over seeds ===")
+    print(agg.round(2).T.to_string())
+    if a.out:
+        out.to_csv(a.out); agg.to_csv(a.out.replace(".csv", "_agg.csv"))
+        print(f"saved -> {a.out}, {a.out.replace('.csv', '_agg.csv')}")
 
 
 if __name__ == "__main__":

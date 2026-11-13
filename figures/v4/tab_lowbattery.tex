@@ -1,0 +1,16 @@
+\begin{table}[!t]
+\caption{Low-battery scenario: the energy-aware selector isolated}
+\label{tab:lowbattery}
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
+\widebox{\begin{tabular}{lcccccccc}
+\toprule
+Configuration & \begin{tabular}[b]{@{}c@{}}Deferred:\\cancelled\end{tabular} & \begin{tabular}[b]{@{}c@{}}Deferred:\\pending\end{tabular} & \begin{tabular}[b]{@{}c@{}}Re-auth\\/ dev-h\end{tabular} & \begin{tabular}[b]{@{}c@{}}Residual\\energy\end{tabular} & F1 & \begin{tabular}[b]{@{}c@{}}FPR\\(clean)\end{tabular} & Activation & Dwell (s) \\
+\midrule
+B3 net-only & $0.00$ & $0.00$ & $0.200 \pm 0.099$ & $0.364 \pm 0.043$ & $0.759 \pm 0.101$ & $0.017 \pm 0.015$ & $0.833 \pm 0.093$ & $1210 \pm 271$ \\
+EASA, selector disabled & $0.00$ & $0.00$ & $0.251 \pm 0.052$ & $0.365 \pm 0.045$ & $0.736 \pm 0.106$ & $0.024 \pm 0.020$ & $0.874 \pm 0.101$ & $1260 \pm 289$ \\
+EASA & $0.77 \pm 1.22$ & $5.63 \pm 1.97$ & $0.137 \pm 0.055$ & $0.365 \pm 0.045$ & $0.736 \pm 0.106$ & $0.024 \pm 0.020$ & $0.874 \pm 0.101$ & $1260 \pm 289$ \\
+\bottomrule
+\end{tabular}}
+\tabnote{Battery-powered devices start at $e_d\sim U(0.10,0.35)$, 30 seeds, EASA with and without the selector. Deferred counts are deferred step-ups per run by outcome (cancelled, or pending at the end of the run). Residual energy is the mean fraction of capacity at the end of the run}
+\end{table}

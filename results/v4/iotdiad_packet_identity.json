@@ -1,0 +1,7177 @@
+{
+ "_method": "CIC IoT-DIAD 2024 packet-based release ('Device Identification_Anomaly Detection - Packet Based Features'). For each listed file the first bytes_read bytes were streamed through the dataset portal (no download) and, for every packet whose src_ip is in 192.168.137.0/24, the triple (src_ip, src_mac as released, eth_src_oui) was counted. The release replaces src_mac of catalogued testbed devices by the device name. Read 2026-11-12.",
+ "files": {
+  "Spoofing/MITM-ArpSpoofing/MITM-ArpSpoofing.csv": {
+   "bytes_read": 120001736,
+   "lan_source_packets": 43666,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 185
+     },
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.10": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.11": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 86
+     },
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 35
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 101
+     },
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 78
+     }
+    ],
+    "192.168.137.24": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.32": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.36": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.38": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 68
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 1
+     }
+    ],
+    "192.168.137.39": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.48": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 204
+     }
+    ],
+    "192.168.137.51": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 537
+     }
+    ],
+    "192.168.137.56": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.57": [
+     {
+      "src_mac": "Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3)",
+      "oui": "Belkin International Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.65": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 40
+     }
+    ],
+    "192.168.137.68": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 8
+     }
+    ],
+    "192.168.137.73": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 14
+     }
+    ],
+    "192.168.137.75": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 63
+     }
+    ],
+    "192.168.137.76": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 27
+     }
+    ],
+    "192.168.137.84": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 13
+     }
+    ],
+    "192.168.137.86": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 9
+     }
+    ],
+    "192.168.137.89": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.91": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 4
+     }
+    ],
+    "192.168.137.96": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 7
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 60
+     }
+    ],
+    "192.168.137.109": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.125": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 14
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 9
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 2
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 7
+     }
+    ],
+    "192.168.137.136": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.139": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 29
+     }
+    ],
+    "192.168.137.140": [
+     {
+      "src_mac": "Luohe Cam Dog",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 3
+     }
+    ],
+    "192.168.137.147": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.149": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 288
+     }
+    ],
+    "192.168.137.150": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 367
+     }
+    ],
+    "192.168.137.151": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 19
+     }
+    ],
+    "192.168.137.152": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.153": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 29
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 15
+     }
+    ],
+    "192.168.137.156": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.162": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 40017
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 69
+     }
+    ],
+    "192.168.137.164": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 63
+     }
+    ],
+    "192.168.137.178": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.179": [
+     {
+      "src_mac": "SIMCAM 1S (AMPAKTec)",
+      "oui": "AMPAK Technology",
+      "packets": 56
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 17
+     }
+    ],
+    "192.168.137.197": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 9
+     }
+    ],
+    "192.168.137.203": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 19
+     }
+    ],
+    "192.168.137.206": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 132
+     }
+    ],
+    "192.168.137.209": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 143
+     }
+    ],
+    "192.168.137.214": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 14
+     }
+    ],
+    "192.168.137.223": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.228": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.233": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 517
+     }
+    ],
+    "192.168.137.241": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 19
+     }
+    ],
+    "192.168.137.247": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 29
+     }
+    ],
+    "192.168.137.253": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 28
+     }
+    ]
+   }
+  },
+  "BenignTraffic/BenignTraffic.csv": {
+   "bytes_read": 97135640,
+   "lan_source_packets": 49806,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 4130
+     }
+    ],
+    "192.168.137.3": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 284
+     }
+    ],
+    "192.168.137.7": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 284
+     }
+    ],
+    "192.168.137.16": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 240
+     }
+    ],
+    "192.168.137.22": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 286
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.31": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 284
+     }
+    ],
+    "192.168.137.35": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 392
+     }
+    ],
+    "192.168.137.39": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 207
+     }
+    ],
+    "192.168.137.40": [
+     {
+      "src_mac": "iRobot Roomba",
+      "oui": "iRobot Corporation",
+      "packets": 2
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 10112
+     }
+    ],
+    "192.168.137.45": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 61
+     }
+    ],
+    "192.168.137.46": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 1880
+     }
+    ],
+    "192.168.137.47": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 844
+     }
+    ],
+    "192.168.137.51": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 245
+     }
+    ],
+    "192.168.137.58": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 2758
+     }
+    ],
+    "192.168.137.61": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 1492
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 40
+     }
+    ],
+    "192.168.137.62": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 284
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 31
+     }
+    ],
+    "192.168.137.68": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 283
+     }
+    ],
+    "192.168.137.70": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 299
+     }
+    ],
+    "192.168.137.76": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 712
+     }
+    ],
+    "192.168.137.78": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 219
+     }
+    ],
+    "192.168.137.79": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 284
+     }
+    ],
+    "192.168.137.82": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 280
+     }
+    ],
+    "192.168.137.83": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1103
+     }
+    ],
+    "192.168.137.86": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 580
+     }
+    ],
+    "192.168.137.90": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 590
+     }
+    ],
+    "192.168.137.99": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 280
+     }
+    ],
+    "192.168.137.103": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 26
+     }
+    ],
+    "192.168.137.118": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 139
+     }
+    ],
+    "192.168.137.128": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 641
+     },
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "dc:a6:32:dc:27:d5",
+      "packets": 5
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 87
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 46
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 1048
+     }
+    ],
+    "192.168.137.135": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 72
+     }
+    ],
+    "192.168.137.136": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 339
+     }
+    ],
+    "192.168.137.138": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 2
+     }
+    ],
+    "192.168.137.139": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 284
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 174
+     }
+    ],
+    "192.168.137.151": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 284
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 1027
+     }
+    ],
+    "192.168.137.159": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 284
+     }
+    ],
+    "192.168.137.167": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 287
+     }
+    ],
+    "192.168.137.171": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 223
+     }
+    ],
+    "192.168.137.172": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 3510
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 5311
+     }
+    ],
+    "192.168.137.176": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 267
+     }
+    ],
+    "192.168.137.181": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 174
+     }
+    ],
+    "192.168.137.186": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 636
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 282
+     }
+    ],
+    "192.168.137.192": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 294
+     }
+    ],
+    "192.168.137.203": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:90",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.209": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 38
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 23
+     }
+    ],
+    "192.168.137.221": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 373
+     }
+    ],
+    "192.168.137.227": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 1120
+     }
+    ],
+    "192.168.137.240": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:ef",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.245": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 147
+     }
+    ],
+    "192.168.137.246": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:a4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 1856
+     },
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 1716
+     }
+    ],
+    "192.168.137.250": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 600
+     }
+    ]
+   }
+  },
+  "BenignTraffic/BenignTraffic1.csv": {
+   "bytes_read": 100000040,
+   "lan_source_packets": 42654,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 641
+     }
+    ],
+    "192.168.137.3": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 157
+     }
+    ],
+    "192.168.137.7": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 157
+     }
+    ],
+    "192.168.137.16": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 90
+     }
+    ],
+    "192.168.137.22": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 157
+     }
+    ],
+    "192.168.137.31": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 160
+     }
+    ],
+    "192.168.137.35": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 623
+     }
+    ],
+    "192.168.137.39": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 248
+     }
+    ],
+    "192.168.137.40": [
+     {
+      "src_mac": "iRobot Roomba",
+      "oui": "iRobot Corporation",
+      "packets": 1
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 429
+     }
+    ],
+    "192.168.137.45": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 49
+     }
+    ],
+    "192.168.137.46": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 5287
+     }
+    ],
+    "192.168.137.47": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 471
+     }
+    ],
+    "192.168.137.51": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 665
+     }
+    ],
+    "192.168.137.58": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1539
+     }
+    ],
+    "192.168.137.61": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 557
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 22
+     }
+    ],
+    "192.168.137.62": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 157
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 23
+     }
+    ],
+    "192.168.137.68": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 157
+     }
+    ],
+    "192.168.137.70": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 158
+     }
+    ],
+    "192.168.137.76": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 419
+     }
+    ],
+    "192.168.137.78": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 122
+     }
+    ],
+    "192.168.137.79": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 159
+     }
+    ],
+    "192.168.137.82": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 152
+     }
+    ],
+    "192.168.137.83": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 726
+     }
+    ],
+    "192.168.137.86": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 319
+     }
+    ],
+    "192.168.137.90": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 325
+     }
+    ],
+    "192.168.137.99": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 147
+     }
+    ],
+    "192.168.137.103": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 14
+     }
+    ],
+    "192.168.137.110": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 126
+     }
+    ],
+    "192.168.137.118": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 73
+     }
+    ],
+    "192.168.137.128": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 339
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 33
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 24
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 485
+     }
+    ],
+    "192.168.137.135": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 40
+     }
+    ],
+    "192.168.137.136": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 179
+     }
+    ],
+    "192.168.137.138": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 2
+     }
+    ],
+    "192.168.137.139": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 157
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 86
+     }
+    ],
+    "192.168.137.151": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 158
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 535
+     }
+    ],
+    "192.168.137.159": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 159
+     }
+    ],
+    "192.168.137.167": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 163
+     }
+    ],
+    "192.168.137.172": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1856
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 20611
+     }
+    ],
+    "192.168.137.176": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 154
+     }
+    ],
+    "192.168.137.181": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 101
+     }
+    ],
+    "192.168.137.186": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 360
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 237
+     }
+    ],
+    "192.168.137.192": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 157
+     }
+    ],
+    "192.168.137.207": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 161
+     }
+    ],
+    "192.168.137.209": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 23
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 32
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 215
+     }
+    ],
+    "192.168.137.227": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 530
+     }
+    ],
+    "192.168.137.245": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 118
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 81
+     }
+    ],
+    "192.168.137.250": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 419
+     }
+    ],
+    "192.168.137.253": [
+     {
+      "src_mac": "LG Smart TV",
+      "oui": "LG Innotek",
+      "packets": 909
+     }
+    ]
+   }
+  },
+  "BenignTraffic/BenignTraffic2.csv": {
+   "bytes_read": 100000040,
+   "lan_source_packets": 43401,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 693
+     }
+    ],
+    "192.168.137.3": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 172
+     }
+    ],
+    "192.168.137.7": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 173
+     }
+    ],
+    "192.168.137.16": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 130
+     }
+    ],
+    "192.168.137.22": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 173
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.31": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 185
+     }
+    ],
+    "192.168.137.35": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 533
+     }
+    ],
+    "192.168.137.39": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 256
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 441
+     }
+    ],
+    "192.168.137.45": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 33
+     }
+    ],
+    "192.168.137.46": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 4872
+     }
+    ],
+    "192.168.137.47": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 478
+     }
+    ],
+    "192.168.137.51": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 487
+     }
+    ],
+    "192.168.137.57": [
+     {
+      "src_mac": "Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3)",
+      "oui": "Belkin International Inc.",
+      "packets": 1
+     }
+    ],
+    "192.168.137.58": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1766
+     }
+    ],
+    "192.168.137.61": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 557
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 12
+     }
+    ],
+    "192.168.137.62": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 173
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 30
+     }
+    ],
+    "192.168.137.68": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 172
+     }
+    ],
+    "192.168.137.70": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 183
+     }
+    ],
+    "192.168.137.76": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 277
+     }
+    ],
+    "192.168.137.78": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 149
+     }
+    ],
+    "192.168.137.79": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 174
+     }
+    ],
+    "192.168.137.82": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 156
+     }
+    ],
+    "192.168.137.83": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 637
+     }
+    ],
+    "192.168.137.86": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 365
+     }
+    ],
+    "192.168.137.90": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 361
+     }
+    ],
+    "192.168.137.99": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 163
+     }
+    ],
+    "192.168.137.103": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 14
+     }
+    ],
+    "192.168.137.118": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 83
+     }
+    ],
+    "192.168.137.128": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 405
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 59
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 28
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 532
+     }
+    ],
+    "192.168.137.135": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 47
+     }
+    ],
+    "192.168.137.136": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 196
+     }
+    ],
+    "192.168.137.139": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 172
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 187
+     }
+    ],
+    "192.168.137.151": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 172
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 719
+     }
+    ],
+    "192.168.137.159": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 175
+     }
+    ],
+    "192.168.137.160": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 137
+     }
+    ],
+    "192.168.137.167": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 176
+     }
+    ],
+    "192.168.137.172": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 2155
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 20740
+     }
+    ],
+    "192.168.137.176": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 157
+     }
+    ],
+    "192.168.137.181": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 106
+     }
+    ],
+    "192.168.137.186": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 398
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 327
+     }
+    ],
+    "192.168.137.192": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 182
+     }
+    ],
+    "192.168.137.207": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 242
+     }
+    ],
+    "192.168.137.209": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 34
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 220
+     }
+    ],
+    "192.168.137.227": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 595
+     }
+    ],
+    "192.168.137.245": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 87
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 90
+     }
+    ],
+    "192.168.137.250": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 402
+     }
+    ],
+    "192.168.137.253": [
+     {
+      "src_mac": "LG Smart TV",
+      "oui": "LG Innotek",
+      "packets": 735
+     }
+    ]
+   }
+  },
+  "BenignTraffic/BenignTraffic3.csv": {
+   "bytes_read": 100433792,
+   "lan_source_packets": 43284,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 565
+     }
+    ],
+    "192.168.137.3": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.7": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 166
+     }
+    ],
+    "192.168.137.16": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 123
+     }
+    ],
+    "192.168.137.22": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.31": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.35": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 253
+     }
+    ],
+    "192.168.137.39": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 254
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 434
+     }
+    ],
+    "192.168.137.45": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 33
+     }
+    ],
+    "192.168.137.46": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 4753
+     }
+    ],
+    "192.168.137.47": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 552
+     }
+    ],
+    "192.168.137.57": [
+     {
+      "src_mac": "Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3)",
+      "oui": "Belkin International Inc.",
+      "packets": 1
+     }
+    ],
+    "192.168.137.58": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1733
+     }
+    ],
+    "192.168.137.61": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 566
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 12
+     }
+    ],
+    "192.168.137.62": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 32
+     }
+    ],
+    "192.168.137.68": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.70": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.76": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 260
+     }
+    ],
+    "192.168.137.78": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 117
+     }
+    ],
+    "192.168.137.79": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 166
+     }
+    ],
+    "192.168.137.82": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 160
+     }
+    ],
+    "192.168.137.83": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 648
+     }
+    ],
+    "192.168.137.86": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 349
+     }
+    ],
+    "192.168.137.90": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 345
+     }
+    ],
+    "192.168.137.99": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 166
+     }
+    ],
+    "192.168.137.103": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 14
+     }
+    ],
+    "192.168.137.118": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 102
+     }
+    ],
+    "192.168.137.128": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 385
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 55
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 26
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 510
+     }
+    ],
+    "192.168.137.135": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 55
+     }
+    ],
+    "192.168.137.136": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 199
+     }
+    ],
+    "192.168.137.138": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.139": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 157
+     }
+    ],
+    "192.168.137.151": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 689
+     }
+    ],
+    "192.168.137.159": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 165
+     }
+    ],
+    "192.168.137.160": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 128
+     }
+    ],
+    "192.168.137.167": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 160
+     }
+    ],
+    "192.168.137.172": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 2075
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 22333
+     }
+    ],
+    "192.168.137.176": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 160
+     }
+    ],
+    "192.168.137.181": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 99
+     }
+    ],
+    "192.168.137.186": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 348
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 286
+     }
+    ],
+    "192.168.137.192": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 166
+     }
+    ],
+    "192.168.137.207": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 144
+     }
+    ],
+    "192.168.137.209": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 22
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 35
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 231
+     }
+    ],
+    "192.168.137.227": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 575
+     }
+    ],
+    "192.168.137.245": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 84
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 84
+     }
+    ],
+    "192.168.137.250": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 392
+     }
+    ],
+    "192.168.137.253": [
+     {
+      "src_mac": "LG Smart TV",
+      "oui": "LG Innotek",
+      "packets": 595
+     }
+    ]
+   }
+  },
+  "DDoS/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation.csv": {
+   "bytes_read": 100000032,
+   "lan_source_packets": 63372,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 163
+     }
+    ],
+    "192.168.137.3": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.4": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 2
+     }
+    ],
+    "192.168.137.5": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 83
+     }
+    ],
+    "192.168.137.11": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.12": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 15
+     }
+    ],
+    "192.168.137.19": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.20": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.22": [
+     {
+      "src_mac": "e4:5f:01:55:90:c4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 8614
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.26": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 21
+     }
+    ],
+    "192.168.137.27": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:ab",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 11890
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 560
+     }
+    ],
+    "192.168.137.51": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 1348
+     }
+    ],
+    "192.168.137.52": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 207
+     }
+    ],
+    "192.168.137.64": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 7392
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 30
+     },
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 1
+     }
+    ],
+    "192.168.137.67": [
+     {
+      "src_mac": "iRobot Roomba",
+      "oui": "iRobot Corporation",
+      "packets": 12
+     }
+    ],
+    "192.168.137.69": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 54
+     }
+    ],
+    "192.168.137.78": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 13
+     }
+    ],
+    "192.168.137.87": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.91": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 221
+     }
+    ],
+    "192.168.137.103": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 14
+     }
+    ],
+    "192.168.137.111": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 9
+     }
+    ],
+    "192.168.137.116": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 8
+     }
+    ],
+    "192.168.137.121": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.127": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:a4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 8532
+     }
+    ],
+    "192.168.137.130": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 251
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 8
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 43
+     }
+    ],
+    "192.168.137.134": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 72
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 2
+     }
+    ],
+    "192.168.137.144": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 10
+     }
+    ],
+    "192.168.137.151": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:ef",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 4920
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 41
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 36
+     }
+    ],
+    "192.168.137.167": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 91
+     }
+    ],
+    "192.168.137.168": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.169": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 9
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 2
+     }
+    ],
+    "192.168.137.174": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 31
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 407
+     }
+    ],
+    "192.168.137.177": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 29
+     }
+    ],
+    "192.168.137.178": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 6898
+     }
+    ],
+    "192.168.137.180": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 8
+     }
+    ],
+    "192.168.137.183": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.185": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 15
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 25
+     }
+    ],
+    "192.168.137.189": [
+     {
+      "src_mac": "SIMCAM 1S (AMPAKTec)",
+      "oui": "AMPAK Technology",
+      "packets": 40
+     }
+    ],
+    "192.168.137.191": [
+     {
+      "src_mac": "LG Smart TV",
+      "oui": "LG Innotek",
+      "packets": 10
+     }
+    ],
+    "192.168.137.196": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 39
+     }
+    ],
+    "192.168.137.199": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 19
+     }
+    ],
+    "192.168.137.203": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.204": [
+     {
+      "src_mac": "Smart Board",
+      "oui": "SMART Technologies",
+      "packets": 1
+     }
+    ],
+    "192.168.137.206": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 40
+     }
+    ],
+    "192.168.137.207": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 10
+     }
+    ],
+    "192.168.137.208": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.212": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.220": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:90",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 10769
+     }
+    ],
+    "192.168.137.223": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 12
+     }
+    ],
+    "192.168.137.226": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 6
+     }
+    ],
+    "192.168.137.236": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.238": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.244": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 30
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 43
+     }
+    ],
+    "192.168.137.251": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 10
+     }
+    ]
+   }
+  },
+  "Recon/VulnerabilityScan/VulnerabilityScan.csv": {
+   "bytes_read": 62566424,
+   "lan_source_packets": 40116,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 1786
+     }
+    ],
+    "192.168.137.4": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1061
+     }
+    ],
+    "192.168.137.15": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 225
+     }
+    ],
+    "192.168.137.20": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 127
+     }
+    ],
+    "192.168.137.40": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 7180
+     }
+    ],
+    "192.168.137.45": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 41
+     }
+    ],
+    "192.168.137.50": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 248
+     }
+    ],
+    "192.168.137.51": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 362
+     }
+    ],
+    "192.168.137.52": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 709
+     }
+    ],
+    "192.168.137.55": [
+     {
+      "src_mac": "Smart Board",
+      "oui": "SMART Technologies",
+      "packets": 48
+     }
+    ],
+    "192.168.137.57": [
+     {
+      "src_mac": "Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3)",
+      "oui": "Belkin International Inc.",
+      "packets": 24
+     }
+    ],
+    "192.168.137.59": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 660
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 14
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 50
+     }
+    ],
+    "192.168.137.67": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 234
+     }
+    ],
+    "192.168.137.71": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 222
+     }
+    ],
+    "192.168.137.74": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 425
+     }
+    ],
+    "192.168.137.75": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 226
+     }
+    ],
+    "192.168.137.82": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 222
+     }
+    ],
+    "192.168.137.86": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1087
+     }
+    ],
+    "192.168.137.93": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 141
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 564
+     }
+    ],
+    "192.168.137.101": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 217
+     }
+    ],
+    "192.168.137.106": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 56
+     }
+    ],
+    "192.168.137.107": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 212
+     }
+    ],
+    "192.168.137.108": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 216
+     }
+    ],
+    "192.168.137.109": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 233
+     }
+    ],
+    "192.168.137.116": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 171
+     }
+    ],
+    "192.168.137.128": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 218
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 52
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 633
+     }
+    ],
+    "192.168.137.137": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 221
+     }
+    ],
+    "192.168.137.142": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 87
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 128
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 653
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 676
+     }
+    ],
+    "192.168.137.164": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 223
+     }
+    ],
+    "192.168.137.167": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1922
+     }
+    ],
+    "192.168.137.169": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 71
+     }
+    ],
+    "192.168.137.171": [
+     {
+      "src_mac": "iRobot Roomba",
+      "oui": "iRobot Corporation",
+      "packets": 67
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 38
+     }
+    ],
+    "192.168.137.174": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 449
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 411
+     }
+    ],
+    "192.168.137.177": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 665
+     }
+    ],
+    "192.168.137.178": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 4797
+     }
+    ],
+    "192.168.137.180": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 162
+     }
+    ],
+    "192.168.137.181": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 226
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 239
+     }
+    ],
+    "192.168.137.189": [
+     {
+      "src_mac": "SIMCAM 1S (AMPAKTec)",
+      "oui": "AMPAK Technology",
+      "packets": 625
+     }
+    ],
+    "192.168.137.192": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 55
+     }
+    ],
+    "192.168.137.196": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 1617
+     }
+    ],
+    "192.168.137.205": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 128
+     }
+    ],
+    "192.168.137.206": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 3051
+     }
+    ],
+    "192.168.137.208": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 706
+     }
+    ],
+    "192.168.137.212": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 947
+     }
+    ],
+    "192.168.137.217": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1082
+     }
+    ],
+    "192.168.137.223": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 235
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 255
+     }
+    ],
+    "192.168.137.226": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 136
+     }
+    ],
+    "192.168.137.234": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 692
+     }
+    ],
+    "192.168.137.236": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 31
+     }
+    ],
+    "192.168.137.237": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 48
+     }
+    ],
+    "192.168.137.238": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 113
+     }
+    ],
+    "192.168.137.241": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 239
+     }
+    ],
+    "192.168.137.242": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 313
+     }
+    ],
+    "192.168.137.244": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 104
+     }
+    ],
+    "192.168.137.248": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 198
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 226
+     }
+    ],
+    "192.168.137.252": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 406
+     }
+    ]
+   }
+  },
+  "Web-Based/SqlInjection/SqlInjection.csv": {
+   "bytes_read": 62947641,
+   "lan_source_packets": 35259,
+   "complete_file": true,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 1999
+     }
+    ],
+    "192.168.137.4": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 343
+     }
+    ],
+    "192.168.137.15": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.20": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 135
+     }
+    ],
+    "192.168.137.40": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 207
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 7402
+     }
+    ],
+    "192.168.137.50": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 262
+     }
+    ],
+    "192.168.137.51": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 102
+     }
+    ],
+    "192.168.137.52": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 561
+     }
+    ],
+    "192.168.137.55": [
+     {
+      "src_mac": "Smart Board",
+      "oui": "SMART Technologies",
+      "packets": 1
+     }
+    ],
+    "192.168.137.59": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 775
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 13
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 30
+     }
+    ],
+    "192.168.137.67": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 211
+     }
+    ],
+    "192.168.137.71": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.74": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 509
+     }
+    ],
+    "192.168.137.75": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 241
+     }
+    ],
+    "192.168.137.82": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.86": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 828
+     }
+    ],
+    "192.168.137.93": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 142
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 634
+     }
+    ],
+    "192.168.137.101": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.106": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.107": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 195
+     }
+    ],
+    "192.168.137.108": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.109": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 220
+     }
+    ],
+    "192.168.137.116": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 204
+     }
+    ],
+    "192.168.137.128": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 218
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 38
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 653
+     }
+    ],
+    "192.168.137.137": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 173
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 788
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 704
+     }
+    ],
+    "192.168.137.164": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.167": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 2030
+     }
+    ],
+    "192.168.137.169": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 41
+     }
+    ],
+    "192.168.137.171": [
+     {
+      "src_mac": "iRobot Roomba",
+      "oui": "iRobot Corporation",
+      "packets": 66
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 22
+     }
+    ],
+    "192.168.137.174": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 436
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 86
+     }
+    ],
+    "192.168.137.177": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 629
+     }
+    ],
+    "192.168.137.178": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 2430
+     },
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "dc:a6:32:dc:27:d5",
+      "packets": 21
+     }
+    ],
+    "192.168.137.180": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 160
+     }
+    ],
+    "192.168.137.181": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 188
+     }
+    ],
+    "192.168.137.189": [
+     {
+      "src_mac": "SIMCAM 1S (AMPAKTec)",
+      "oui": "AMPAK Technology",
+      "packets": 634
+     }
+    ],
+    "192.168.137.192": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 163
+     }
+    ],
+    "192.168.137.196": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 1262
+     }
+    ],
+    "192.168.137.205": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 99
+     }
+    ],
+    "192.168.137.206": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 2130
+     }
+    ],
+    "192.168.137.208": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 773
+     }
+    ],
+    "192.168.137.212": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 963
+     }
+    ],
+    "192.168.137.217": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 645
+     }
+    ],
+    "192.168.137.223": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 219
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 246
+     }
+    ],
+    "192.168.137.226": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 135
+     }
+    ],
+    "192.168.137.234": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 890
+     }
+    ],
+    "192.168.137.236": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 36
+     }
+    ],
+    "192.168.137.237": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 61
+     }
+    ],
+    "192.168.137.238": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 82
+     }
+    ],
+    "192.168.137.241": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 210
+     }
+    ],
+    "192.168.137.242": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 327
+     }
+    ],
+    "192.168.137.244": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 135
+     }
+    ],
+    "192.168.137.248": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 194
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 187
+     }
+    ],
+    "192.168.137.252": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 463
+     }
+    ]
+   }
+  },
+  "DoS/DoS-SYN_Flood/DoS-SYN_Flood.csv": {
+   "bytes_read": 54652496,
+   "lan_source_packets": 62837,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 42
+     }
+    ],
+    "192.168.137.6": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.15": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 21
+     }
+    ],
+    "192.168.137.19": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 7
+     }
+    ],
+    "192.168.137.25": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 12
+     }
+    ],
+    "192.168.137.31": [
+     {
+      "src_mac": "7e:cf:20:e9:21:00",
+      "oui": "none",
+      "packets": 38
+     }
+    ],
+    "192.168.137.40": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 6
+     }
+    ],
+    "192.168.137.47": [
+     {
+      "src_mac": "SIMCAM 1S (AMPAKTec)",
+      "oui": "AMPAK Technology",
+      "packets": 52
+     }
+    ],
+    "192.168.137.48": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.57": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 29
+     }
+    ],
+    "192.168.137.63": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 11
+     }
+    ],
+    "192.168.137.70": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.77": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 22
+     }
+    ],
+    "192.168.137.84": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 20
+     }
+    ],
+    "192.168.137.90": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 10
+     }
+    ],
+    "192.168.137.91": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 1
+     }
+    ],
+    "192.168.137.93": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 32
+     }
+    ],
+    "192.168.137.94": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 8
+     }
+    ],
+    "192.168.137.98": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.102": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.107": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1
+     }
+    ],
+    "192.168.137.115": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.119": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.126": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 2
+     }
+    ],
+    "192.168.137.127": [
+     {
+      "src_mac": "Luohe Cam Dog",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.149": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 7
+     }
+    ],
+    "192.168.137.158": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.159": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 7
+     }
+    ],
+    "192.168.137.165": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 4
+     }
+    ],
+    "192.168.137.172": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.177": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 2
+     }
+    ],
+    "192.168.137.182": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 55598
+     }
+    ],
+    "192.168.137.183": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 6554
+     }
+    ],
+    "192.168.137.191": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 5
+     }
+    ],
+    "192.168.137.198": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 5
+     }
+    ],
+    "192.168.137.209": [
+     {
+      "src_mac": "LG Smart TV",
+      "oui": "LG Innotek",
+      "packets": 3
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.211": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.212": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.214": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 1
+     }
+    ],
+    "192.168.137.217": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 5
+     }
+    ],
+    "192.168.137.218": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 6
+     }
+    ],
+    "192.168.137.221": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 150
+     }
+    ],
+    "192.168.137.225": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 5
+     }
+    ],
+    "192.168.137.236": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.245": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.248": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 42
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 9
+     }
+    ],
+    "192.168.137.250": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 8
+     }
+    ]
+   }
+  },
+  "DoS/DoS-SYN_Flood/DoS-SYN_Flood1.csv": {
+   "bytes_read": 56128770,
+   "lan_source_packets": 82810,
+   "complete_file": true,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 53
+     }
+    ],
+    "192.168.137.6": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 5
+     }
+    ],
+    "192.168.137.15": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.16": [
+     {
+      "src_mac": "b0:09:da:3e:82:6b",
+      "oui": "Ring Solutions",
+      "packets": 3
+     }
+    ],
+    "192.168.137.31": [
+     {
+      "src_mac": "7e:cf:20:e9:21:00",
+      "oui": "none",
+      "packets": 18
+     }
+    ],
+    "192.168.137.40": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 6
+     }
+    ],
+    "192.168.137.47": [
+     {
+      "src_mac": "SIMCAM 1S (AMPAKTec)",
+      "oui": "AMPAK Technology",
+      "packets": 12
+     }
+    ],
+    "192.168.137.48": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 5
+     }
+    ],
+    "192.168.137.57": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 11
+     }
+    ],
+    "192.168.137.63": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 8900
+     }
+    ],
+    "192.168.137.70": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 9
+     }
+    ],
+    "192.168.137.77": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.84": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 1
+     }
+    ],
+    "192.168.137.90": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 14
+     }
+    ],
+    "192.168.137.93": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 37
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 1
+     }
+    ],
+    "192.168.137.94": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.95": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 5
+     }
+    ],
+    "192.168.137.102": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.107": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.115": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.119": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.126": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 2
+     }
+    ],
+    "192.168.137.149": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.159": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 93
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 27
+     }
+    ],
+    "192.168.137.164": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.165": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 3
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.177": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 2
+     }
+    ],
+    "192.168.137.182": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 73244
+     }
+    ],
+    "192.168.137.183": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 1
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 11
+     }
+    ],
+    "192.168.137.198": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.211": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.212": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 40
+     }
+    ],
+    "192.168.137.217": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.218": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 6
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 182
+     }
+    ],
+    "192.168.137.236": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 1
+     }
+    ],
+    "192.168.137.245": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 2
+     }
+    ],
+    "192.168.137.248": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 11
+     }
+    ],
+    "192.168.137.249": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 3
+     }
+    ],
+    "192.168.137.250": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 22
+     }
+    ]
+   }
+  },
+  "DoS/DoS-HTTP_Flood/DoS-HTTP_Flood.csv": {
+   "bytes_read": 97217480,
+   "lan_source_packets": 65406,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 191
+     }
+    ],
+    "192.168.137.3": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.6": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 34
+     }
+    ],
+    "192.168.137.7": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 40
+     }
+    ],
+    "192.168.137.14": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 24
+     }
+    ],
+    "192.168.137.15": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 22
+     }
+    ],
+    "192.168.137.16": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 22
+     }
+    ],
+    "192.168.137.20": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 11
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 46
+     }
+    ],
+    "192.168.137.24": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 21
+     }
+    ],
+    "192.168.137.29": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.42": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 207
+     }
+    ],
+    "192.168.137.58": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.60": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 9
+     }
+    ],
+    "192.168.137.64": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 34
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 32408
+     },
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "dc:a6:32:dc:27:d5",
+      "packets": 12513
+     }
+    ],
+    "192.168.137.70": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 21
+     }
+    ],
+    "192.168.137.71": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 14
+     }
+    ],
+    "192.168.137.77": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 149
+     }
+    ],
+    "192.168.137.82": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 31
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 5
+     }
+    ],
+    "192.168.137.108": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 8
+     }
+    ],
+    "192.168.137.110": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 19
+     }
+    ],
+    "192.168.137.114": [
+     {
+      "src_mac": "LG Smart TV",
+      "oui": "LG Innotek",
+      "packets": 27
+     }
+    ],
+    "192.168.137.115": [
+     {
+      "src_mac": "iRobot Roomba",
+      "oui": "iRobot Corporation",
+      "packets": 8
+     }
+    ],
+    "192.168.137.116": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 393
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 16848
+     }
+    ],
+    "192.168.137.134": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.144": [
+     {
+      "src_mac": "Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3)",
+      "oui": "Belkin International Inc.",
+      "packets": 1
+     }
+    ],
+    "192.168.137.145": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 3
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 9
+     }
+    ],
+    "192.168.137.153": [
+     {
+      "src_mac": "ee:06:3b:b8:d1:df",
+      "oui": "none",
+      "packets": 14
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 21
+     }
+    ],
+    "192.168.137.156": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 21
+     }
+    ],
+    "192.168.137.158": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 737
+     }
+    ],
+    "192.168.137.160": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 314
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 36
+     }
+    ],
+    "192.168.137.164": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 19
+     }
+    ],
+    "192.168.137.165": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 63
+     }
+    ],
+    "192.168.137.174": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 34
+     }
+    ],
+    "192.168.137.179": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.186": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 47
+     }
+    ],
+    "192.168.137.189": [
+     {
+      "src_mac": "b0:09:da:3e:82:6b",
+      "oui": "Ring Solutions",
+      "packets": 9
+     }
+    ],
+    "192.168.137.190": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 42
+     }
+    ],
+    "192.168.137.191": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 37
+     }
+    ],
+    "192.168.137.196": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.197": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.199": [
+     {
+      "src_mac": "Luohe Cam Dog",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 5
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 292
+     }
+    ],
+    "192.168.137.211": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 4
+     }
+    ],
+    "192.168.137.214": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 10
+     }
+    ],
+    "192.168.137.216": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.218": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 7
+     }
+    ],
+    "192.168.137.219": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.222": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.232": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 6
+     }
+    ],
+    "192.168.137.235": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 11
+     }
+    ],
+    "192.168.137.236": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 26
+     }
+    ],
+    "192.168.137.239": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.244": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 99
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 2
+     }
+    ],
+    "192.168.137.247": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.250": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 21
+     }
+    ],
+    "192.168.137.254": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 130
+     }
+    ]
+   }
+  },
+  "Mirai/Mirai-greip_flood/Mirai-greip_flood.csv": {
+   "bytes_read": 100000040,
+   "lan_source_packets": 123988,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 123
+     }
+    ],
+    "192.168.137.3": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 71
+     }
+    ],
+    "192.168.137.4": [
+     {
+      "src_mac": "GoSund Smart Plug WP3 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.14": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 26
+     }
+    ],
+    "192.168.137.18": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 23
+     }
+    ],
+    "192.168.137.21": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.29": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 10
+     }
+    ],
+    "192.168.137.34": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.39": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 37
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 277
+     }
+    ],
+    "192.168.137.43": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.61": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 11
+     }
+    ],
+    "192.168.137.63": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 24
+     }
+    ],
+    "192.168.137.67": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.72": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 5
+     }
+    ],
+    "192.168.137.80": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 23
+     }
+    ],
+    "192.168.137.81": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:ab",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 9276
+     }
+    ],
+    "192.168.137.91": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 73
+     }
+    ],
+    "192.168.137.92": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 22
+     }
+    ],
+    "192.168.137.96": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 220
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 73
+     }
+    ],
+    "192.168.137.105": [
+     {
+      "src_mac": "b0:09:da:3e:82:6b",
+      "oui": "Ring Solutions",
+      "packets": 9
+     }
+    ],
+    "192.168.137.117": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.118": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 141
+     }
+    ],
+    "192.168.137.122": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 11
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 518
+     }
+    ],
+    "192.168.137.125": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 88
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "e4:5f:01:55:90:c4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 23472
+     }
+    ],
+    "192.168.137.135": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 59
+     }
+    ],
+    "192.168.137.138": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 166
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 1
+     }
+    ],
+    "192.168.137.141": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 54
+     }
+    ],
+    "192.168.137.145": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 210
+     }
+    ],
+    "192.168.137.158": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 17
+     }
+    ],
+    "192.168.137.162": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 2
+     }
+    ],
+    "192.168.137.168": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.169": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 24
+     }
+    ],
+    "192.168.137.171": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.172": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 5
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "iRobot Roomba",
+      "oui": "iRobot Corporation",
+      "packets": 12
+     }
+    ],
+    "192.168.137.177": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:a4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 18763
+     }
+    ],
+    "192.168.137.178": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.184": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 25
+     }
+    ],
+    "192.168.137.185": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 22
+     }
+    ],
+    "192.168.137.186": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 13
+     }
+    ],
+    "192.168.137.189": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 25553
+     }
+    ],
+    "192.168.137.191": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 6
+     }
+    ],
+    "192.168.137.192": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 18
+     }
+    ],
+    "192.168.137.205": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 30
+     }
+    ],
+    "192.168.137.208": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 38
+     }
+    ],
+    "192.168.137.209": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 7
+     }
+    ],
+    "192.168.137.218": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 9
+     }
+    ],
+    "192.168.137.220": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 15662
+     }
+    ],
+    "192.168.137.224": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 15
+     }
+    ],
+    "192.168.137.225": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 9
+     }
+    ],
+    "192.168.137.227": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:90",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 19063
+     }
+    ],
+    "192.168.137.231": [
+     {
+      "src_mac": "Luohe Cam Dog",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 15
+     }
+    ],
+    "192.168.137.242": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:ef",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 9464
+     }
+    ],
+    "192.168.137.253": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 19
+     }
+    ]
+   }
+  },
+  "DDoS/DDoS-HTTP_Flood/DDoS-HTTP_Flood-.csv": {
+   "bytes_read": 395133213,
+   "lan_source_packets": 281598,
+   "complete_file": true,
+   "note": "",
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 915
+     }
+    ],
+    "192.168.137.2": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 632
+     }
+    ],
+    "192.168.137.17": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 72
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 2390
+     }
+    ],
+    "192.168.137.49": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 119
+     }
+    ],
+    "192.168.137.60": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:a4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 9200
+     },
+     {
+      "src_mac": "dc:a6:32:c9:e5:a4",
+      "oui": "dc:a6:32:c9:e5:a4",
+      "packets": 610
+     }
+    ],
+    "192.168.137.64": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 13518
+     },
+     {
+      "src_mac": "dc:a6:32:c9:e4:d5",
+      "oui": "dc:a6:32:c9:e4:d5",
+      "packets": 3049
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "00:0c:29:1c:55:4a",
+      "oui": "VMware",
+      "packets": 895
+     }
+    ],
+    "192.168.137.73": [
+     {
+      "src_mac": "ee:06:3b:b8:d1:df",
+      "oui": "none",
+      "packets": 365
+     }
+    ],
+    "192.168.137.89": [
+     {
+      "src_mac": "e4:5f:01:55:90:c4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 23875
+     },
+     {
+      "src_mac": "e4:5f:01:55:90:c4",
+      "oui": "e4:5f:01:55:90:c4",
+      "packets": 3540
+     }
+    ],
+    "192.168.137.90": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:ef",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 15323
+     },
+     {
+      "src_mac": "dc:a6:32:c9:e5:ef",
+      "oui": "dc:a6:32:c9:e5:ef",
+      "packets": 2124
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 77
+     }
+    ],
+    "192.168.137.134": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.139": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 80741
+     }
+    ],
+    "192.168.137.141": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 670
+     }
+    ],
+    "192.168.137.147": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.150": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 722
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 359
+     }
+    ],
+    "192.168.137.156": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 2
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.175": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 415
+     }
+    ],
+    "192.168.137.178": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 62862
+     },
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "dc:a6:32:dc:27:d5",
+      "packets": 13090
+     }
+    ],
+    "192.168.137.196": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 72
+     }
+    ],
+    "192.168.137.204": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 192
+     }
+    ],
+    "192.168.137.225": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:ab",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 15207
+     },
+     {
+      "src_mac": "dc:a6:32:c9:e4:ab",
+      "oui": "dc:a6:32:c9:e4:ab",
+      "packets": 2658
+     }
+    ],
+    "192.168.137.238": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:90",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 20454
+     },
+     {
+      "src_mac": "dc:a6:32:c9:e4:90",
+      "oui": "dc:a6:32:c9:e4:90",
+      "packets": 3209
+     }
+    ]
+   }
+  },
+  "BruteForce/DictionaryBruteForce/DictionaryBruteForce.csv": {
+   "bytes_read": 94754088,
+   "lan_source_packets": 51667,
+   "complete_file": false,
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 805
+     }
+    ],
+    "192.168.137.10": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 233
+     }
+    ],
+    "192.168.137.12": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 50
+     }
+    ],
+    "192.168.137.19": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.20": [
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 308
+     }
+    ],
+    "192.168.137.24": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 233
+     }
+    ],
+    "192.168.137.32": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 232
+     }
+    ],
+    "192.168.137.36": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 129
+     }
+    ],
+    "192.168.137.37": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 4
+     }
+    ],
+    "192.168.137.39": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 243
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 789
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 48
+     }
+    ],
+    "192.168.137.49": [
+     {
+      "src_mac": "e8:1b:69:f8:d6:e6",
+      "oui": "Sercomm Corporation.",
+      "packets": 8
+     }
+    ],
+    "192.168.137.50": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 273
+     }
+    ],
+    "192.168.137.51": [
+     {
+      "src_mac": "Arlo Q Indoor Camera",
+      "oui": "Netgear",
+      "packets": 1415
+     }
+    ],
+    "192.168.137.52": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 36
+     }
+    ],
+    "192.168.137.54": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 63
+     }
+    ],
+    "192.168.137.56": [
+     {
+      "src_mac": "Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3)",
+      "oui": "Belkin International Inc.",
+      "packets": 52
+     }
+    ],
+    "192.168.137.57": [
+     {
+      "src_mac": "Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3)",
+      "oui": "Belkin International Inc.",
+      "packets": 16
+     }
+    ],
+    "192.168.137.65": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 6733
+     },
+     {
+      "src_mac": "Smart Board",
+      "oui": "SMART Technologies",
+      "packets": 9
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 25
+     }
+    ],
+    "192.168.137.67": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 8490
+     }
+    ],
+    "192.168.137.68": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 255
+     }
+    ],
+    "192.168.137.73": [
+     {
+      "src_mac": "Teckin Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 215
+     },
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.76": [
+     {
+      "src_mac": "Arlo Base Station",
+      "oui": "Netgear",
+      "packets": 192
+     }
+    ],
+    "192.168.137.77": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.78": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 57
+     }
+    ],
+    "192.168.137.80": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 137
+     }
+    ],
+    "192.168.137.82": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 716
+     }
+    ],
+    "192.168.137.84": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 188
+     }
+    ],
+    "192.168.137.86": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 120
+     }
+    ],
+    "192.168.137.89": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 350
+     },
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 260
+     }
+    ],
+    "192.168.137.91": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.93": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.96": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 205
+     }
+    ],
+    "192.168.137.100": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 499
+     }
+    ],
+    "192.168.137.101": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 15
+     }
+    ],
+    "192.168.137.107": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 48
+     }
+    ],
+    "192.168.137.109": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 232
+     }
+    ],
+    "192.168.137.116": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 2
+     }
+    ],
+    "192.168.137.120": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 20
+     }
+    ],
+    "192.168.137.125": [
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 205
+     }
+    ],
+    "192.168.137.126": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.127": [
+     {
+      "src_mac": "00:a3:d1:07:6f:47",
+      "oui": "Cisco Systems",
+      "packets": 4
+     }
+    ],
+    "192.168.137.129": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 49
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 144
+     },
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.132": [
+     {
+      "src_mac": "DCS8000LHA1 D-Link Mini Camera",
+      "oui": "D-Link International",
+      "packets": 41
+     }
+    ],
+    "192.168.137.133": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 60
+     }
+    ],
+    "192.168.137.136": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 47
+     }
+    ],
+    "192.168.137.137": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 2560
+     }
+    ],
+    "192.168.137.139": [
+     {
+      "src_mac": "Amazon Plug",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.140": [
+     {
+      "src_mac": "Luohe Cam Dog",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 111
+     }
+    ],
+    "192.168.137.147": [
+     {
+      "src_mac": "SIMCAM 1S (AMPAKTec)",
+      "oui": "AMPAK Technology",
+      "packets": 1524
+     },
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 922
+     }
+    ],
+    "192.168.137.148": [
+     {
+      "src_mac": "Teckin Light Strip",
+      "oui": "Tuya Smart Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.150": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 714
+     }
+    ],
+    "192.168.137.151": [
+     {
+      "src_mac": "Atomi Coffee Maker",
+      "oui": "Tuya Smart Inc.",
+      "packets": 214
+     }
+    ],
+    "192.168.137.152": [
+     {
+      "src_mac": "Govee Smart Humidifer",
+      "oui": "Shenzhen Intellirocks Tech co.",
+      "packets": 33
+     },
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 26
+     }
+    ],
+    "192.168.137.153": [
+     {
+      "src_mac": "Yi Indoor Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 267
+     }
+    ],
+    "192.168.137.154": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 205
+     }
+    ],
+    "192.168.137.156": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (1)",
+      "oui": "Espressif Inc.",
+      "packets": 234
+     }
+    ],
+    "192.168.137.161": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 170
+     }
+    ],
+    "192.168.137.162": [
+     {
+      "src_mac": "Sonos One Speaker",
+      "oui": "Sonos",
+      "packets": 160
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 902
+     }
+    ],
+    "192.168.137.165": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 9
+     }
+    ],
+    "192.168.137.168": [
+     {
+      "src_mac": "Yi Outdoor Camera",
+      "oui": "Fn-Link Technology Limited",
+      "packets": 12
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 805
+     }
+    ],
+    "192.168.137.174": [
+     {
+      "src_mac": "94:39:e5:5d:27:a6",
+      "oui": "Hon Hai Precision Ind. Co.",
+      "packets": 1329
+     }
+    ],
+    "192.168.137.178": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 734
+     }
+    ],
+    "192.168.137.183": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.184": [
+     {
+      "src_mac": "GoSund Smart Plug WP2 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.185": [
+     {
+      "src_mac": "Levoit Air Purifier",
+      "oui": "Espressif Inc.",
+      "packets": 20
+     }
+    ],
+    "192.168.137.186": [
+     {
+      "src_mac": "Smart Board",
+      "oui": "SMART Technologies",
+      "packets": 28
+     }
+    ],
+    "192.168.137.187": [
+     {
+      "src_mac": "TP-Link Tapo Camera",
+      "oui": "TP-Link Corporation Limited",
+      "packets": 159
+     }
+    ],
+    "192.168.137.188": [
+     {
+      "src_mac": "HeimVision SmartLife Radio/Lamp",
+      "oui": "Tuya Smart Inc.",
+      "packets": 42
+     }
+    ],
+    "192.168.137.189": [
+     {
+      "src_mac": "Lumiman bulb",
+      "oui": "Tuya Smart Inc.",
+      "packets": 233
+     }
+    ],
+    "192.168.137.191": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 13
+     }
+    ],
+    "192.168.137.197": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 469
+     }
+    ],
+    "192.168.137.201": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 136
+     },
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google Nest Mini Speaker",
+      "packets": 2
+     }
+    ],
+    "192.168.137.203": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 295
+     }
+    ],
+    "192.168.137.206": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1977
+     }
+    ],
+    "192.168.137.208": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 541
+     }
+    ],
+    "192.168.137.209": [
+     {
+      "src_mac": "GoSund Power strip (2)",
+      "oui": "Espressif Inc.",
+      "packets": 232
+     }
+    ],
+    "192.168.137.210": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 2053
+     }
+    ],
+    "192.168.137.212": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 219
+     }
+    ],
+    "192.168.137.214": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 214
+     }
+    ],
+    "192.168.137.215": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 533
+     }
+    ],
+    "192.168.137.220": [
+     {
+      "src_mac": "Teckin Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 24
+     }
+    ],
+    "192.168.137.222": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.223": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 414
+     },
+     {
+      "src_mac": "Globe Lamp ESP_B1680C",
+      "oui": "Espressif Inc.",
+      "packets": 233
+     }
+    ],
+    "192.168.137.225": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 352
+     }
+    ],
+    "192.168.137.228": [
+     {
+      "src_mac": "LampUX RGB",
+      "oui": "Espressif Inc.",
+      "packets": 228
+     },
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 28
+     }
+    ],
+    "192.168.137.233": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 855
+     }
+    ],
+    "192.168.137.238": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 704
+     },
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 163
+     }
+    ],
+    "192.168.137.240": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 86
+     }
+    ],
+    "192.168.137.241": [
+     {
+      "src_mac": "GoSund Bulb",
+      "oui": "Espressif Inc.",
+      "packets": 233
+     }
+    ],
+    "192.168.137.242": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 1362
+     },
+     {
+      "src_mac": "Yutron Plug 1",
+      "oui": "Tuya Smart Inc.",
+      "packets": 26
+     }
+    ],
+    "192.168.137.244": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 15
+     }
+    ],
+    "192.168.137.247": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 543
+     }
+    ],
+    "192.168.137.253": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 3562
+     },
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 166
+     }
+    ]
+   }
+  },
+  "DoS/DoS-UDP_Flood/DoS-UDP_Flood.csv": {
+   "bytes_read": 81324152,
+   "lan_source_packets": 75870,
+   "complete_file": false,
+   "note": "sources with fewer than 300 packets kept only for designated addresses and Raspberry Pi hosts",
+   "sources": {
+    "192.168.137.20": [
+     {
+      "src_mac": "24:05:88:30:6f:89",
+      "oui": "Google",
+      "packets": 6
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "Rbcior Camera",
+      "oui": "Tuya Smart Inc.",
+      "packets": 12
+     }
+    ],
+    "192.168.137.41": [
+     {
+      "src_mac": "Cocoon Smart HVAC Fan",
+      "oui": "Espressif Inc.",
+      "packets": 6
+     }
+    ],
+    "192.168.137.42": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 163
+     }
+    ],
+    "192.168.137.64": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 5
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 74267
+     }
+    ],
+    "192.168.137.114": [
+     {
+      "src_mac": "LG Smart TV",
+      "oui": "LG Innotek",
+      "packets": 3
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 70
+     }
+    ],
+    "192.168.137.131": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.141": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.144": [
+     {
+      "src_mac": "Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3)",
+      "oui": "Belkin International Inc.",
+      "packets": 1
+     }
+    ],
+    "192.168.137.158": [
+     {
+      "src_mac": "ac:17:02:05:34:27",
+      "oui": "Fibar Group sp. z o.o.",
+      "packets": 312
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 3
+     }
+    ],
+    "192.168.137.196": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 12
+     }
+    ],
+    "192.168.137.199": [
+     {
+      "src_mac": "Luohe Cam Dog",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 2
+     }
+    ]
+   }
+  },
+  "DDoS/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation.csv": {
+   "bytes_read": 100663296,
+   "lan_source_packets": 75134,
+   "complete_file": false,
+   "note": "sources with fewer than 300 packets kept only for designated addresses and Raspberry Pi hosts",
+   "sources": {
+    "192.168.137.12": [
+     {
+      "src_mac": "e4:5f:01:55:90:c4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 7002
+     }
+    ],
+    "192.168.137.17": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:90",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 9926
+     }
+    ],
+    "192.168.137.20": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 7416
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "b0:09:da:3e:82:6c",
+      "oui": "Ring Solutions",
+      "packets": 11
+     }
+    ],
+    "192.168.137.42": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:ef",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 10437
+     }
+    ],
+    "192.168.137.65": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 10905
+     }
+    ],
+    "192.168.137.66": [
+     {
+      "src_mac": "Yi Indoor 2 Camera",
+      "oui": "AltoBeam (China) Inc.",
+      "packets": 9
+     }
+    ],
+    "192.168.137.89": [
+     {
+      "src_mac": "e8:1b:69:f8:d4:e3",
+      "oui": "Sercomm Corporation.",
+      "packets": 14
+     }
+    ],
+    "192.168.137.120": [
+     {
+      "src_mac": "AMCREST WiFi Camera",
+      "oui": "Amcrest Technologies",
+      "packets": 587
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 18
+     }
+    ],
+    "192.168.137.150": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 87
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 35
+     }
+    ],
+    "192.168.137.173": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 23
+     }
+    ],
+    "192.168.137.186": [
+     {
+      "src_mac": "dc:a6:32:c9:e5:a4",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 6274
+     }
+    ],
+    "192.168.137.196": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:ab",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 21005
+     }
+    ],
+    "192.168.137.199": [
+     {
+      "src_mac": "Netatmo Weather Station",
+      "oui": "Netatmo",
+      "packets": 7
+     }
+    ],
+    "192.168.137.240": [
+     {
+      "src_mac": "LIFX Lightbulb",
+      "oui": "Lifi Labs Management Pty Ltd",
+      "packets": 2
+     }
+    ]
+   }
+  },
+  "Spoofing/DNS_Spoofing/DNS_Spoofing.csv": {
+   "bytes_read": 74654192,
+   "lan_source_packets": 40535,
+   "complete_file": false,
+   "note": "sources with fewer than 300 packets kept only for designated addresses and Raspberry Pi hosts",
+   "sources": {
+    "192.168.137.1": [
+     {
+      "src_mac": "3c:18:a0:41:c3:a0",
+      "oui": "Luxshare Precision Industry Company Limited",
+      "packets": 818
+     },
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 19
+     }
+    ],
+    "192.168.137.2": [
+     {
+      "src_mac": "Nest Indoor Camera",
+      "oui": "Google",
+      "packets": 882
+     }
+    ],
+    "192.168.137.18": [
+     {
+      "src_mac": "Amazon Echo Spot",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 8151
+     }
+    ],
+    "192.168.137.23": [
+     {
+      "src_mac": "Yutron Plug 2",
+      "oui": "Tuya Smart Inc.",
+      "packets": 208
+     }
+    ],
+    "192.168.137.35": [
+     {
+      "src_mac": "dc:a6:32:dc:27:d5",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1801
+     }
+    ],
+    "192.168.137.39": [
+     {
+      "src_mac": "Amazon Echo Studio",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 3434
+     }
+    ],
+    "192.168.137.40": [
+     {
+      "src_mac": "HeimVision Smart WiFi Camera",
+      "oui": "Shenzhen Bilian Electronic Co.\u00a3\u00acLtd",
+      "packets": 449
+     }
+    ],
+    "192.168.137.42": [
+     {
+      "src_mac": "56:4f:8a:e1:f3:2d",
+      "oui": "none",
+      "packets": 1289
+     }
+    ],
+    "192.168.137.49": [
+     {
+      "src_mac": "Wyze Camera",
+      "oui": "Wyze Labs Inc",
+      "packets": 1244
+     }
+    ],
+    "192.168.137.55": [
+     {
+      "src_mac": "Amazon Echo Dot 2",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 6723
+     }
+    ],
+    "192.168.137.64": [
+     {
+      "src_mac": "Gosund Power strip (1)",
+      "oui": "Espressif Inc.",
+      "packets": 216
+     }
+    ],
+    "192.168.137.76": [
+     {
+      "src_mac": "Amazon Echo Dot 1",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1693
+     }
+    ],
+    "192.168.137.102": [
+     {
+      "src_mac": "Amazon Echo Show",
+      "oui": "Amazon Technologies Inc.",
+      "packets": 1449
+     }
+    ],
+    "192.168.137.113": [
+     {
+      "src_mac": "Netatmo Camera",
+      "oui": "Netatmo",
+      "packets": 499
+     }
+    ],
+    "192.168.137.119": [
+     {
+      "src_mac": "dc:a6:32:c9:e4:c6",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 92
+     }
+    ],
+    "192.168.137.121": [
+     {
+      "src_mac": "harman kardon (Ampak Technology)",
+      "oui": "AMPAK Technology",
+      "packets": 695
+     }
+    ],
+    "192.168.137.123": [
+     {
+      "src_mac": "Gosund Smart Plug WP3 (2)",
+      "oui": "Espressif Inc.",
+      "packets": 218
+     }
+    ],
+    "192.168.137.124": [
+     {
+      "src_mac": "Google Nest Mini Speaker",
+      "oui": "Google",
+      "packets": 771
+     }
+    ],
+    "192.168.137.144": [
+     {
+      "src_mac": "AeoTec Smart Home Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 572
+     }
+    ],
+    "192.168.137.150": [
+     {
+      "src_mac": "SmartThings Hub",
+      "oui": "SAMJIN Co.",
+      "packets": 1668
+     }
+    ],
+    "192.168.137.163": [
+     {
+      "src_mac": "Borun/Sichuan-AI Camera",
+      "oui": "Sichuan AI-Link Technology Co.",
+      "packets": 746
+     }
+    ],
+    "192.168.137.182": [
+     {
+      "src_mac": "Philips Hue Bridge",
+      "oui": "Philips Lighting BV",
+      "packets": 463
+     }
+    ],
+    "192.168.137.184": [
+     {
+      "src_mac": "Raspberry Pi 4-2 GB",
+      "oui": "Raspberry Pi Trading Ltd",
+      "packets": 1
+     }
+    ],
+    "192.168.137.199": [
+     {
+      "src_mac": "Home Eye Camera",
+      "oui": "Shenzhen Rf-Link Technology Co.",
+      "packets": 546
+     }
+    ],
+    "192.168.137.225": [
+     {
+      "src_mac": "GoSund Smart plug WP2 (3)",
+      "oui": "Espressif Inc.",
+      "packets": 225
+     }
+    ],
+    "192.168.137.228": [
+     {
+      "src_mac": "Eufy HomeBase 2",
+      "oui": "Smart Innovation LLC",
+      "packets": 321
+     }
+    ]
+   }
+  }
+ },
+ "designation_check": {
+  "_note": "class: raspberry_pi = attacking hardware confirmed; consumer_device = catalogued testbed device (removed from the attacker set under the identity-corrected labels, config v4c); unresolved = not seen as a source in the bytes read or no matching capture (kept).",
+  "types": {
+   "DDoS ACK Fragmentation": {
+    "packet_file": "DDoS/DDoS-ACK_Fragmentation/DDoS-ACK_Fragmentation.csv",
+    "same_session_evidence": "6 of 8 designated addresses are Raspberry Pis in the packet file at the same addresses",
+    "designated": {
+     "192.168.137.17": {
+      "share": 0.1886,
+      "identity": "dc:a6:32:c9:e4:90 (Raspberry Pi Trading Ltd)",
+      "packets": 9926,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.65": {
+      "share": 0.1872,
+      "identity": "dc:a6:32:dc:27:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 10905,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.204": {
+      "share": 0.1333,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.123": {
+      "share": 0.0911,
+      "identity": "Eufy HomeBase 2 (Smart Innovation LLC)",
+      "packets": 18,
+      "class": "consumer_device"
+     },
+     "192.168.137.42": {
+      "share": 0.0906,
+      "identity": "dc:a6:32:c9:e5:ef (Raspberry Pi Trading Ltd)",
+      "packets": 10437,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.12": {
+      "share": 0.0754,
+      "identity": "e4:5f:01:55:90:c4 (Raspberry Pi Trading Ltd)",
+      "packets": 7002,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.20": {
+      "share": 0.0668,
+      "identity": "dc:a6:32:c9:e4:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 7416,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.196": {
+      "share": 0.0641,
+      "identity": "dc:a6:32:c9:e4:ab (Raspberry Pi Trading Ltd)",
+      "packets": 21005,
+      "class": "raspberry_pi"
+     }
+    }
+   },
+   "DDoS ICMP Flood": {
+    "packet_file": null,
+    "same_session_evidence": "no counterpart in the packet release",
+    "designated": {
+     "192.168.137.114": {
+      "share": 0.1244,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.117": {
+      "share": 0.1203,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.190": {
+      "share": 0.095,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.125": {
+      "share": 0.0902,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.30": {
+      "share": 0.0895,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.170": {
+      "share": 0.0871,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.43": {
+      "share": 0.0752,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.94": {
+      "share": 0.0951,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     }
+    }
+   },
+   "DDoS-HTTP Flood": {
+    "packet_file": "DDoS/DDoS-HTTP_Flood/DDoS-HTTP_Flood-.csv",
+    "same_session_evidence": "4 of 8 designated addresses (.178,.89,.225,.64) are Raspberry Pis at the same addresses; .44/.114/.133 never appear as sources in the complete packet file",
+    "designated": {
+     "192.168.137.150": {
+      "share": 0.1141,
+      "identity": "Amazon Echo Dot 2 (Amazon Technologies Inc.)",
+      "packets": 722,
+      "class": "consumer_device"
+     },
+     "192.168.137.44": {
+      "share": 0.0979,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.178": {
+      "share": 0.0926,
+      "identity": "dc:a6:32:dc:27:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 62862,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.89": {
+      "share": 0.0914,
+      "identity": "e4:5f:01:55:90:c4 (Raspberry Pi Trading Ltd)",
+      "packets": 23875,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.133": {
+      "share": 0.0875,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.225": {
+      "share": 0.0768,
+      "identity": "dc:a6:32:c9:e4:ab (Raspberry Pi Trading Ltd)",
+      "packets": 15207,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.114": {
+      "share": 0.0767,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.64": {
+      "share": 0.0712,
+      "identity": "dc:a6:32:c9:e4:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 13518,
+      "class": "raspberry_pi"
+     }
+    }
+   },
+   "DDoS-ICMP_Fragmentation": {
+    "packet_file": "DDoS/DDoS-ICMP_Fragmentation/DDoS-ICMP_Fragmentation.csv",
+    "same_session_evidence": "packet file is another session (designated Pi addresses absent); the designated addresses .221/.246/.203/.240/.128 carry Raspberry Pi MACs in the benign chain, whose leases the ICMP-fragmentation flow files share; .41 = Fibar Group device in both",
+    "designated": {
+     "192.168.137.248": {
+      "share": 0.129,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.221": {
+      "share": 0.1107,
+      "identity": "dc:a6:32:c9:e4:d5 (Raspberry Pi Trading Ltd) [benign chain, same lease]",
+      "packets": 1,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.246": {
+      "share": 0.1019,
+      "identity": "dc:a6:32:c9:e5:a4 (Raspberry Pi Trading Ltd) [benign chain, same lease]",
+      "packets": 1,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.165": {
+      "share": 0.0897,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.203": {
+      "share": 0.0868,
+      "identity": "dc:a6:32:c9:e4:90 (Raspberry Pi Trading Ltd) [benign chain, same lease]",
+      "packets": 1,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.240": {
+      "share": 0.0825,
+      "identity": "dc:a6:32:c9:e5:ef (Raspberry Pi Trading Ltd) [benign chain, same lease]",
+      "packets": 1,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.128": {
+      "share": 0.0695,
+      "identity": "dc:a6:32:dc:27:d5 (Raspberry Pi Trading Ltd) [benign chain, same lease]",
+      "packets": 641,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.41": {
+      "share": 0.3101,
+      "identity": "ac:17:02:05:34:27 (Fibar Group sp. z o.o.) [benign chain, same lease]",
+      "packets": 10112,
+      "class": "consumer_device"
+     }
+    }
+   },
+   "DoS SYN Flood": {
+    "packet_file": "DoS/DoS-SYN_Flood/DoS-SYN_Flood.csv",
+    "same_session_evidence": ".182 is the attacking Pi in packet files 0-1 (88% of LAN packets); .66 holds the same Pi in the DoS HTTP/UDP captures",
+    "designated": {
+     "192.168.137.182": {
+      "share": 0.5706,
+      "identity": "dc:a6:32:dc:27:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 55598,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.66": {
+      "share": 0.177,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.240": {
+      "share": 0.0628,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.144": {
+      "share": 0.0544,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     }
+    }
+   },
+   "DoS-HTTP_Flood": {
+    "packet_file": "DoS/DoS-HTTP_Flood/DoS-HTTP_Flood.csv",
+    "same_session_evidence": ".66 is the attacking Pi (dc:a6:32:dc:27:d5)",
+    "designated": {
+     "192.168.137.66": {
+      "share": 0.8738,
+      "identity": "dc:a6:32:dc:27:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 32408,
+      "class": "raspberry_pi"
+     }
+    }
+   },
+   "DoS-UDP_Flood": {
+    "packet_file": "DoS/DoS-UDP_Flood/DoS-UDP_Flood.csv",
+    "same_session_evidence": ".66 is the attacking Pi in packet file 0; .195 (other flow files) not in the bytes read",
+    "designated": {
+     "192.168.137.195": {
+      "share": 0.7213,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.66": {
+      "share": 0.151,
+      "identity": "dc:a6:32:dc:27:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 74267,
+      "class": "raspberry_pi"
+     }
+    }
+   },
+   "Mirai": {
+    "packet_file": "Mirai/Mirai-greip_flood/Mirai-greip_flood.csv",
+    "same_session_evidence": "packet release holds the GRE-IP variant, flow release the GRE-ETH variant: no matching capture",
+    "designated": {
+     "192.168.137.238": {
+      "share": 0.2404,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.207": {
+      "share": 0.1394,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.128": {
+      "share": 0.1286,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.150": {
+      "share": 0.1219,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.162": {
+      "share": 0.107,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.106": {
+      "share": 0.106,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.147": {
+      "share": 0.0985,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.120": {
+      "share": 0.1569,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.248": {
+      "share": 0.0799,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.129": {
+      "share": 0.0627,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     },
+     "192.168.137.242": {
+      "share": 0.0566,
+      "identity": null,
+      "packets": 0,
+      "class": "unresolved"
+     }
+    }
+   },
+   "VulnerabilityScan": {
+    "packet_file": "Recon/VulnerabilityScan/VulnerabilityScan.csv",
+    "same_session_evidence": "same capture (source ranking matches): .178 Pi, .41 Fibar Group controller, .133 Home Eye camera",
+    "designated": {
+     "192.168.137.41": {
+      "share": 0.2889,
+      "identity": "ac:17:02:05:34:27 (Fibar Group sp. z o.o.)",
+      "packets": 7180,
+      "class": "consumer_device"
+     },
+     "192.168.137.178": {
+      "share": 0.1399,
+      "identity": "dc:a6:32:dc:27:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 4797,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.133": {
+      "share": 0.0524,
+      "identity": "Home Eye Camera (Shenzhen Rf-Link Technology Co.)",
+      "packets": 633,
+      "class": "consumer_device"
+     }
+    }
+   },
+   "DNS Spoofing": {
+    "packet_file": "Spoofing/DNS_Spoofing/DNS_Spoofing.csv",
+    "same_session_evidence": "same session (catalogued devices at the designated addresses); the only Raspberry Pi source is .35 (1,801 packets), not designated; .42 carries a locally administered MAC seen across sessions",
+    "designated": {
+     "192.168.137.42": {
+      "share": 0.1569,
+      "identity": "56:4f:8a:e1:f3:2d (none)",
+      "packets": 1289,
+      "class": "unresolved_mac"
+     },
+     "192.168.137.199": {
+      "share": 0.1102,
+      "identity": "Home Eye Camera (Shenzhen Rf-Link Technology Co.)",
+      "packets": 546,
+      "class": "consumer_device"
+     },
+     "192.168.137.49": {
+      "share": 0.0888,
+      "identity": "Wyze Camera (Wyze Labs Inc)",
+      "packets": 1244,
+      "class": "consumer_device"
+     },
+     "192.168.137.163": {
+      "share": 0.0602,
+      "identity": "Borun/Sichuan-AI Camera (Sichuan AI-Link Technology Co.)",
+      "packets": 746,
+      "class": "consumer_device"
+     },
+     "192.168.137.121": {
+      "share": 0.0579,
+      "identity": "harman kardon (Ampak Technology) (AMPAK Technology)",
+      "packets": 695,
+      "class": "consumer_device"
+     }
+    }
+   },
+   "sqlinjection": {
+    "packet_file": "Web-Based/SqlInjection/SqlInjection.csv",
+    "same_session_evidence": "same capture (complete file): .178 Pi, .41 Fibar Group controller, .133 Home Eye camera",
+    "designated": {
+     "192.168.137.41": {
+      "share": 0.4006,
+      "identity": "ac:17:02:05:34:27 (Fibar Group sp. z o.o.)",
+      "packets": 7402,
+      "class": "consumer_device"
+     },
+     "192.168.137.178": {
+      "share": 0.0568,
+      "identity": "dc:a6:32:dc:27:d5 (Raspberry Pi Trading Ltd)",
+      "packets": 2430,
+      "class": "raspberry_pi"
+     },
+     "192.168.137.133": {
+      "share": 0.0563,
+      "identity": "Home Eye Camera (Shenzhen Rf-Link Technology Co.)",
+      "packets": 653,
+      "class": "consumer_device"
+     }
+    }
+   }
+  }
+ }
+}

@@ -33,6 +33,7 @@ def main():
     ap.add_argument("--set", action="append", default=[], help="dotted override, e.g. cloud.mode=local")
     ap.add_argument("--out", default=None)
     ap.add_argument("--fresh", action="store_true", help="ignore an existing --out file instead of resuming it")
+    ap.add_argument("--save-all-traces", action="store_true", help="write the per-epoch trace of every seed (default: seed 0 only)")
     args = ap.parse_args()
 
     cfg = apply_dotted(load_config(args.config), args.set)
@@ -45,7 +46,7 @@ def main():
 
     # load the pool once (data split is seed-0 fixed so every configuration sees identical traces)
     pool = load_pool(cfg, np.random.default_rng(0))
-    df = run_grid(cfg, names, list(range(n_seeds)), out_csv, pool=pool, resume=not args.fresh)
+    df = run_grid(cfg, names, list(range(n_seeds)), out_csv, pool=pool, resume=not args.fresh, save_all_traces=args.save_all_traces)
     print(df.groupby("config")[["f1_L2", "false_quarantine_rate", "ttc_mean_s", "reauth_per_device_hour",
                                 "cross_site_recall_L2"]].agg(["mean", "std"]).round(4).to_string())
     print(f"\nsaved -> {out_csv}")

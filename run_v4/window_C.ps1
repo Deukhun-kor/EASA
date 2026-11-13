@@ -1,0 +1,11 @@
+# Window C -- disjoint gateways + load/heterogeneity + v3-protocol reference (protocol v4). ~4 h
+$script:WIN = "C"; . .\run_v4\common.ps1
+Run "C1 partition disjoint"        "python scripts\run_experiments.py $C --set topology.training_partition=disjoint --configs B3_net_only EASA_net_score EASA_full --out results\v4\v4_partition_disjoint.csv"
+Run "C2 partition disjoint_device" "python scripts\run_experiments.py $C --set topology.training_partition=disjoint_device --configs B3_net_only EASA_net_score EASA_full --out results\v4\v4_partition_disjoint_device.csv"
+Run "C2b partition disjoint, local-only baseline" "python scripts\run_experiments.py $C --set topology.training_partition=disjoint --configs EASA_minus_C --out results\v4\v4_partition_disjoint_minusC.csv"
+Run "C3 load x2"  "python scripts\run_experiments.py $C --set topology.device_multiplier=2 --seeds 10 --configs B3_net_only EASA_full --out results\v4\v4_load_x2.csv"
+Run "C4 load x3"  "python scripts\run_experiments.py $C --set topology.device_multiplier=3 --seeds 10 --configs B3_net_only EASA_full --out results\v4\v4_load_x3.csv"
+Run "C5 hetero"   "python scripts\run_experiments.py $C --set posture.classes.sensor.share=0.70 --set posture.classes.camera.share=0.10 --set posture.classes.hub.share=0.10 --set posture.classes.appliance.share=0.10 --set `"posture.init_energy_range=[0.10, 1.00]`" --seeds 10 --configs B3_net_only EASA_full --out results\v4\v4_hetero.csv"
+Run "C6 65-device reference (q3 rule, attacker hosts kept) for the supplementary" "python scripts\run_experiments.py --set cloud.transport=local --set policy.calibrate.l3_rule=quantile --configs B0_static B1_vnsf B2_rules EASA_minus_C --out results\v4\v4_keep65_rest.csv"
+Run "C7 env" "python -c `"import sys, platform, numpy, pandas, sklearn, scipy, torch, xgboost; print(sys.version); print(platform.platform(), platform.processor()); print('numpy', numpy.__version__, 'pandas', pandas.__version__, 'sklearn', sklearn.__version__, 'scipy', scipy.__version__, 'torch', torch.__version__, torch.version.cuda, 'xgboost', xgboost.__version__); print('gpu', torch.cuda.get_device_name(0))`" > results\v4\env.txt"
+"=== window C done $(Get-Date) ===" | Tee-Object -FilePath results\v4\log_C.txt -Append

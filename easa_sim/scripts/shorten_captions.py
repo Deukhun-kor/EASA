@@ -48,8 +48,8 @@ CAPTIONS = {
 # Table notes (aggregation / denominator definitions needed to read the numbers; inserted before \end{table})
 NOTES = {
     "tab:labelsens": r"For each minimum-share value the entries report the minimum Jaccard overlap and the maximum relabelled-row share over the other two thresholds (attacker cap $\{6,8,12\}$, weakness threshold $\{30,40,50\}\%$). The reference set uses (minimum share, attacker cap) $=(5\%, 8)$, so the 5\% column also contains the non-default caps. $|\mathcal{A}|$ is the default number of designated attackers.",
-    "tab:labelsens-working": r"Column groups give (minimum share, attacker cap), relative to the default (5\%, 8). Per attack type, ``rows \%'' is the share of working rows (train, validation and test) whose label changes and ``traces \%'' the share of replayed designated-attacker records that lose the attack label; the benign device traces are unaffected by every setting.",
-    "tab:rtt": r"RTT columns are the mean over runs of the corresponding per-run statistic; ``max'' is the mean of the per-run maxima, not the pooled maximum (585\,ms excluding the 15 stalls of Section~\ref{subsec:res-latency}). Calls include warm-up.",
+    "tab:labelsens-working": r"Column groups give (minimum share, attacker cap), relative to the default (5\%, 8). Per attack type, the column rows \% is the share of working rows (train, validation and test) whose label changes and the column traces \% the share of replayed designated-attacker records that lose the attack label. The benign device traces are unaffected by every setting.",
+    "tab:rtt": r"RTT columns are the mean over runs of the corresponding per-run statistic, and the column max is the mean of the per-run maxima rather than the pooled maximum (585\,ms excluding the 15 stalls of Section~\ref{subsec:res-latency}). Calls include warm-up.",
 }
 NOTE_MARK = "% table-note"
 

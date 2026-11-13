@@ -1,0 +1,21 @@
+\begin{table}[!t]
+\caption{Supplementary design revision: EASA with history reset versus EASA on the same 30 seeds (unadjusted $p$)}
+\label{tab:reset}
+\centering\scriptsize
+\setlength{\tabcolsep}{4pt}
+\widebox{\begin{tabular}{lccccc}
+\toprule
+Metric & EASA & EASA, history reset & $\Delta$ & 95\% CI & $p$ \\
+\midrule
+F1 & 0.764 $\pm$ 0.102 & 0.766 $\pm$ 0.099 & +0.002 & $[-0.010, 0.011]$ & 0.152 \\
+FPR (clean) & 0.020 $\pm$ 0.018 & 0.021 $\pm$ 0.018 & +0.000 & $[-0.001, 0.003]$ & 0.508 \\
+Restricted share & 0.174 $\pm$ 0.032 & 0.167 $\pm$ 0.033 & $-$0.007 & $[-0.010, -0.005]$ & $<0.001$ \\
+Dwell (s) & 1286 $\pm$ 277 & 1224 $\pm$ 270 & $-$62 & $[-86, -41]$ & $<0.001$ \\
+False quarantine & 0.016 $\pm$ 0.022 & 0.017 $\pm$ 0.022 & +0.001 & $[0.000, 0.003]$ & 0.317 \\
+Activation & 0.887 $\pm$ 0.091 & 0.892 $\pm$ 0.093 & +0.004 & $[-0.004, 0.014]$ & 0.273 \\
+Cross-site recall & 0.687 $\pm$ 0.122 & 0.704 $\pm$ 0.128 & +0.017 & $[-0.002, 0.041]$ & 0.116 \\
+Replay catch & 0.729 $\pm$ 0.305 & 0.730 $\pm$ 0.303 & +0.001 & $[0.000, 0.004]$ & 0.317 \\
+Re-auth / dev-h & 0.240 $\pm$ 0.071 & 0.245 $\pm$ 0.078 & +0.005 & $[-0.001, 0.014]$ & 0.197 \\
+\bottomrule
+\end{tabular}}
+\end{table}

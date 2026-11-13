@@ -1,0 +1,185 @@
+{
+ "files": [
+  "Network_dataset_1.csv",
+  "Network_dataset_8.csv",
+  "Network_dataset_11.csv",
+  "Network_dataset_12.csv",
+  "Network_dataset_17.csv",
+  "Network_dataset_18.csv",
+  "Network_dataset_20.csv",
+  "Network_dataset_22.csv",
+  "Network_dataset_23.csv"
+ ],
+ "rows": 2969703,
+ "normal_rows": 670651,
+ "attack_rows": 2299052,
+ "designated_hosts": {
+  "192.168.1.193": {
+   "documented_attacker": false,
+   "normal_rows": 45234,
+   "attack_rows": 484162,
+   "as_source_attack_rows": 315178,
+   "designated_for": [
+    "backdoor",
+    "ransomware"
+   ]
+  },
+  "192.168.1.30": {
+   "documented_attacker": true,
+   "normal_rows": 67,
+   "attack_rows": 723876,
+   "as_source_attack_rows": 712765,
+   "designated_for": [
+    "ddos",
+    "dos",
+    "injection",
+    "password",
+    "scanning"
+   ]
+  },
+  "192.168.1.31": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 337899,
+   "as_source_attack_rows": 335038,
+   "designated_for": [
+    "ddos",
+    "injection",
+    "mitm",
+    "password",
+    "scanning"
+   ]
+  },
+  "192.168.1.32": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 281163,
+   "as_source_attack_rows": 278990,
+   "designated_for": [
+    "password",
+    "scanning",
+    "xss"
+   ]
+  },
+  "192.168.1.33": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 379442,
+   "as_source_attack_rows": 142471,
+   "designated_for": [
+    "injection",
+    "password",
+    "ransomware"
+   ]
+  },
+  "192.168.1.34": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 10440,
+   "as_source_attack_rows": 10438,
+   "designated_for": [
+    "mitm"
+   ]
+  },
+  "192.168.1.35": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 82528,
+   "as_source_attack_rows": 82528,
+   "designated_for": [
+    "xss"
+   ]
+  },
+  "192.168.1.36": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 172579,
+   "as_source_attack_rows": 172576,
+   "designated_for": [
+    "injection",
+    "xss"
+   ]
+  },
+  "192.168.1.37": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 99046,
+   "as_source_attack_rows": 24255,
+   "designated_for": [
+    "ransomware"
+   ]
+  },
+  "192.168.1.38": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 139823,
+   "as_source_attack_rows": 139823,
+   "designated_for": [
+    "ddos"
+   ]
+  },
+  "192.168.1.39": {
+   "documented_attacker": true,
+   "normal_rows": 0,
+   "attack_rows": 72256,
+   "as_source_attack_rows": 72256,
+   "designated_for": [
+    "xss"
+   ]
+  }
+ },
+ "documented_hosts_present": [
+  "192.168.1.30",
+  "192.168.1.31",
+  "192.168.1.32",
+  "192.168.1.33",
+  "192.168.1.34",
+  "192.168.1.35",
+  "192.168.1.36",
+  "192.168.1.37",
+  "192.168.1.38",
+  "192.168.1.39"
+ ],
+ "host_level": {
+  "n_designated": 11,
+  "n_documented_present": 10,
+  "designated_and_documented": 10,
+  "precision_vs_documented": 0.9091,
+  "recall_vs_documented": 1.0,
+  "designated_not_documented": [
+   "192.168.1.193"
+  ],
+  "documented_not_designated": []
+ },
+ "row_level_rule_on_all_rows": {
+  "TP": 2299052,
+  "FP": 45301,
+  "FN": 0,
+  "TN": 625350,
+  "precision": 0.9807,
+  "recall": 1.0,
+  "fpr": 0.0675
+ },
+ "row_level_rule_within_attack_windows": {
+  "TP": 2299052,
+  "FP": 0,
+  "FN": 0,
+  "TN": 670651,
+  "precision": 1.0,
+  "recall": 1.0,
+  "fpr": 0.0
+ },
+ "normal_rows_involving_designated_hosts_by_host": {
+  "192.168.1.193": 45234,
+  "192.168.1.30": 67,
+  "192.168.1.31": 0,
+  "192.168.1.32": 0,
+  "192.168.1.33": 0,
+  "192.168.1.34": 0,
+  "192.168.1.35": 0,
+  "192.168.1.36": 0,
+  "192.168.1.37": 0,
+  "192.168.1.38": 0,
+  "192.168.1.39": 0
+ }
+}

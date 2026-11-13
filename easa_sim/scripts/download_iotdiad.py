@@ -127,18 +127,21 @@ def download(session: requests.Session, url: str, dest: str, retries: int = 4) -
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--root", default=DEFAULT_ROOT, help="portal folder path to mirror")
+    ap.add_argument("--root", default=DEFAULT_ROOT, help="portal folder path to mirror ('.' = the portal's top level)")
     ap.add_argument("--out", default=os.path.join("data", "IoT-DIAD-2024", "flow"))
     ap.add_argument("--cookie", default=None, help="raw Cookie header copied from the browser if 403")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--sizes", action="store_true", help="with --dry-run: query each file's size (HEAD request) and print a total")
     a = ap.parse_args()
+    if a.root in (".", "/"):          # PowerShell drops an empty "" argument, so '.' stands for the top level
+        a.root = ""
 
     s = requests.Session()
     s.headers.update({"User-Agent": UA, "Referer": BASE, "Accept": "text/html,*/*"})
     if a.cookie:
         s.headers["Cookie"] = a.cookie
 
-    stack = [a.root]; n_files = n_ok = n_skip = n_fail = 0
+    stack = [a.root]; n_files = n_ok = n_skip = n_fail = 0; total_bytes = 0
     while stack:
         path = stack.pop(0)
         try:
@@ -158,10 +161,17 @@ def main():
             n_files += 1
             dest = os.path.join(dest_dir, name)
             if a.dry_run:
-                print(f"    {name}  <-  {url}"); continue
+                size = ""
+                if a.sizes:
+                    try:
+                        h = s.head(url, allow_redirects=True, timeout=60); n = int(h.headers.get("Content-Length", 0) or 0)
+                        total_bytes += n; size = f"  [{n / 1e6:,.1f} MB]"
+                    except Exception as e:   # noqa: BLE001
+                        size = f"  [size? {e.__class__.__name__}]"
+                print(f"    {name}{size}  <-  {url}"); continue
             res = download(s, url, dest)
             n_ok += res == "ok"; n_skip += res == "skip"; n_fail += res == "fail"
-    print(f"\nfiles seen={n_files}  downloaded={n_ok}  skipped={n_skip}  failed={n_fail}")
+    print(f"\nfiles seen={n_files}  downloaded={n_ok}  skipped={n_skip}  failed={n_fail}" + (f"  total size={total_bytes / 1e9:,.2f} GB" if a.sizes else ""))
     if n_fail:
         print("re-run the same command to retry failed files (existing complete files are skipped)")
 

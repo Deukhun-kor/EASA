@@ -1,0 +1,20 @@
+\begin{table}[!t]
+\caption{Benign-side cost over 30 seeds}
+\label{tab:benign}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\widebox{\begin{tabular}{lcccc}
+\toprule
+Configuration & FPR (clean devices) & Restricted share (all benign epochs) & Post-attack dwell (s / compromised device) & False quarantine \\
+\midrule
+B0 static & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0 $\pm$ 0 & 0.000 $\pm$ 0.000 \\
+B1 VNSF & 0.050 $\pm$ 0.026 & 0.186 $\pm$ 0.029 & 1229 $\pm$ 163 & 0.071 $\pm$ 0.031 \\
+B2 rules & 0.032 $\pm$ 0.030 & 0.065 $\pm$ 0.027 & 360 $\pm$ 167 & 0.054 $\pm$ 0.046 \\
+B3 net-only & 0.017 $\pm$ 0.015 & 0.163 $\pm$ 0.034 & 1210 $\pm$ 271 & 0.017 $\pm$ 0.022 \\
+EASA$-$C & 0.024 $\pm$ 0.022 & 0.157 $\pm$ 0.044 & 1124 $\pm$ 292 & 0.020 $\pm$ 0.031 \\
+EASA$-$PH & 0.017 $\pm$ 0.015 & 0.166 $\pm$ 0.034 & 1230 $\pm$ 266 & 0.017 $\pm$ 0.022 \\
+EASA & 0.020 $\pm$ 0.018 & 0.174 $\pm$ 0.032 & 1286 $\pm$ 277 & 0.016 $\pm$ 0.022 \\
+\bottomrule
+\end{tabular}}
+\tabnote{Mean $\pm$ std. FPR counts only epochs of devices never compromised in the run, and the restricted share counts every benign device-epoch. Post-attack dwell is the restricted time of ever-compromised devices outside their attack epochs, including epochs between the campaigns of a device, per compromised device, the metric of the main text, Section~4.7. The trajectory audit of the main text, Table~13, counts only the epochs after the last attack of each device, whereas this dwell metric also includes restrictions between campaigns}
+\end{table}

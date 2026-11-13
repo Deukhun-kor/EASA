@@ -44,7 +44,7 @@ ORDER = ["B0_static", "B1_vnsf", "B2_rules", "B3_net_only", "EASA_minus_C",
          "EASA_full", "EASA_reset"]
 LABEL = {"B0_static": "B0 static", "B1_vnsf": "B1 VNSF", "B2_rules": "B2 rules", "B3_net_only": "B3 net-only",
          "EASA_minus_C": "EASA$-$C", "EASA_full": "EASA",
-         "EASA_net_score": "EASA$-$PH", "EASA_no_energy": "EASA, no energy-aware action",
+         "EASA_net_score": "EASA$-$PH", "EASA_no_energy": "EASA, selector disabled",
          "EASA_model_only": "EASA, model only", "EASA_rev_only": "EASA, registry only",
          "EASA_reset": "EASA, history reset"}
 # categorical palette validated for CVD separation (dataviz validator, light surface); EASA is also hatched
@@ -59,18 +59,39 @@ MAIN = [("f1_L2", "F1 ($L_2$)", True, "{:.3f}"),
         ("fpr_L2", "FPR", False, "{:.3f}"),
         ("in_dist_recall_L2", "Recall (in-dist.)", True, "{:.3f}"),
         ("cross_site_recall_L2", "Recall (cross-site)", True, "{:.3f}"),
-        ("containment_rate", "Containment", True, "{:.3f}"),
-        ("ttc_p50_s", "TTC p50 (s)", False, "{:.0f}"),
+        ("containment_rate", "Activation", True, "{:.3f}"),
+        ("ttc_p50_s", "TTA p50 (s)", False, "{:.0f}"),
         ("false_quarantine_rate", "False quarantine", False, "{:.3f}"),
         ("reauth_per_device_hour", "Re-auth / dev-h", False, "{:.3f}"),
         ("replay_catch_rate", "Replay catch (all runs)", True, "{:.3f}")]
+# two-line column headers for the wide main-text tables (keeps them at 8 pt without scaling)
+def _hdr(*lines):
+    return "\\begin{tabular}[b]{@{}c@{}}" + "\\\\".join(lines) + "\\end{tabular}"
+HDR2 = {"Recall (in-dist.)": _hdr("Recall", "(in-dist.)"), "Recall (cross-site)": _hdr("Recall", "(cross-site)"),
+        "TTA p50 (s)": _hdr("TTA", "p50 (s)"), "False quarantine": _hdr("False", "quarantine"),
+        "Re-auth / dev-h": _hdr("Re-auth", "/ dev-h"), "Replay catch (all runs)": _hdr("Replay catch", "(all runs)"),
+        "Deferred, cancelled": _hdr("Deferred:", "cancelled"), "Deferred, pending at end": _hdr("Deferred:", "pending"),
+        "Residual energy": _hdr("Residual", "energy"), "FPR (clean)": _hdr("FPR", "(clean)")}
 BOX = [("f1_L2", "F1 ($L_2$)"), ("fpr_L2", "FPR (clean devices)"), ("in_dist_recall_L2", "Recall, in-distribution"),
-       ("cross_site_recall_L2", "Recall, cross-site"), ("containment_rate", "Containment rate"),
+       ("cross_site_recall_L2", "Recall, cross-site"), ("containment_rate", "Restriction activation rate"),
        ("replay_catch_rate", "Credential-replay catch (all runs)")]
 
 plt.rcParams.update({"font.size": 8, "axes.titlesize": 9, "axes.labelsize": 8, "legend.fontsize": 7,
                      "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True,
                      "grid.alpha": 0.25, "grid.linewidth": 0.5, "pdf.fonttype": 42})
+
+
+
+def _write_tex(path, tex):
+    """Write a table file; captions end without a period (journal style) and long captions keep their notes after the table."""
+    import re as _re
+    tex = _re.sub(r"(\\caption\{[^\n]*?)\.\}", r"\1}", tex)
+    # table notes end without a period as well, and neither \emph nor quotation marks are used in the manuscript
+    tex = _re.sub(r"(\\tabnote\{[^\n]*?)\.\}", r"\1}", tex)
+    tex = _re.sub(r"(\\raggedright [^\n]*?)\.\\end\{minipage\}", r"\1\\end{minipage}", tex)
+    tex = _re.sub(r"\\emph\{([^{}]*)\}", r"\1", tex)
+    tex = tex.replace("``", "").replace("''", "")
+    open(path, "w").write(tex)
 
 
 def _cfgs(df):
@@ -84,29 +105,38 @@ def _tex(s):
 # ----------------------------------------------------------------------------- tables
 def results_table(df, out_tex):
     rng = np.random.default_rng(0)
-    rows, md = [], []
+    rows, rows_full, rows_full_cells, md = [], [], [], []
     for cfg in _cfgs(df):
         g = df[df["config"] == cfg]
-        cells, mcells = [LABEL[cfg]], [LABEL[cfg].replace("$-$", "-")]
+        cells, cells_full, mcells = [LABEL[cfg]], [LABEL[cfg]], [LABEL[cfg].replace("$-$", "-")]
         for m, _, _, fmt in MAIN:
             v = g[m].to_numpy(dtype=float)
             if np.all(np.isnan(v)):
-                cells.append("--"); mcells.append("--"); continue
+                cells.append("--"); cells_full.append("--"); mcells.append("--"); continue
             lo, hi = bootstrap_ci(v, rng)
             sd = np.nanstd(v, ddof=1)   # sample std, as in every other table
-            cells.append(f"{fmt.format(np.nanmean(v))} $\\pm$ {fmt.format(sd)}")
+            cells.append(fmt.format(np.nanmean(v)))
+            cells_full.append(f"{fmt.format(np.nanmean(v))} $\\pm$ {fmt.format(sd)}")
             mcells.append(f"{fmt.format(np.nanmean(v))} ± {fmt.format(sd)} [{fmt.format(lo)}, {fmt.format(hi)}]")
-        rows.append(" & ".join(cells) + r" \\"); md.append("| " + " | ".join(mcells) + " |")
-    head = " & ".join(["Configuration"] + [lab for _, lab, _, _ in MAIN]) + r" \\"
-    tex = ("\\begin{table}[!t]\n\\caption{Main results over 30 seeds (mean $\\pm$ sample std; 95\\% bootstrap CIs in the released "
-           "\\texttt{summary.md}). All configurations except B0 are calibrated to a 2\\% target false-positive rate on the "
-           "calibration segment; FPR is measured on never-compromised devices in the evaluation segment. Configurations with a cloud "
-           "path (B2, B3, EASA$-$PH, EASA) ran against the deployed Cloud Run service; B0, B1 and EASA$-$C issue no cloud calls. Replay catch is the unconditional share of credential-replay "
-           "device-epochs at $L_3$ over all 30 runs (Table~\\ref{tab:replay} gives the denominators).}\n"
-           "\\label{tab:results}\n\\centering\\scriptsize\n\\setlength{\\tabcolsep}{3pt}\n\\widebox{%\n"
+        rows.append(" & ".join(cells) + r" \\"); rows_full.append(" & ".join(cells_full) + r" \\"); rows_full_cells.append(cells_full[1:])
+        md.append("| " + " | ".join(mcells) + " |")
+    head = " & ".join(["Configuration"] + [HDR2.get(lab, lab) for _, lab, _, _ in MAIN]) + r" \\"
+    tex = ("\\begin{table}[!t]\n\\caption{Main results over 30 seeds}\n"
+           "\\label{tab:results}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{4pt}\n\\widebox{%\n"
            "\\begin{tabular}{l" + "c" * len(MAIN) + "}\n\\toprule\n" + head + "\n\\midrule\n" + "\n".join(rows)
-           + "\n\\bottomrule\n\\end{tabular}}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+           + "\n\\bottomrule\n\\end{tabular}}\n"
+           "\\tabnote{Means over 30 seeds. Full mean $\\pm$ SD results are given in Table~S25, seed distributions in Figure~S2 and paired differences with CIs in Section~S4. All configurations except B0 are calibrated to a 2\\% target false-positive rate, and FPR is measured on never-compromised devices. Replay catch is the unconditional share of credential-replay device-epochs at $L_3$ over all 30 runs (Table~\\ref{tab:replay} gives the denominators).}\n\\end{table}\n")
+    def _panel(idx):
+        labs = [lab for _, lab, _, _ in MAIN]
+        h = " & ".join(["Configuration"] + [labs[i] for i in idx]) + r" \\"
+        body = "\n".join(" & ".join([LABEL[cfg]] + [rows_full_cells[j][i] for i in idx]) + r" \\" for j, cfg in enumerate(_cfgs(df)))
+        return "\\begin{tabular}{l" + "c" * len(idx) + "}\n\\toprule\n" + h + "\n\\midrule\n" + body + "\n\\bottomrule\n\\end{tabular}"
+    tex_full = ("\\begin{table}[!t]\n\\caption{Main results over 30 seeds with sample standard deviations (main text, Table~8)}\n"
+           "\\label{tab:results-full}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{4pt}\n"
+           + _panel([0, 1, 2, 3, 4]) + "\n\\par\\vspace{6pt}\n" + _panel([5, 6, 7, 8])
+           + "\n\\tabnote{Mean $\\pm$ sample std over 30 seeds, split into two panels.}\n\\end{table}\n")
+    _write_tex(out_tex.replace("tab_results.tex", "tab_results_full.tex"), tex_full)
+    _write_tex(out_tex, tex)
     return ["| Configuration | " + " | ".join(lab for _, lab, _, _ in MAIN) + " |",
             "|" + "---|" * (len(MAIN) + 1)] + md
 
@@ -131,7 +161,7 @@ def family_table(df, out_tex):
            "family occurs; number of runs in parentheses).}\n\\label{tab:family}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{4pt}\n"
            "\\widebox{\\begin{tabular}{l" + "c" * len(cfgs) + "}\n\\toprule\nFamily & " + " & ".join(LABEL[c] for c in cfgs)
            + r" \\" + "\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     md = ["| Family | " + " | ".join(LABEL[c].replace("$-$", "-") for c in cfgs) + " |", "|" + "---|" * (len(cfgs) + 1)]
     md += [f"| {f} | " + " | ".join(f"{v:.2f}" for v in r.values) + " |" for f, r in piv.iterrows()]
     return md, piv
@@ -146,11 +176,11 @@ def threshold_table(df, out_tex):
         cells = [f"{g.loc[c, (k, 'mean')]:.3f} $\\pm$ {g.loc[c, (k, 'std')]:.3f}" for k in ["tau_L1", "tau_L2", "tau_L3"]]
         lines.append(LABEL[c] + " & " + " & ".join(cells) + r" \\")
         md.append(f"| {LABEL[c]} | " + " | ".join(cl.replace("$\\pm$", "±") for cl in cells) + " |")
-    tex = ("\\begin{table}[H]\n\\caption{Calibrated entry thresholds (mean $\\pm$ std over seeds). B0 has no trust "
+    tex = ("\\begin{table}[!t]\n\\caption{Calibrated entry thresholds (mean $\\pm$ std over seeds). B0 has no trust "
            "computation and keeps the nominal values; $\\tau_{L3}$ is floored at 0 by the calibration rule.}\n\\label{tab:thresholds}\n\\centering\\footnotesize\n"
            "\\begin{tabular}{lccc}\n\\toprule\nConfiguration & $\\tau_{L1}$ & $\\tau_{L2}$ & $\\tau_{L3}$ \\\\\n\\midrule\n"
            + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return md
 
 
@@ -165,13 +195,13 @@ def rtt_table(df, out_tex):
             "n_cloud_retries": "Retried", "n_cloud_errors": "Dropped"}
     pooled = {c: float(d[d["config"] == c]["rtt_ms_max"].max()) for c in cfgs}
     pooled_s = ", ".join(f"{LABEL[c]} {pooled[c]:.0f}" for c in cfgs)
-    tex = ("\\begin{table}[H]\n\\caption{Real cloud calls per simulated hour (Cloud Run, Seoul region). Calls include the "
+    tex = ("\\begin{table}[!t]\n\\caption{Real cloud calls per simulated hour (Cloud Run, Seoul region). Calls include the "
            "federated warm-up; RTT columns are means over runs of the per-run median, 95th percentile and maximum; the pooled "
            "maximum over the runs of the main experiment was " + pooled_s + "\\,ms (Section~\\ref{subsec:res-latency} counts the stalled calls). ``Retried'' and ``Dropped'' count calls that needed a retry or were "
            "given up after three retries.}\n"
            "\\label{tab:rtt}\n\\centering\\footnotesize\n\\begin{tabular}{l" + "c" * len(cols) + "}\n\\toprule\nConfiguration & "
            + " & ".join(head[k] for k in cols) + r" \\" + "\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return ["| Configuration | " + " | ".join(head[k] for k in cols) + " |", "|" + "---|" * (len(cols) + 1)] + \
            [f"| {LABEL[c]} | " + " | ".join(f"{g.loc[c, k]:.0f}" for k in cols) + " |" for c in cfgs]
 
@@ -222,10 +252,10 @@ def replay_table(df, out_tex):
            "donor'': share of replay campaigns (1.4 per run on average) whose donor was revoked; catch rates are the share of "
            "replay device-epochs at $L_3$, over all runs and over the runs with a revocation only (mean $\\pm$ std, $n$ runs). "
            "The conditional subsets differ between configurations because revocation depends on the detector.}\n"
-           "\\label{tab:replay}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{4pt}\n\\widebox{\\begin{tabular}{lcccc}\n\\toprule\nConfiguration & Runs with revocation & "
-           "Campaigns, donor revoked & Catch (all runs) & Catch (runs with revocation) \\\\\n\\midrule\n"
+           "\\label{tab:replay}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{4pt}\n\\widebox{\\begin{tabular}{lcccc}\n\\toprule\nConfiguration & Runs with a revoked donor ($n$/30) & "
+           "Replay campaigns with a revoked donor (\\%) & Replay catch (all runs) & Replay catch (runs with a revoked donor) \\\\\n\\midrule\n"
            + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return md
 
 
@@ -243,10 +273,10 @@ def benign_table(df, out_tex):
     tex = ("\\begin{table}[!t]\n\\caption{Benign-side cost over 30 seeds (mean $\\pm$ std). FPR counts only epochs of devices that are "
            "never compromised in the run; the restricted share counts every benign device-epoch (level $\\ge L_2$ while the device is "
            "not under a campaign), including the pre-attack and post-attack epochs of devices that are compromised at some point; "
-           "post-attack dwell is the restricted time per compromised device after its campaigns end ($L_3$ is absorbing within a run).}\n"
+           "post-attack dwell is the restricted ($\\ge L_2$) time of ever-compromised devices outside their attack epochs, including epochs between the campaigns of a device, per compromised device ($L_3$ is absorbing within a run); the trajectory audit counts only the epochs after the last attack epoch of each device.}\n"
            "\\label{tab:benign}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{4pt}\n\\widebox{\\begin{tabular}{lcccc}\n\\toprule\nConfiguration & "
            + " & ".join(l for _, l, _ in cols) + " \\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return md
 
 
@@ -257,10 +287,10 @@ PAIRED_COST = [m for m in MAIN if m[0] in ("false_quarantine_rate", "reauth_per_
 
 
 def episode_table(df, out_tex):
-    """Restriction-activation decomposition: already restricted at onset vs newly restricted; TTC of the latter."""
+    """Restriction-activation decomposition: already restricted at onset vs newly restricted; TTA of the latter."""
     if "containment_new_rate" not in df.columns: return []
     cols = [("containment_rate", "Activated (any)", "{:.3f}"), ("containment_pre_restricted_rate", "Already restricted at onset", "{:.3f}"),
-            ("containment_new_rate", "Newly restricted", "{:.3f}"), ("ttc_new_p50_s", "TTC p50, newly restricted (s)", "{:.0f}")]
+            ("containment_new_rate", "Newly restricted", "{:.3f}"), ("ttc_new_p50_s", "TTA p50, newly restricted (s)", "{:.0f}")]
     lines, md = [], ["| Configuration | " + " | ".join(l for _, l, _ in cols) + " |", "|" + "---|" * (len(cols) + 1)]
     for c in _cfgs(df):
         g = df[df["config"] == c]
@@ -269,10 +299,10 @@ def episode_table(df, out_tex):
     tex = ("\\begin{table}[!t]\n\\caption{Restriction activation decomposed per attack episode (mean $\\pm$ std over seeds): "
            "share of episodes during which the device was at $\\ge L_2$ at any time, split into episodes that began while the "
            "device was already restricted (carried over from an earlier episode; $L_3$ is absorbing) and episodes in which the "
-           "restriction was newly activated; TTC is reported for the latter only.}\n\\label{tab:episodes}\n\\centering\\footnotesize\n"
+           "restriction was newly activated; TTA (time-to-activation) is reported for the latter only.}\n\\label{tab:episodes}\n\\centering\\footnotesize\n"
            "\\setlength{\\tabcolsep}{4pt}\n\\widebox{\\begin{tabular}{lcccc}\n\\toprule\nConfiguration & " + " & ".join(l for _, l, _ in cols)
            + " \\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return md
 
 
@@ -322,7 +352,7 @@ def _paired_table(df, out_tex, mets, label, caption, ref="EASA_full", n_boot=200
            "\\label{" + label + "}\n\\centering\\scriptsize\n\\setlength{\\tabcolsep}{4pt}\n\\begin{tabular}{llcccc}\n\\toprule\n"
            "Metric & vs. & $\\Delta$ (EASA $-$ other) & 95\\% CI & $p$ (Holm) & Seeds EASA better \\\\\n\\midrule\n"
            + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return md
 
 
@@ -330,7 +360,7 @@ def lowbattery_table(df_lb, out_tex):
     """Low-battery scenario: selector isolated by EASA_no_energy (same seeds, same battery draws)."""
     cols = [("deferred_cancelled", "Deferred, cancelled", "{:.2f}"), ("pending_at_end", "Deferred, pending at end", "{:.2f}"),
             ("reauth_per_device_hour", "Re-auth / dev-h", "{:.3f}"), ("energy_final_mean", "Residual energy", "{:.3f}"),
-            ("f1_L2", "F1", "{:.3f}"), ("fpr_L2", "FPR (clean)", "{:.3f}"), ("containment_rate", "Containment", "{:.3f}"),
+            ("f1_L2", "F1", "{:.3f}"), ("fpr_L2", "FPR (clean)", "{:.3f}"), ("containment_rate", "Activation", "{:.3f}"),
             ("post_attack_dwell_s", "Dwell (s)", "{:.0f}")]
     cfgs = [c for c in ["B3_net_only", "EASA_no_energy", "EASA_full"] if c in df_lb["config"].unique()]
     lines, md = [], ["| Configuration | " + " | ".join(l for _, l, _ in cols) + " |", "|" + "---|" * (len(cols) + 1)]
@@ -343,15 +373,15 @@ def lowbattery_table(df_lb, out_tex):
             cells.append(f"${fmt.format(v.mean())}$" if v.std() == 0 else f"${fmt.format(v.mean())} \\pm {fmt.format(v.std())}$")
         lines.append(LABEL[c] + " & " + " & ".join(cells) + r" \\"); md.append(f"| {LABEL[c]} | " + " | ".join(x.replace("\\pm", "±").replace("$", "") for x in cells) + " |")
     tex = ("\\begin{table}[!t]\n\\caption{Low-battery scenario ($e_d\\sim U(0.10,0.35)$ at $t=0$), 30 seeds, mean $\\pm$ sample std. "
-           "``EASA, no energy-aware action'' (\\texttt{EASA\\_no\\_energy} in the released configurations; ``EASA without the selector'' in the text) "
+           "``EASA, selector disabled'' (\\texttt{EASA\\_no\\_energy} in the released configurations; ``EASA without the selector'' in the text) "
            "is full EASA with the deferral branch of Algorithm~\\ref{alg:easa} disabled, on the same "
            "seeds and battery draws, so the difference between the last two rows is the effect of the selector alone. No battery "
            "recharges in this scenario, so no deferred step-up is executed; a deferral is either cancelled (the device relaxed to "
            "$L_1$ first) or still pending at the end of the run. Residual energy averages over all devices, including mains-powered ones at 1.0.}\n"
-           "\\label{tab:lowbattery}\n\\centering\\scriptsize\n\\setlength{\\tabcolsep}{3pt}\n\\widebox{\\begin{tabular}{l" + "c" * len(cols)
-           + "}\n\\toprule\nConfiguration & " + " & ".join(l for _, l, _ in cols) + " \\\\\n\\midrule\n" + "\n".join(lines)
+           "\\label{tab:lowbattery}\n\\centering\\footnotesize\n\\setlength{\\tabcolsep}{2pt}\n\\widebox{\\begin{tabular}{l" + "c" * len(cols)
+           + "}\n\\toprule\nConfiguration & " + " & ".join(HDR2.get(l, l) for _, l, _ in cols) + " \\\\\n\\midrule\n" + "\n".join(lines)
            + "\n\\bottomrule\n\\end{tabular}}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return md
 
 
@@ -359,7 +389,7 @@ def reset_table(df_main, df_reset, out_tex, n_boot=2000):
     """Supplementary design revision: EASA with history reset vs EASA, paired over seeds (unadjusted p, exploratory)."""
     cols = [("f1_L2", "F1", "{:.3f}", True), ("fpr_L2", "FPR (clean)", "{:.3f}", False), ("fpr_L2_all_epochs", "Restricted share", "{:.3f}", False),
             ("post_attack_dwell_s", "Dwell (s)", "{:.0f}", False), ("false_quarantine_rate", "False quarantine", "{:.3f}", False),
-            ("containment_rate", "Containment", "{:.3f}", True), ("cross_site_recall_L2", "Cross-site recall", "{:.3f}", True),
+            ("containment_rate", "Activation", "{:.3f}", True), ("cross_site_recall_L2", "Cross-site recall", "{:.3f}", True),
             ("replay_catch_rate", "Replay catch", "{:.3f}", True), ("reauth_per_device_hour", "Re-auth / dev-h", "{:.3f}", False)]
     a = df_main[df_main["config"] == "EASA_full"].sort_values("seed"); b = df_reset.sort_values("seed")
     if a.empty or b.empty: return []
@@ -381,7 +411,7 @@ def reset_table(df_main, df_reset, out_tex, n_boot=2000):
            "\\label{tab:reset}\n\\centering\\scriptsize\n\\setlength{\\tabcolsep}{4pt}\n\\widebox{\\begin{tabular}{lccccc}\n\\toprule\n"
            "Metric & EASA & EASA, history reset & $\\Delta$ & 95\\% CI & $p$ \\\\\n\\midrule\n" + "\n".join(lines)
            + "\n\\bottomrule\n\\end{tabular}}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return md
 
 
@@ -521,7 +551,7 @@ AXIS_LABEL = {"w_net": "$w_{\\mathrm{net}}$", "beta": "$\\beta$", "h": "$h$ (epo
 
 def sensitivity_table(df_s, out_tex):
     if "axis" not in df_s.columns: return []
-    mets = [("f1_L2", "F1"), ("fpr_L2", "FPR"), ("cross_site_recall_L2", "Cross-site"), ("containment_rate", "Contain."),
+    mets = [("f1_L2", "F1"), ("fpr_L2", "FPR"), ("cross_site_recall_L2", "Cross-site"), ("containment_rate", "Activation"),
             ("fpr_L2_all_epochs", "Restricted share"), ("reauth_per_device_hour", "Re-auth/dev-h")]
     cfgs = [c for c in ["B3_net_only", "EASA_full"] if c in df_s["config"].unique()]
     g = df_s.groupby(["axis", "value", "config"])[[m for m, _ in mets]].mean()
@@ -545,7 +575,7 @@ def sensitivity_table(df_s, out_tex):
            "(decision-equivalent to the deployed service). B3 has no fusion weights, so its rows under $w_{\\mathrm{net}}$ repeat the default run.}\n"
            "\\label{tab:sensitivity}\n\\centering\\scriptsize\n\\setlength{\\tabcolsep}{3pt}\n\\widebox{%\n\\begin{tabular}{ll" + "c" * (len(mets) * len(cfgs)) + "}\n\\toprule\n"
            + head1 + "\n" + head2 + "\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}}\n\\end{table}\n")
-    open(out_tex, "w").write(tex)
+    _write_tex(out_tex, tex)
     return md
 
 

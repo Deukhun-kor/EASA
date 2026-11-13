@@ -1,0 +1,21 @@
+,0
+seeds,30
+benign_devices_per_run,31.733333333333334
+devices_restricted_A_per_run,1.0666666666666667
+devices_restricted_B_per_run,1.1666666666666667
+devices_restricted_A_not_B_per_run,0.3
+devices_restricted_B_not_A_per_run,0.4
+restricted_epochs_A_per_run,231.73333333333332
+restricted_epochs_B_per_run,188.53333333333333
+long_restrictions_A_per_run(>= 300s),1.0333333333333334
+of_which_stuck_at_end,0.8387096774193549
+of_which_also_restricted_under_B,0.7419354838709677
+of_which_B_dwell_median_s,1580.0
+S_net_mean_median,0.3587895017347218
+share_S_net_ge_tauL1_A_median,0.0
+share_S_net_ge_tauL2_B_median,0.37037037037037035
+share_devices_S_net_mean_above_tauL2_B,0.5806451612903226
+share_devices_T_if_hist_1_above_tauL2_A,0.5806451612903226
+S_hist_end_median,3.272426261628314e-12
+S_pos_mean_median,0.8177901210557258
+dclass_counts,"{'camera': 10, 'sensor': 8, 'hub': 7, 'appliance': 6}"

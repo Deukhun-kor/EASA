@@ -14,3 +14,4 @@ results/_sweep_tmp/
 *.log
 .DS_Store
 Thumbs.db
+results/v4/traces/

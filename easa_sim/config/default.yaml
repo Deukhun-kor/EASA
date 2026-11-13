@@ -27,7 +27,10 @@ data:
   iotdiad_min_rows: 100                # drop corrupt files (DoS-TCP_Flood: 1 row each)
   iotdiad_weak_policy: drop            # drop weak-labelled types from the main experiment | capture (keep, capture labels)
   ciciot_dir: data/CICIoT2023/csv      # the 169 "part-*.csv" feature files (46 features + label)
-  toniot_network_csv: data/TON_IoT/Train_Test_Network.csv
+  toniot_network_csv: data/TON_IoT/Train_Test_Network.csv   # fallback only (file has no ts); the replication uses toniot_network_files
+  toniot_network_files: null           # list of paths, or a glob, of Processed_Network_dataset/Network_dataset_*.csv (see v4_toniot.yaml)
+  toniot_max_rows_per_block: 0         # cap per (file, attack type) block = its chronologically first rows; 0 = no cap
+  toniot_duration_cap_s: null          # availability = ts + duration with no cap (Zeek has no flow timeout); 120 = capped variant, not used
   toniot_telemetry_dir: data/TON_IoT/Train_Test_IoT_*.csv
   max_rows: 4_000_000       # stratified subsample of CIC-IoT-2023 (fits 32 GB RAM with float32)
   dedup: true               # drop exact-duplicate feature rows BEFORE splitting (Purkaystha 2026)
@@ -43,6 +46,12 @@ data:
 topology:
   n_gateways: 3
   devices_per_gateway: auto # auto = all real device IPs with a benign trace (68 in IoT-DIAD -> 23/23/22); int = cap
+  training_partition: shared # shared (protocol v3) | disjoint (no training row shared between gateways; capture segments
+                            #   + own devices) | disjoint_device (also no training row of any device the gateway evaluates)
+  device_multiplier: 1      # load scaling: k instances of every device trace per gateway (65 -> 65k devices)
+  global_holdout_devices_fraction: 0   # federation-wide device holdout: every k-th replayed device (k = 1/fraction) has its
+                            #   benign rows removed from EVERY gateway's training set (and so from the aggregated model);
+                            #   the devices are still replayed and calibrated (revision r1, editor point 2)
   epoch_s: 10.0             # decision epoch (IoT-DIAD flows are sessions: benign devices emit ~0.02 flows/s)
   window_s: 120.0           # flow aggregation window feeding f_theta (= CICFlowMeter activity timeout)
   sim_duration_s: 3600      # one simulated hour per run
@@ -141,6 +150,13 @@ policy:
     l3_quantile: 0.005                          # tau_L3 = 0.5th percentile
     duration_s: 1800                            # benign-only pass length (sim-s)
     max_passes: 6                               # bisection passes on tau_L2 so the realised benign FPR (with hysteresis) hits target
+    l3_rule: spread                             # spread (protocol v3: tau_L3 = min(q3 quantile, one L1-L2 spread below tau_L2)) |
+                                                #   quantile (protocol v4: tau_L3 = q3 quantile of benign T, capped just below tau_L2)
+    per_device: false                           # (rejected variant, kept for the record) per-device thresholds from each device's own calibration segment at a
+                                                #   common quantile level p, bisected so the realised fleet FPR meets target_fpr (device-level baseline)
+    exclude_chronic: 0.0                        # (superseded by per_device) devices restricted for more than this share of the benign pass are
+                                                #   chronic outliers -- excluded from the FPR statistic and the tau quantiles, reported as
+                                                #   n_calibration_outliers, kept in the evaluation. 0 = protocol v3; v4 uses 0.5
   hysteresis_delta: 0.05                        # exit threshold = enter + delta (overridden by calibration: delta = tau_L1 - tau_L2)
   h_epochs: 5                                   # consecutive epochs above exit threshold to relax (= 50 s)
   l1_token_ttl_factor: 0.5
@@ -199,3 +215,18 @@ extra_configs:
   EASA_model_only: {cloud: {mode: model_only}}
   EASA_rev_only:   {cloud: {mode: revocation_only}}
   EASA_reset:      {policy: {history_reset_epochs: 5}}     # EASA_full + recovery rule (reset after h=5 clean restricted epochs)
+
+# ----------------------------------------------------------------------
+# Revision round 1 (Sensors, 2026-11). Each answers one editor / reviewer request; see RUN_R1.md.
+#   EASA_net_binary  : EASA_net_score with a binary (L0 <-> L3) policy -- same MLP detector, same cloud functions, so
+#                      EASA_net_score vs EASA_net_binary isolates graded enforcement from per-alarm blocking (editor 3)
+#   EASA_release     : EASA_full + bounded dwell (an L2 device whose network score alone is at the L0 level for 12
+#                      consecutive epochs = 120 s is released to L1 and logged) (editor 4 / R4)
+#   EASA_reset_release : both recovery rules together
+#   training_partition / device_multiplier are topology overrides (--set), not configurations (editor 2 / R2)
+# ----------------------------------------------------------------------
+  EASA_net_binary:  {trust: {w_net: 1.0, w_pos: 0, w_hist: 0}, policy: {binary: true}}
+  B3_local:         {trust: {w_net: 1.0, w_pos: 0, w_hist: 0}, cloud: {mode: none}}   # network-only score, local training, no registry: B3 minus the model path (model-sharing contrast)
+  EASA_release:     {policy: {clean_release_epochs: 12}}
+  EASA_reset_release: {policy: {history_reset_epochs: 5, clean_release_epochs: 12}}
+  EASA_exit_net:    {policy: {exit_on: S_net}}            # composite entry, network-evidence exit (evidence-based release)

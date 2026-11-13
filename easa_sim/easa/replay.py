@@ -84,6 +84,14 @@ class ReplayBank:
         gap_cap = float(rcfg.get("gap_cap_s", 60.0))
         self.availability = str(rcfg.get("availability", "end"))
         self.cal_fraction = float(rcfg.get("calibration_fraction", 1.0 / 3.0))
+        # protocol v4 (revision r1): a device is replayed only if its evaluation segment holds at least
+        # min_eval_records records spanning at least min_eval_duration_s, and its calibration segment at least
+        # min_cal_records records; otherwise the same few records would be replayed hundreds of times per hour
+        # (one device had 17 records / 8.5 s after label hygiene). 0 = no minimum (protocol v3).
+        self.min_eval_records = int(rcfg.get("min_eval_records", 0))
+        self.min_eval_duration_s = float(rcfg.get("min_eval_duration_s", 0.0))
+        self.min_cal_records = int(rcfg.get("min_cal_records", 0))
+        self.excluded_short: list[str] = []
         self.device_ips: list[str] = m["device_ips"]
         test = set(pool.test_idx.tolist())
         abs_t = np.asarray(m["abs_t"], dtype=np.float64)
@@ -107,8 +115,12 @@ class ReplayBank:
             else:
                 tr_cal = tr_eval = _build(rows, abs_t, gap_cap)
             if tr_eval is not None:
+                cal_ = tr_cal if tr_cal is not None else tr_eval
+                if (len(tr_eval.rows) < self.min_eval_records or tr_eval.duration < self.min_eval_duration_s
+                        or len(cal_.rows) < self.min_cal_records):
+                    self.excluded_short.append(self.device_ips[i]); continue
                 self.benign[i] = tr_eval
-                self.benign_cal[i] = tr_cal if tr_cal is not None else tr_eval
+                self.benign_cal[i] = cal_
         # attack traces per family: one trace per designated attacker (test split)
         att_row = m.get("attacker_of_row")
         self.attack: dict[str, list[Trace]] = {}
@@ -127,6 +139,10 @@ class ReplayBank:
             if traces:
                 self.attack[fam] = traces
         self.devices_with_benign = sorted(self.benign)
+        if self.excluded_short:
+            import logging
+            logging.getLogger(__name__).info("replay: %d device(s) excluded for short traces (< %d eval records / %.0f s / %d cal records): %s",
+                                             len(self.excluded_short), self.min_eval_records, self.min_eval_duration_s, self.min_cal_records, self.excluded_short)
 
     # ------------------------------------------------------------------
     def benign_cursor(self, dev_ip_index: int, rng: np.random.Generator, segment: str = "eval") -> Cursor | None:

@@ -1,0 +1,50 @@
+# =====================================================================
+# Protocol v4 on TON_IoT (revision round 1, Sensors, Nov 2026): the reduced replication with INDEPENDENT ROW-LEVEL
+# GROUND-TRUTH LABELS (reviewer 4 / editor point 1). Everything not listed here is inherited from v4.yaml / default.yaml.
+#
+# Data: the timestamped Processed_Network_dataset/Network_dataset_k.csv files (Train_Test_Network.csv has no `ts`).
+# Nine of the 23 files are used; together they contain every attack type and 9 of the 10 largest normal-traffic blocks:
+#   file  1: normal 208,679 rows (25 devices) + scanning       file 18: ddos + password + normal 49,436
+#   file  8: dos + scanning + normal 21,306                     file 20: password + xss + normal 21,082
+#   file 11: dos + injection + normal 35,168                    file 22: normal 234,988 (17 devices) + backdoor + ransomware + xss
+#   file 12: injection + ddos + normal 32,806                   file 23: backdoor + mitm + normal 33,475
+#   file 17: ddos (attacker .38) + normal 33,711
+# Every (file, attack type) block is capped at its chronologically first 150,000 rows (one contiguous captured segment,
+# attacker traces keep their density); normal rows are never capped. ~3.0 M rows in total, comparable to IoT-DIAD.
+#
+# Label modes (run the grid once per mode, see RUN_R1.md):
+#   --set data.toniot_label_mode=truth         rows labelled by the dataset's label column (ground truth)
+#   --set data.toniot_label_mode=dominant_src  rows labelled by the paper's dominant-source rule (as for IoT-DIAD)
+# results/toniot_label_check.json holds the rule-versus-truth precision/recall per attack type.
+# Label hygiene (v4, iotdiad_attacker_hosts = drop) applies in both modes: normal rows to/from a designated attacker
+# host are dropped and the host is not a replayed device (192.168.1.193, the backdoor attacker, has 21 k normal rows).
+# =====================================================================
+extends: v4.yaml
+
+experiment:
+  name: v4_toniot
+
+data:
+  source: toniot
+  toniot_network_files:
+    - data/TON_IoT/Network_dataset_1.csv
+    - data/TON_IoT/Network_dataset_8.csv
+    - data/TON_IoT/Network_dataset_11.csv
+    - data/TON_IoT/Network_dataset_12.csv
+    - data/TON_IoT/Network_dataset_17.csv
+    - data/TON_IoT/Network_dataset_18.csv
+    - data/TON_IoT/Network_dataset_20.csv
+    - data/TON_IoT/Network_dataset_22.csv
+    - data/TON_IoT/Network_dataset_23.csv
+  toniot_max_rows_per_block: 150000
+  toniot_label_mode: truth
+  toniot_min_device_rows: 200
+  toniot_device_ipv4_only: true
+  toniot_exclude_ips: [192.168.1.1, 127.0.0.1]   # gateway/router and loopback are not devices
+  families: [DDoS, DoS, Recon, Spoofing, Web, BruteForce]
+
+scenario:
+  cross_site:
+    # one held-out family per gateway; the three best-populated TON_IoT families (DDoS 450 k, Recon/scanning 300 k,
+    # BruteForce/password 300 k rows). Spoofing (= mitm, 1,052 rows) is too small to hold out.
+    holdout: {g0: [DDoS], g1: [Recon], g2: [BruteForce]}

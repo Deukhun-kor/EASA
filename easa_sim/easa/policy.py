@@ -25,6 +25,8 @@ class PolicyState:
     n_deferred: int = 0            # step-ups deferred (energy-aware)
     n_deferred_executed: int = 0   # ... later executed because e_d recovered while still restricted
     n_deferred_cancelled: int = 0  # ... cancelled because the device relaxed below L2 first
+    clean_count: int = 0           # consecutive restricted epochs whose network score alone is at the L0 level
+    n_clean_releases: int = 0      # bounded-dwell releases (policy.clean_release_epochs > 0)
     transitions: list = field(default_factory=list)
 
 
@@ -50,34 +52,70 @@ class PolicyEngine:
         self.h = p["h_epochs"]
         self.energy_floor = cfg["posture"]["energy_floor"]
         self.energy_aware = bool(p.get("energy_aware", True))   # False: always re-handshake on L2 entry (B3)
+        # Bounded dwell (revision r1, editor point 4 / R4): a device held at L2 whose *network* score alone has been at
+        # the L0 level (S_net >= tau_L1) for this many consecutive epochs is released to L1 regardless of T, and the
+        # release is logged for the operator (n_clean_releases). 0 = off (protocol v3 main grid). L3 is unaffected:
+        # quarantine remains absorbing within a run and is released by the policy timer or an operator.
+        self.clean_release = int(p.get("clean_release_epochs", 0))
+        # Evidence-based release (revision r1, editor point 4): the relaxation test compares the *network* score alone
+        # (S_net) with the exit threshold instead of the composite T. Entry still uses T. Removes the asymmetry that the
+        # decayed history term creates (with S_hist = 0 the composite needs S_net > (tau_L1 - w_pos S_pos)/w_net ~ 0.84
+        # to leave L2, while entry happened at T < tau_L2). "T" = protocol v3 default.
+        self.exit_on = str(p.get("exit_on", "T"))
+        # Protocol v4 (revision r1): per-device thresholds. When set, tau_by_device[did] = ({1: .., 2: .., 3: ..}, delta)
+        # overrides the fleet thresholds for that device (device-level baseline, calibrated from the device's own
+        # benign calibration segment at a quantile level shared by every device; see runner.py).
+        self.tau_by_device: dict = {}
+
+    def thresholds(self, did: str | None):
+        t = self.tau_by_device.get(did) if did is not None else None
+        return (t[0], t[1]) if t is not None else (self.tau, self.delta)
+
+    def tau_L1_for(self, did: str | None) -> float:
+        return self.thresholds(did)[0][L1]
 
     # ------------------------------------------------------------------
-    def _target_level(self, T: float) -> int:
-        if T < self.tau[L3]: return L3
-        if T < self.tau[L2]: return L2
-        if T < self.tau[L1]: return L1
+    def _target_level(self, T: float, tau: dict | None = None) -> int:
+        tau = tau or self.tau
+        if T < tau[L3]: return L3
+        if T < tau[L2]: return L2
+        if T < tau[L1]: return L1
         return L0
 
-    def evaluate(self, ps: PolicyState, T: float, iota: int, revoked: bool, e_d: float, now: float) -> Action:
+    def evaluate(self, ps: PolicyState, T: float, iota: int, revoked: bool, e_d: float, now: float,
+                 s_net: float | None = None, did: str | None = None) -> Action:
         """MapWithHysteresis + SelectAction. Returns the action to enforce (level may be unchanged)."""
         if self.disabled:
             return Action(level=L0)
+        tau, delta = self.thresholds(did)
         prev = ps.level
         if iota == 0 or revoked:
             target = L3
         else:
-            target = self._target_level(T)
+            target = self._target_level(T, tau)
             if self.binary:
                 target = L3 if target >= L2 else L0
+        # bounded dwell: clean network evidence for clean_release consecutive epochs releases an L2 device to L1
+        if self.clean_release > 0 and prev == L2 and s_net is not None and iota != 0 and not revoked:
+            ps.clean_count = ps.clean_count + 1 if s_net >= tau[L1] else 0
+            if ps.clean_count >= self.clean_release:
+                ps.clean_count = 0; ps.n_clean_releases += 1
+                target = min(target, L1)
+                ps.level = L1; ps.above_exit_count = 0
+                prev_for_log = prev; prev = L1   # treat as already relaxed; the transition is recorded below
+                ps.transitions.append((now, prev_for_log, L1))
+        elif prev != L2:
+            ps.clean_count = 0
         # promotion: immediate
         if target > prev:
             ps.level = target; ps.above_exit_count = 0
         # relaxation: hysteresis
         elif target < prev:
-            exit_thr = self.tau.get(prev, 1.0) + self.delta
+            exit_thr = tau.get(prev, 1.0) + delta
+            exit_score = s_net if (self.exit_on == "S_net" and s_net is not None) else T
             if prev == L3 and ps.quarantined_at is not None and now - ps.quarantined_at < self.cfg["l3_release_after_s"] and revoked:
                 ps.above_exit_count = 0
-            elif T > exit_thr:
+            elif exit_score > exit_thr:
                 ps.above_exit_count += 1
                 if ps.above_exit_count >= self.h:
                     ps.level = max(target, prev - 1) if not self.binary else L0

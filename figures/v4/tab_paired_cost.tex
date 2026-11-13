@@ -1,0 +1,40 @@
+\begin{table}[!b]
+\caption{Paired differences versus EASA on the benign-side cost metrics}
+\label{tab:paired-cost}
+\centering\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llcccc}
+\toprule
+Metric & vs. & $\Delta$ (EASA $-$ other) & 95\% CI & $p$ (Holm) & Seeds EASA better \\
+\midrule
+False quarantine & B0 static & +0.016 & $[0.009, 0.024]$ & 0.009 & 0/30 \\
+ & B1 VNSF & $-$0.055 & $[-0.067, -0.044]$ & $<0.001$ & 28/30 \\
+ & B2 rules & $-$0.038 & $[-0.055, -0.022]$ & 0.002 & 17/30 \\
+ & B3 net-only & $-$0.001 & $[-0.008, 0.005]$ & 1.000 & 4/30 \\
+ & EASA$-$C & $-$0.004 & $[-0.017, 0.007]$ & 1.000 & 7/30 \\
+ & EASA$-$PH & $-$0.001 & $[-0.008, 0.005]$ & 1.000 & 4/30 \\
+\midrule
+Re-auth / dev-h & B0 static & +0.240 & $[0.216, 0.264]$ & $<0.001$ & 0/30 \\
+ & B1 VNSF & +0.240 & $[0.214, 0.264]$ & $<0.001$ & 0/30 \\
+ & B2 rules & +0.240 & $[0.215, 0.263]$ & $<0.001$ & 0/30 \\
+ & B3 net-only & +0.040 & $[0.005, 0.076]$ & 0.139 & 8/30 \\
+ & EASA$-$C & $-$0.001 & $[-0.028, 0.024]$ & 0.766 & 14/30 \\
+ & EASA$-$PH & +0.042 & $[0.009, 0.077]$ & 0.139 & 8/30 \\
+\midrule
+Restricted share (all benign epochs) & B0 static & +0.174 & $[0.163, 0.186]$ & $<0.001$ & 0/30 \\
+ & B1 VNSF & $-$0.012 & $[-0.023, -0.001]$ & 0.062 & 18/30 \\
+ & B2 rules & +0.109 & $[0.094, 0.126]$ & $<0.001$ & 0/30 \\
+ & B3 net-only & +0.011 & $[0.002, 0.019]$ & 0.036 & 9/30 \\
+ & EASA$-$C & +0.017 & $[0.004, 0.030]$ & 0.015 & 7/30 \\
+ & EASA$-$PH & +0.008 & $[0.000, 0.016]$ & 0.062 & 10/30 \\
+\midrule
+Post-attack dwell (s) & B0 static & +1286 & $[1194, 1382]$ & $<0.001$ & 0/30 \\
+ & B1 VNSF & +57 & $[-25, 140]$ & 0.176 & 11/30 \\
+ & B2 rules & +926 & $[817, 1041]$ & $<0.001$ & 0/30 \\
+ & B3 net-only & +76 & $[6, 144]$ & 0.135 & 10/30 \\
+ & EASA$-$C & +162 & $[77, 260]$ & 0.002 & 6/30 \\
+ & EASA$-$PH & +55 & $[-11, 118]$ & 0.176 & 11/30 \\
+\bottomrule
+\end{tabular}
+\tabnote{EASA is better when lower}
+\end{table}

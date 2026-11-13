@@ -44,8 +44,13 @@ class Device:
 
 class Gateway:
     def __init__(self, gid: int, cfg: dict, pool: FlowPool, cloud: CloudBase, rng: np.random.Generator,
-                 holdout: list[str], seed: int, replay: ReplayBank | None = None, device_ip_indices: list[int] | None = None):
+                 holdout: list[str], seed: int, replay: ReplayBank | None = None, device_ip_indices: list[int] | None = None,
+                 device_owner: dict[int, int] | None = None):
         self.gid = gid
+        self.n_gateways = int(cfg["topology"]["n_gateways"])
+        self.partition = str(cfg["topology"].get("training_partition", "shared"))   # revision r1: shared | disjoint | disjoint_device
+        self.device_owner = device_owner or {}
+        self.global_holdout_devices: set[int] = set(cfg["topology"].get("_global_holdout_devices") or [])   # set by the runner
         self.name = f"g{gid}"
         self.cfg = cfg
         self.pool = pool
@@ -94,8 +99,13 @@ class Gateway:
         self.revoked = set()
         self.last_model_sync = self.last_rev_poll = self.last_stats = 0.0
 
+    def train_rows(self) -> np.ndarray:
+        return self.pool.train_split_for_gateway(self.holdout, gateway=self.gid, n_gateways=self.n_gateways,
+                                                 partition=self.partition, device_owner=self.device_owner,
+                                                 global_holdout_devices=self.global_holdout_devices)
+
     def train_local(self, epochs: int | None = None) -> None:
-        idx = self.pool.train_split_for_gateway(self.holdout)
+        idx = self.train_rows()
         X, y = self.pool.X[idx], self.pool.y[idx]
         log.info("%s local training on %d rows (holdout=%s, epochs=%s)", self.name, len(idx), self.holdout,
                  epochs or self.cfg["detector"][self.cfg["detector"]["kind"]].get("epochs", "default") if self.cfg["detector"]["kind"] == "mlp" else "n/a")
@@ -117,7 +127,7 @@ class Gateway:
 
     def finetune_local(self) -> None:
         if not self.detector.federatable or int(self.cfg["detector"].get("local_finetune_epochs", 0)) <= 0: return
-        idx = self.pool.train_split_for_gateway(self.holdout)
+        idx = self.train_rows()
         sub = self.rng.choice(idx, size=min(len(idx), 50_000), replace=False)
         self.detector.fit(self.pool.X[sub], self.pool.y[sub], epochs=self.cfg["detector"]["local_finetune_epochs"])
 
@@ -218,11 +228,11 @@ class Gateway:
             s_pos = self.pmodel.score(dev.posture, self.cfg["trust"])
             prev_level = dev.policy.level
             T = self.trust.update(dev.trust, p_attack, s_pos, prev_level,
-                                  tau_L1=self.policy.tau.get(1), reset_after=int(self.cfg["policy"].get("history_reset_epochs", 0)))
+                                  tau_L1=self.policy.tau_L1_for(dev.did), reset_after=int(self.cfg["policy"].get("history_reset_epochs", 0)))
             # revocation check is by *credential*: a replayed credential is caught only if another
             # gateway's L3 decision reached the cloud registry and this gateway has pulled it
             revoked = dev.credential in self.revoked
-            act = self.policy.evaluate(dev.policy, T, dev.posture.iota, revoked, dev.posture.e, t)
+            act = self.policy.evaluate(dev.policy, T, dev.posture.iota, revoked, dev.posture.e, t, s_net=dev.trust.S_net, did=dev.did)
             if act.revoke:
                 self.revoked.add(dev.credential)
                 self.cloud.publish_revocation(self.name, dev.credential, t)

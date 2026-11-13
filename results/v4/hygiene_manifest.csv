@@ -1,0 +1,9 @@
+ip,designated_for,n_types,benign_chain_rows_as_src,benign_chain_rows_as_dst,benign_chain_rows_any,rows_train,rows_val,rows_test,replayed_device_v3,eval_records_v3
+192.168.137.23,ARP Spoofing (0.10),1.0,75.0,6.0,81,49,7,25,False,0.0
+192.168.137.41,DDoS-ICMP_Fragmentation (0.31); VulnerabilityScan (0.29); sqlinjection (0.40),3.0,70433.0,11778.0,82211,51480,10071,18101,True,12068.0
+192.168.137.66,DoS SYN Flood (0.18); DoS-HTTP_Flood (0.87); DoS-UDP_Flood (0.15),3.0,1167.0,3.0,1170,637,106,427,True,285.0
+192.168.137.128,DDoS-ICMP_Fragmentation (0.07); Mirai (0.13),2.0,2087.0,3907.0,5994,3336,595,2037,True,501.0
+192.168.137.133,DDoS-HTTP Flood (0.09); VulnerabilityScan (0.05); sqlinjection (0.06),3.0,46648.0,4475.0,51123,28879,4932,16778,True,11186.0
+192.168.137.173,BruteForce (0.17); ARP Spoofing (0.07),2.0,101.0,3.0,104,53,21,30,True,21.0
+192.168.137.207,Mirai (0.14),1.0,4603.0,588.0,5191,2775,548,1828,True,1219.0
+TOTAL (rows removed by drop; a row with two attacker hosts counted once),,,,,145874,87209,16280,39226,,

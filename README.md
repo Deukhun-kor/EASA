@@ -37,6 +37,26 @@ easa_sim/
 └── LICENSE
 ```
 
+## Revision round 1 (tag `v1.1-revision`, protocol v4)
+
+The revised manuscript uses **protocol v4** (`easa_sim/config/v4.yaml`, extending `default.yaml`):
+
+1. *Label hygiene* — the Benign-chain rows (and device entries) of every address that the dominant-source rule designates as an attacker are dropped (`data.iotdiad_attacker_hosts: drop`; 7 of 65 replayed addresses, 145,874 rows).
+2. *Calibration* — τ_L3 is the 0.5 % quantile of benign trust, capped below τ_L2 (`policy.calibrate.l3_rule: quantile`); the v3 spread rule bound τ_L3 for the network-only configurations.
+3. *Minimum replay trace* — a device is replayed only with ≥ 20 evaluation records over ≥ 60 s and ≥ 5 calibration records (`replay.min_*`); two addresses are excluded → 56 devices.
+
+New in the code (all options default to the submitted behaviour unless set in `v4.yaml`):
+
+- `topology.training_partition: shared | disjoint | disjoint_device` — no training row shared between gateways (paper §5.5); `topology.device_multiplier` — load scaling (§5.11).
+- configurations `EASA_net_binary` (graded vs. binary with the same detector and cloud, §5.3), `EASA_reset`, `EASA_exit_net` (`policy.exit_on: S_net`), `EASA_release` (`policy.clean_release_epochs`), `EASA_no_energy`.
+- `policy.calibrate.exclude_chronic` and `policy.calibrate.per_device` — calibration variants tried and rejected (Supplementary S2).
+- `easa/data/toniot.py` — TON_IoT network loader (timestamped `Processed_Network_dataset/Network_dataset_k.csv` files, label modes `truth` / `dominant_src`, attacker-host hygiene, per-block cap); `config/v4_toniot.yaml`.
+- scripts: `audit_recovery.py` (all seeds), `audit_lockin.py` (lock-in attribution EASA vs. EASA−PH), `audit_device_scores.py` (per-device benign network score), `list_devices.py`, `inspect_toniot.py`; `run_experiments.py --save-all-traces`; `config.py` supports `extends:`.
+- `run_v4/window_{A,B,C,T}.ps1` — the four run windows that produced `results/v4/` (see `RUN_R1.md`).
+- `make_figures.py` labels the activation metric "Activation" (restriction activation) instead of "Containment".
+
+Results of the revision are in `results/v4/` (see its README) and the manuscript tables and figures in `figures/v4/`.
+
 ## Data
 
 CIC IoT-DIAD 2024, flow-based release (`AD_Flow-based-features`), from the Canadian Institute for Cybersecurity:
@@ -49,8 +69,8 @@ assigned by the dominant-source rule in `easa/data/iotdiad.py`, with the resulti
 
 ## Environment
 
-Python 3.11+, see `requirements.txt`. The reported runs used Windows 11, an NVIDIA RTX 5080 (PyTorch CUDA 12.8
-build) and 32 GB RAM; CPU-only runs work but are slower. `B1_vnsf` needs `xgboost`.
+Python 3.11+, see `requirements.txt`. The reported runs used Python 3.12.10 on Windows 11, an NVIDIA RTX 5080 (PyTorch 2.11, CUDA 12.8
+build) and 32 GB RAM (`results/v4/env.txt`); CPU-only runs work but are slower. `B1_vnsf` needs `xgboost`.
 
 ```powershell
 python -m venv .venv; .\.venv\Scripts\Activate.ps1

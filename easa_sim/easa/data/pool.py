@@ -12,6 +12,7 @@ import logging
 from dataclasses import dataclass, field
 
 import numpy as np
+import pandas as pd
 
 log = logging.getLogger(__name__)
 
@@ -45,10 +46,68 @@ class FlowPool:
             return self._split_idx[split]
         return self._by_fam[split].get(fam, np.empty(0, dtype=int))
 
-    def train_split_for_gateway(self, holdout: list[str]) -> np.ndarray:
-        """Local training rows for a gateway: all benign + attacks NOT in holdout."""
+    def train_split_for_gateway(self, holdout: list[str], gateway: int | None = None, n_gateways: int = 1,
+                                partition: str = "shared", device_owner: dict[int, int] | None = None,
+                                global_holdout_devices: set[int] | None = None) -> np.ndarray:
+        """Local training rows for a gateway: all benign + attacks NOT in holdout.
+
+        partition (revision round 1, editor point 2 -- generalisation with disjoint gateways):
+          shared           every gateway trains on the whole training split minus its held-out family (protocol v3;
+                           pairwise Jaccard overlap 0.69-0.84 in IoT-DIAD).
+          disjoint         the training split is partitioned so that no two gateways share a row: the rows of each
+                           attack capture file are cut into n_gateways *contiguous time blocks* (block g -> gateway g;
+                           blocks are different captured segments, not an interleaved shuffle; benign background rows
+                           of attack captures follow their file), and the benign rows of a real device go to the
+                           gateway that replays that device (device_owner), i.e. a gateway trains on the earlier
+                           traffic of its own devices only. Every gateway keeps every family it is not holding out,
+                           so the held-out-family bookkeeping is unchanged.
+          disjoint_device  as `disjoint`, but the benign rows of a real device go to the *next* gateway
+                           ((owner + 1) mod n_gateways): a gateway trains on no row of any device it evaluates, so
+                           training devices and evaluated devices are disjoint at every gateway.
+        Devices that are replayed nowhere (no evaluation trace) are assigned by device index mod n_gateways.
+        """
         tr = self.train_idx
-        keep = ~np.isin(self.family[tr], holdout)
+        # federation-wide device holdout (revision r1, editor point 2): the benign rows of the held-out devices are
+        # removed from EVERY gateway's training set (and hence from the aggregated model); the devices are still
+        # replayed and calibrated, so their evaluation is that of devices unseen at training time.
+        if global_holdout_devices:
+            m = self.rules_meta.get("replay_meta") or {}
+            if m.get("device") is None:
+                raise ValueError("global_holdout_devices requires per-row device metadata (IoT-DIAD or TON_IoT loader)")
+            dev_all = np.asarray(m["device"])
+            tr = tr[~np.isin(dev_all[tr], list(global_holdout_devices))]
+        if partition == "shared" or gateway is None or n_gateways <= 1:
+            return tr[~np.isin(self.family[tr], holdout)]
+        if partition not in ("disjoint", "disjoint_device"):
+            raise ValueError(f"unknown training partition {partition!r}")
+        # the partition is computed on the full training split (before the held-out family is removed), so that the
+        # blocks are identical for every gateway and no row is shared; the holdout filter is applied afterwards.
+        # It is cached per (partition, gateway, owner map): the per-file sorting is expensive and train_local is called
+        # once per federated round.
+        key = (partition, int(gateway), int(n_gateways), tuple(sorted((device_owner or {}).items())), tuple(sorted(global_holdout_devices or ())))
+        cache = self.__dict__.setdefault("_partition_cache", {})
+        if key not in cache:
+            m = self.rules_meta.get("replay_meta") or {}
+            if m.get("file") is None or m.get("device") is None or m.get("abs_t") is None:
+                raise ValueError("training_partition requires per-row file / device / time metadata (IoT-DIAD or TON_IoT loader)")
+            fileid = np.asarray(m["file"]); device = np.asarray(m["device"]); abs_t = np.asarray(m["abs_t"], dtype=np.float64)
+            own = np.zeros(len(tr), dtype=bool)
+            dev_tr = device[tr]
+            real_dev = dev_tr >= 0                                   # benign rows of a real device (Benign chain)
+            owner = device_owner or {}
+            shift = 1 if partition == "disjoint_device" else 0
+            gw_of_dev = np.array([(owner.get(int(d), int(d)) + shift) % n_gateways for d in dev_tr[real_dev]], dtype=int)
+            own[np.flatnonzero(real_dev)[gw_of_dev == gateway]] = True
+            rest = np.flatnonzero(~real_dev)                        # attack-capture rows (attack + background benign)
+            f_rest = fileid[tr[rest]]
+            codes, uniq = pd.factorize(f_rest)
+            for c in range(len(uniq)):
+                sel = rest[codes == c]
+                order = sel[np.argsort(abs_t[tr[sel]], kind="stable")]
+                own[np.array_split(order, n_gateways)[gateway]] = True
+            cache[key] = own
+        own = cache[key]
+        keep = own & ~np.isin(self.family[tr], holdout)
         return tr[keep]
 
     def sample(self, rng: np.random.Generator, split: str, fam: str, n: int) -> np.ndarray:

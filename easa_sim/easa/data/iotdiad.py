@@ -140,8 +140,11 @@ def attacker_sets(root: str, cat: list[dict], subnet: str, exclude: set[str], mi
                   weak_threshold: float, cache: str | None = None, pkt_types: tuple[str, ...] = ("ICMP", "Mirai")) -> dict[str, dict]:
     """Per attack type: {'attackers': [...], 'shares': {...}, 'cum': float, 'weak': bool}. Cached as JSON."""
     if cache and os.path.exists(cache):
-        with open(cache) as f:
-            d = json.load(f)
+        try:
+            with open(cache) as f:
+                d = json.load(f)
+        except ValueError:
+            log.warning("attacker-set cache %s is unreadable (interrupted write); recomputing", cache); d = {}
         if d.get("_params") == [subnet, sorted(exclude), min_share, max_attackers, weak_threshold, "v4-union", list(pkt_types)]:
             log.info("attacker sets loaded from cache %s", cache); return {k: v for k, v in d.items() if k != "_params"}
     log.info("computing attacker sets (one pass over Src IP / packet counts of every attack file) ...")
@@ -178,7 +181,7 @@ def attacker_sets(root: str, cat: list[dict], subnet: str, exclude: set[str], mi
         else:
             att = by_flow
             cum = float(sum(s for _, s in att)); top1 = att[0][1] if att else 0.0
-        weak = cum < weak_threshold and top1 < 0.25            # a single dominant source also counts as strong
+        weak = bool(cum < weak_threshold and top1 < 0.25)      # a single dominant source also counts as strong (plain bool: JSON-serialisable)
         out[attack] = {"attackers": [ip for ip, _ in att], "measure": "packets" if use_pkt else "flows",
                        "shares": {ip: round(s, 4) for ip, s in att},
                        "flow_share": {ip: round(f[ip] / tf, 4) for ip, _ in att},
@@ -187,8 +190,10 @@ def attacker_sets(root: str, cat: list[dict], subnet: str, exclude: set[str], mi
         log.info("  %-26s [%s] attackers=%s cum=%.0f%% top1=%.0f%%%s", attack, "pkt" if use_pkt else "flow",
                  [ip for ip, _ in att], 100 * cum, 100 * top1, "  [WEAK -> capture labels]" if weak else "")
     if cache:
-        with open(cache, "w") as f:
-            json.dump({**out, "_params": [subnet, sorted(exclude), min_share, max_attackers, weak_threshold, "v4-union", list(pkt_types)]}, f, indent=1)
+        tmp = cache + ".tmp"
+        with open(tmp, "w") as f:                      # write-then-rename so that a failed dump never leaves a partial cache
+            json.dump({**out, "_params": [subnet, sorted(exclude), min_share, max_attackers, weak_threshold, "v4-union", list(pkt_types)]}, f, indent=1, default=float)
+        os.replace(tmp, cache)
     return out
 
 
@@ -220,10 +225,25 @@ def load_iotdiad(cfg: dict, rng: np.random.Generator) -> FlowPool:
     label_mode = d.get("iotdiad_label_mode", "dominant_src")
     att_sets = {}
     if label_mode == "dominant_src":
-        att_sets = attacker_sets(root, cat, subnet, exclude, float(d.get("iotdiad_min_share", 0.05)),
-                                 int(d.get("iotdiad_max_attackers", 8)), float(d.get("iotdiad_weak_threshold", 0.40)),
-                                 cache=os.path.join(root, "iotdiad_attackers.json"),
+        ms, cap, wk = float(d.get("iotdiad_min_share", 0.05)), int(d.get("iotdiad_max_attackers", 8)), float(d.get("iotdiad_weak_threshold", 0.40))
+        # the default rule keeps the released cache name; alternative rules (revision r1, label-robustness runs) get their own
+        cache_name = "iotdiad_attackers.json" if (ms, cap, wk) == (0.05, 8, 0.40) else f"iotdiad_attackers_ms{ms:g}_cap{cap}_w{wk:g}.json"
+        att_sets = attacker_sets(root, cat, subnet, exclude, ms, cap, wk,
+                                 cache=os.path.join(root, cache_name),
                                  pkt_types=tuple(d.get("iotdiad_packet_share_types", ["ICMP", "Mirai"])))
+        # Identity-corrected labels (revision round 1, config v4c): designated addresses that the dataset's packet-based
+        # release identifies as catalogued consumer devices in the same capture are removed from the type's attacker set
+        # (results/v4/iotdiad_packet_identity.json). The type's weak/strong status is NOT re-evaluated: the coverage
+        # criterion guards against mis-designation, which the identity evidence settles directly.
+        overrides = d.get("iotdiad_attacker_overrides") or {}
+        for atk, drop in overrides.items():
+            if atk not in att_sets:
+                log.warning("iotdiad_attacker_overrides: unknown attack type %s", atk); continue
+            info = att_sets[atk] = dict(att_sets[atk])
+            before = list(info["attackers"]); info["attackers"] = [ip for ip in before if ip not in set(drop)]
+            info["shares"] = {ip: s for ip, s in info["shares"].items() if ip in info["attackers"]}
+            info["cum_corrected"] = round(float(sum(info["shares"].values())), 4); info["removed"] = [ip for ip in before if ip in set(drop)]
+            log.info("iotdiad_attacker_overrides: %s: removed %s -> attackers %s (coverage %.1f%%)", atk, info["removed"], info["attackers"], 100 * info["cum_corrected"])
 
     # ---- family-balanced quota, spread over files proportionally, contiguous windows
     max_rows = int(d["max_rows"]); n_windows = int(d.get("iotdiad_windows_per_file", 4))
@@ -256,7 +276,12 @@ def load_iotdiad(cfg: dict, rng: np.random.Generator) -> FlowPool:
 
     # ---- device universe (Benign chain) & per-row device id (valid within the Benign chain only)
     benign_src = pd.Series(src[~is_attack_capture])
-    device_ips = sorted({ip for ip in benign_src.unique() if _in_subnet(ip, subnet) and ip not in exclude},
+    # Revision r1 (editor 1 / 4): the testbed's attacking hosts are themselves listed devices and their Benign-chain
+    # traffic would otherwise be replayed as benign and used as benign training rows. iotdiad_attacker_hosts = drop
+    # removes every Benign-chain row whose source or destination is a designated attacker of any attack type (and the
+    # address from the device universe); keep = protocol v3.
+    attacker_hosts = {ip for info in att_sets.values() for ip in info["attackers"]} if d.get("iotdiad_attacker_hosts", "keep") == "drop" else set()
+    device_ips = sorted({ip for ip in benign_src.unique() if _in_subnet(ip, subnet) and ip not in exclude and ip not in attacker_hosts},
                         key=lambda s: tuple(int(p) for p in s.split(".")))
     dev_index = {ip: i for i, ip in enumerate(device_ips)}
     src_dev = np.array([dev_index.get(ip, -1) for ip in src], dtype=np.int32)
@@ -267,6 +292,11 @@ def load_iotdiad(cfg: dict, rng: np.random.Generator) -> FlowPool:
     weak_types = set()
     weak_policy = d.get("iotdiad_weak_policy", "drop")      # drop (main experiment) | capture (keep with capture labels)
     keep_mask = np.ones(len(df), dtype=bool)
+    if attacker_hosts:
+        drop_rows = (~is_attack_capture) & (np.isin(src, list(attacker_hosts)) | np.isin(dst, list(attacker_hosts)))
+        keep_mask &= ~drop_rows
+        log.info("iotdiad_attacker_hosts=drop: removing %d Benign-chain rows (%.1f%%) of %d attacker hosts; device universe %d",
+                 int(drop_rows.sum()), 100 * drop_rows.sum() / max(1, (~is_attack_capture).sum()), len(attacker_hosts), len(device_ips))
     if label_mode == "capture":
         y = is_attack_capture.astype(np.int8)
     elif label_mode == "dominant_src":
@@ -329,7 +359,7 @@ def load_iotdiad(cfg: dict, rng: np.random.Generator) -> FlowPool:
     pool = FlowPool(Xs, y, fam, feat_cols, tr, va, te,
                     rules_meta={"cols": rule_idx, "raw_mu": X[tr].mean(0), "raw_sd": X[tr].std(0) + 1e-6, "dup_ratio": dup_ratio,
                                 "replay_meta": {"device": device, "abs_t": abs_t, "dur_s": dur_s, "dur_raw_s": dur_raw_s, "src": src, "dst": dst, "attack": attack,
-                                                "file": fileid, "device_ips": device_ips, "attacker_sets": att_sets,
+                                                "file": fileid, "device_ips": device_ips, "attacker_sets": att_sets, "attacker_overrides": d.get("iotdiad_attacker_overrides") or {},
                                                 "attacker_of_row": attacker_of_row if label_mode == "dominant_src" else None,
                                                 "weak_types": sorted(weak_types), "label_mode": label_mode}})
     log.info(pool.summary())
